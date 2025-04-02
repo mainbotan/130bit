@@ -1,0 +1,144 @@
+{% import '_macros.twig' as macros %}
+
+<!--META-->
+<div id='__MetaTitle' class='display--none'>{{ playlist.name }}</div>
+<div id='__MetaPlaylist-Title' class='display--none'>{{ playlist.name }}</div>
+
+<!--PAGE STATE-->
+{% embed 'chunks/classic_pageState.twig' %}
+{% endembed %}
+
+
+<!--ALBUM-->
+<div class='Draft__Album Draft'>
+    <div class='__animatedPageHead Head'>
+        <div class='Header'>
+            <div class='Label ToolTipeWrap'>
+                <div class='ToolTipe'>Увеличить изображение</div>
+                <div data-picture-url='{{ playlist.cover }}' class='EnvirHandler_displayPicture Ico' style='background-image: url({{ playlist.cover }});'></div>
+            </div>
+            <div class='InfoWrap'>
+                <div class='Wrap'>
+                    <div class='Title {{ playlist.name_size }}'>{{ playlist.name }}</div>
+                    <div class='AdInfo'>
+                    Плейлист
+                    • {{ playlist.total_tracks }} tracks
+                    </div>
+                    <div class='Description'>
+                        {{ playlist.description }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='Actions'>
+            {% if playlist.isRecommend %}
+                <div class='Box'>
+                    <div class='Button Active'>В рекомендациях</div>
+                </div>
+            {% else %}  
+                <div class='Box'>
+                    <div data-spotify-id='{{ playlist.id }}' class='QuickAction_RecommendPlaylist Button'>Рекомендовать</div>
+                </div>
+            {% endif %}
+            <div class='Bar'></div>
+        </div>
+    </div>
+    <div class='Content'>
+        <div class='inter--20'></div>
+        <!--Album Tracks-->
+        <div class='Element__Title'>
+            <div class='Bar'>
+                <div class='Block text-size--25px ShowTitle'>Треки плейлиста</div>
+            </div>
+        </div>
+        <div class='__TracksStack Element__TracksWrap'>
+        {% for key, track in playlist.tracks %}
+            <div data-spotify-uri='{{ track.uri }}' data-spotify-id='{{  track.id }}' class='Player_Track Element__Track_Small Track Track-{{ track.id }}'>
+                <div class='__TrackTitle display--none'>{{ track.name }}</div>
+                <div class='__TrackIco display--none'>{{ track.cover }}</div>
+                <div class='Ico' style='background-image: url({{ track.cover }});'></div>
+                <div class='Info TrackI'>
+                    <div class='Block'>
+                        <div class='Cut Title Regular text-face--regular'>{{ track.name }}</div>
+                        <div class='__TrackArtists Cut Ad Regular text-face--regular'>
+                        {% for key, artist in track.artists%}
+                            {{ macros.artistDiv(artist) }}
+                            {% if key < track.artists|length -1%}
+                                &
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class='Info AlbumI'>
+                    <div class='Block'>
+                        <div class='Navigation_UpdateWin Cut AlbumTitle Regular text-face--regular' x='album' param='id={{ track.album.id }}'>
+                            <div class='Element__HoverWhite ToolTipeWrap'>
+                                <div class='ToolTipe'>{{ track.album.name }}</div>
+                                {{ track.album.name }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div x='track' param='id={{ track.id }}' class='Navigation_UpdateWin Box ToolTipeWrap'><div class='ToolTipe'>К треку</div><img src='web/ico/eee/a.png'></div>
+                
+                {% if user != false %}
+                    {% if track.id in user.favourites.tracks %}
+                        {% set ico = 'web/ico/1ED760/heart.png' %}
+                    {% else %}
+                        {% set ico = 'web/ico/1ED760/heart_empty.png' %}
+                    {% endif %}
+                    <div data-spotify-id='{{ track.id }}' class='QuickAction_LikeTrack Box'><img class='__Like' src='{{ ico }}'></div>
+                {% endif %}
+                
+            </div> 
+        {% endfor %}
+        </div>
+        {# <div class='LabelWrap Regular text-face--regular'>
+            <div class='ToolTipeWrap display--block'>
+                <div class='ToolTipe'>{{ album.label }}</div>
+                {{ album.label }}
+            </div>
+        </div> #}
+    </div>
+
+    <div class='__Tags Tags'></div>
+    <div class='__Stat'></div>
+    <div style='height: 30vh;'></div>
+
+    <script>
+        colorService.animatePage('{{ playlist.name }}', '{{ playlist.cover }}');
+
+        
+        /*Last Fm Request*/
+        function generateTagsHTML(tags){
+            return tags.map(tag => {
+                return `<div x='tag' param='name=${tag.name}' class='state--pointer Navigation_UpdateWin Tag' data-tag-name='${tag.name}'>${tag.name}</div>`;
+            }).join(' ');
+        }
+        async function getAlbumStat(){
+            let albumName = $('#__MetaAlbum-Title').html();
+            let albumArtist = $('#__MetaAlbum-Artist').html();
+            let result = await API.getAlbumStat({artist: albumArtist, name: albumName});
+            if (result.status == 'success'){
+                $('.__Stat').html(`
+                    <div class='StatArea'>
+                        <div class='Item'>
+                            <div class='Number'>${result.data.info.listeners_for_display}</div>
+                            <div class='Ad'>слушателей</div>
+                        </div>
+                        <div class='Item'>
+                            <div class='Number'>${result.data.info.playcount_for_display}</div>
+                            <div class='Ad'>прослушиваний</div>
+                        </div>
+                    </div>
+                `);
+                if (Boolean(result.data.info.tags)){
+                    $('.__Tags').html(generateTagsHTML(result.data.info.tags));
+                    $('.__Tags').addClass('Active');
+                }
+            }
+        }
+        getAlbumStat();
+    </script>
+</div>

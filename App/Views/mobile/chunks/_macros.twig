@@ -1,0 +1,34 @@
+{% macro artistDiv(artist) %}
+    <div x="artist" param="id={{ artist.id }}" data-artist-id='{{ artist.id }}' data-artist-name='{{ artist.name }}' class="__Artist Navigation_UpdateWin display--block Element__HoverWhite ToolTipeWrap">
+        {{ artist.name }}
+        <div class="ToolTipe">{{ artist.name }}</div>
+    </div>
+{% endmacro %}
+
+{% macro format_year(date) %}
+    {{ date|date("Y") }}
+{% endmacro %}
+
+{% macro format_number(number) %}
+    {{ number | number_format(0, '', ' ') }}
+{% endmacro %}
+
+{% macro pluralize(count, word_singular, word_genitive, word_plural) %}
+    {% if count == 1 %}
+        {{ count }} {{ word_singular }}
+    {% elseif count >= 2 and count <= 4 %}
+        {{ count }} {{ word_genitive }}
+    {% else %}
+        {{ count }} {{ word_plural }}
+    {% endif %}
+{% endmacro %}
+
+
+
+{% macro getUserPicture(picture) %}
+    {% if picture is null or picture is empty %}
+        https://130bit.com/web/ico/default/default_user_avatar.jpg
+    {% else %}
+        {{ picture }}
+    {% endif %}
+{% endmacro %}

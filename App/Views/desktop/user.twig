@@ -1,0 +1,235 @@
+{% import '_macros.twig' as macros %}
+
+<!--META-->
+<div id='__MetaTitle' class='display--none'>{{ user.name  }}</div>
+<div id='__MetaUser-Name' class='display--none'>{{ user.name  }}</div>
+
+<!--ARTIST-->
+<div class='Draft__User Draft position--relative'>
+    <div class='Head'>
+        <div class='Header'>
+            <div class='Info'>
+                <div class='Wrap Block'>
+                    <div class='Title Mini'>{{ user.name }}</div>
+                    <div class='inter--10'></div>
+                </div>
+            </div>
+            <div class='Avatar'>
+                <div data-picture-url='{{ macros.getUserPicture(user.picture) }}' class='EnvirHandler_displayPicture Ico ToolTipeWrap' style='background-image: url( {{ macros.getUserPicture(user.picture) }} );'>
+                    <div class='ToolTipe'>Увеличить изображение</div>
+                </div>
+            </div>
+        </div>
+        <div class='Actions'>
+            {% if account and account.id != user.id %}
+                <div class='Box User-{{ user.id }}'>
+                    {% if user.id in account.friends.users %}
+                        {% set ico = 'web/ico/1ED760/heart.png'%}
+                    {% else %}
+                        {% set ico = 'web/ico/1ED760/heart_empty.png'%}
+                    {% endif %}
+                    <div data-user-id='{{ user.id }}' class='QuickAction_LikeUser Like'><img class='__Like' src='{{ ico }}'></div>
+                </div>
+            {% endif %}
+                <div class='Box'>
+                    <div class='Button Active'>Пользователь</div>
+                </div>
+            <div class='Bar'></div>
+        </div>
+    </div>
+    <div class='Content'>
+        <div class='inter--30'></div>
+
+        <!--Subscriptions-->
+        {% if user.subscriptions.artists != null and user.subscriptions.access == 'public' %}
+        <div class='inter--18'></div>
+        <div class='__HorizontalScrollWrap'>
+            <div class='Element__Title'>
+                <div class='Bar'>
+                    <div class='Block text-size--24px ShowTitle'>Подписки</div>
+                </div>
+                <div class='Bar' style='justify-content: end;'>
+                    <div class='Element__ScrollControl'>
+                        <div onclick='horizontalScroll.scroll(this)' data-scroll-step='-200' class='ButtonX'>
+                            <svg class='Arrow' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div onclick='horizontalScroll.scroll(this)' data-scroll-step='200' class='ButtonX'>
+                            <svg class='Arrow' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            <div class='__HorizontalScroll Element__HorizScroll no-scroll'>
+                {% for artist in user.subscriptions.artists|slice(0, 16) %}
+                    <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin Element__Artist Middle Item ToolTipeWrap'>
+                        <div class='ToolTipe'>{{ artist.name }}</div>
+                        <div class='Ico' style='background-image: url({{ artist.picture_small }});'>
+                            <div class='Ad'></div>
+                        </div>
+                        <div class='Info'>
+                            <div class='Cut Title ShowTitle'>{{ artist.name }}</div>
+                            <div class='Cut Ad'>{{ macros.format_number(artist.followers) }} слушают</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <div class='inter--18'></div>
+        <div class='DefaultPlug'>
+            <div class='Focus'>
+                <div class='Title'>Не подглядывай...</div>
+                <div class='Regular text-face--regular'>
+                    Пользователь скрыл подписки
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!--Collection-->
+        {% if user.collection.albums != null and user.collection.access == 'public' %}
+        <div class='inter--18'></div>
+        <div class='__HorizontalScrollWrap'>
+            <div class='Element__Title'>
+                <div class='Bar'>
+                    <div class='Block text-size--24px ShowTitle'>Коллекция альбомов</div>
+                </div>
+                <div class='Bar' style='justify-content: end;'>
+                    <div class='Element__ScrollControl'>
+                        <div onclick='horizontalScroll.scroll(this)' data-scroll-step='-200' class='ButtonX'>
+                            <svg class='Arrow' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div onclick='horizontalScroll.scroll(this)' data-scroll-step='200' class='ButtonX'>
+                            <svg class='Arrow' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            
+            <div class='__HorizontalScroll Element__HorizScroll no-scroll'>
+                {% for release in user.collection.albums|slice(0, 16) %}
+                    <div x='album' param='id={{ release.id }}' class='Navigation_UpdateWin Element__Release Middle Item'>
+                        <div class='Ico' style='background-image: url({{ release.cover }});'>
+                            <div class='Play'><img src='web/ico/black/play.png'></div>
+                            <div class='Ad'></div>
+                        </div>
+                        <div class='Info'>
+                            <div class='Cut Title ShowTitle'>{{ release.name }}</div>
+                            <div class='Cut Ad'>
+                                {% for key, artist in release.artists%}
+                                    <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin display--block Element__HoverWhite'>{{ artist.name }}</div>
+                                    {% if key < release.artists|length -1%}
+                                        &
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class='inter--2'></div>
+                            <div class='Cut Ad Regular text-face--regular'>{{ macros.format_year(release.release_date) }} • {{ release.type }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <div class='inter--18'></div>
+        <div class='DefaultPlug'>
+            <div class='Focus'>
+                <div class='Title'>Не подглядывай...</div>
+                <div class='Regular text-face--regular'>
+                    Пользователь скрыл коллекцию альбомов
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+
+        <!--Favourites-->
+        {% if user.favourites.tracks != null and user.favourites.access == 'public' %}
+            <div class='inter--18'></div>
+            <!--Favourites-->
+                <div class='Element__Title'>
+                    <div class='Bar'>
+                        <div class='Block text-size--29px ShowTitle'>Избранное</div>
+                    </div>
+                    <div class='Bar'>
+                        <div class='Block align--right'>
+                            {% set favourites_count = user.favourites|length %}
+                            <div class='Button'>{{ macros.pluralize(favourites_count, 'трек', 'трека', 'треков') }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class='inter--10'></div>
+                <!--Favourites Playlist-->
+                <div class='__TracksStack FavouritesWrap' style='padding: 0px 15px;'>
+                    {% for key, track in user.favourites.tracks|slice(0, 20) %}
+                        <div data-spotify-uri='{{ track.uri }}' data-spotify-id='{{  track.id }}' class='Player_Track Element__Track_Small Track Track-{{ track.id }}'>
+                            <div class='__TrackTitle display--none'>{{ track.name }}</div>
+                            <div class='__TrackIco display--none'>{{ track.cover }}</div>
+                            <div class='Ico' style='background-image: url({{ track.cover }});'></div>
+                            <div class='Info TrackI'>
+                                <div class='Block'>
+                                    <div class='Cut Title Regular text-face--regular'>{{ track.name }}</div>
+                                    <div class='__TrackArtists Cut Ad Regular text-face--regular'>
+                                        {% for key, artist in track.artists%}
+                                            {{ macros.artistDiv(artist) }}
+                                            {% if key < track.artists|length -1%}
+                                                &
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>               
+                                </div>
+                            </div>
+                            <div class='Info AlbumI'>
+                                <div class='Block'>
+                                    <div class='Navigation_UpdateWin Cut AlbumTitle Regular text-face--regular' x='album' param='id={{ track.album_id }}'>
+                                        <div class='Element__HoverWhite ToolTipeWrap'>
+                                            <div class='ToolTipe'>{{ track.album_name }}</div>
+                                            {{ track.album_name }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div x='track' param='id={{ track.id }}' class='Navigation_UpdateWin Box ToolTipeWrap'><div class='ToolTipe'>К треку</div><img src='web/ico/eee/a.png'></div>
+                            <div data-spotify-id='{{ track.id }}' class='QuickAction_LikeTrack Box'><img class='__Like' src='web/ico/1ED760/heart.png'></div>
+                        </div> 
+                    {% endfor %}
+                </div>
+        
+        {% else %}
+        <div class='inter--18'></div>
+        <div class='DefaultPlug'>
+            <div class='Focus'>
+                <div class='Title'>Не подглядывай...</div>
+                <div class='Regular text-face--regular'>
+                    Пользователь скрыл избранные треки
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <div class='inter--100' style='height: 200px;'></div>
+    
+    <script>
+        const colorThief = new ColorThief();
+        const img = new Image();
+        var artistColor = '';
+
+        img.crossOrigin = 'Anonymous';
+        img.src = '{{ user.picture }}';
+
+        img.onload = function() {
+            var dominantColor = colorThief.getColor(img);
+            dominantColor = dominantColor.join(',');
+            $('.Draft__User .Head').css('background', `linear-gradient(180deg, rgba(${dominantColor},1) 0%, rgba(0,0,0,0) 100%)`);
+            artistColor = `rgba(${dominantColor},1)`;
+        };
+    </script>
+</div>

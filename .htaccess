@@ -1,0 +1,26 @@
+ 
+# Отключить отображение списка директорий
+Options -Indexes
+
+ # Запускаем движок замены
+
+RewriteEngine on
+
+ # Если запрашиваемый объект не папка
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+ # если запрашиваемый объект с дописанным расширением php - файл
+
+RewriteCond %{REQUEST_FILENAME}\.php -f
+
+ # делаем замену с дописыванием .php
+
+RewriteRule ^(.*)$ $1.php
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php73” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php73___lsphp .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

@@ -1,0 +1,12 @@
+{% import '_macros.twig' as macros %}
+{% for user in users %}
+    <div x='user' param='id={{ user.id }}' class='Navigation_UpdateWin Element__Artist Middle Item ToolTipeWrap'>
+        <div class='ToolTipe'>{{ user.name }}</div>
+        <div class='Ico' style='background-image: url({{ macros.getUserPicture(user.picture) }});'>
+            <div class='Ad'></div>
+        </div>
+        <div class='Info'>
+            <div class='Cut Title ShowTitle'>{{ user.name }}</div>
+        </div>
+    </div>
+{% endfor %}

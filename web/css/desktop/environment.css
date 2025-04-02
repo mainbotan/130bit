@@ -1,0 +1,1582 @@
+/*#fc466b*/
+
+/*Bar*/
+.Envir__Bar{
+    height: 60px;
+    background: #000000;
+    display: flex;
+    gap: 0px;
+    padding: 8px 10px 0px 10px;
+}
+/* .Envir__Bar *{
+    outline: 1px dashed violet;
+} */
+.Envir__Bar .VerifyArea{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 10px;
+}
+.Envir__Bar .VerifyButton{
+    display: inline-flex;
+    max-width: 180px;
+    font-size: 19px;
+    color: #eee;
+    padding: 0px 5px;
+    transition: all 0.2s ease; 
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    background: #222222;
+    border-radius: 24px;
+    height: 50px;
+    padding: 0px 16px;
+    margin: 0px 7px;
+}
+.Envir__Bar .VerifyButton.Main{
+    background: #eee;
+}
+.Envir__Bar .VerifyButton:hover{
+    transform: scale(1.02);
+}
+.Envir__Bar .VerifyButton .Block{
+    text-align: center;
+    font-size: 17px;
+    color: #eee;
+}
+.Envir__Bar .Box{
+    display: inline-flex;
+    min-width: 60px;
+    max-width: 60px;
+    width: 60px;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+}
+.Envir__Bar .Section{
+    display: inline-flex;
+    max-width: 180px;
+    font-size: 19px;
+    color: #eee;
+    padding: 0px 5px;
+    transition: all 0.2s ease; 
+    padding-right: 15px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+.Envir__Bar .Section:hover{
+    color: #9146FF;
+}
+.Envir__Bar .Box .Action{
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    transition: all 0.2s ease; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.Envir__Bar .Box .Action:hover{
+    background: #222222;
+}
+.Envir__Bar .Box .Action img{
+    width: 26px;
+    height: 26px;
+}
+.Envir__Bar .Box.BrandBox img{
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+}
+.Envir__Bar .Bar{
+    display: flex;
+    flex-basis: 100%;
+    height: 60px;
+    align-items: center;
+    justify-content: start;
+    flex-flow: row nowrap;
+    gap: 15px;
+}
+.Envir__Bar .Search{
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+    height: 50px;
+    width: 400px;
+    min-width: 400px;
+    border-radius: 24px;
+    background: #222222;
+    border: 2px solid #121212;
+    transition: all 0.2s ease; 
+    position: relative;
+}
+.Envir__Bar .Search:focus{
+    border: 2px solid #eee;
+}
+.Envir__Bar .Search:hover{
+    border: 2px solid #eee;
+}
+.Envir__Bar .Search .Input{
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    justify-content: start;
+    padding: 0px 18px;
+    height: 52px;
+}
+.Envir__Bar .Search .Input input{
+    width: 100%;
+    background: none;
+    outline: none;
+    border: none;
+    height: 100%;
+    font-size: 17px;
+    color: #eee;
+    font-weight: 600;
+}
+.Envir__Bar .Search .Ico{
+    display: inline-flex;
+    width: 52px;
+    min-width: 52px;
+    align-items: center;
+    justify-content: center;
+    height: 52px;
+}
+.Envir__Bar .Search .Result{
+    position: absolute;
+    z-index: 90;
+    bottom: -360px;
+    height: 0px;
+    width: 400px;
+    border-radius: 16px;
+    background: #000000;
+    transition: all 0.2s ease; 
+    overflow-y: scroll;
+    pointer-events: none;
+    opacity: 0;
+    height: 350px;
+}
+.Envir__Bar .Search .Result.Active{
+    height: 350px;
+    pointer-events: auto;
+    opacity: 1;
+}
+.Envir__Bar .ShortCut{
+    display: inline-flex;
+    align-items: center;
+    justify-content: start;
+    padding: 6px 10px;
+    overflow: hidden;
+    font-size: 17px;
+    color: #696969;
+    border-radius: 4px;
+    margin: 2px 4px;
+    outline: 1px solid #222222;
+    transition: all 0.2s ease; 
+    cursor: pointer;
+}
+.Envir__Bar .ShortCut:hover{
+    color: #eee;
+    outline: 1px solid #eee;
+}
+
+
+/*_____Account Area*/
+.Envir__Bar .AccountArea{
+    display: inline-flex;
+    width: 230px;
+    min-width: 230px;
+    flex-flow: row nowrap;
+    gap: 10px;
+    padding: 0px 12px;
+    transition: all 0.2s ease; 
+    cursor: pointer;
+    position: relative;
+    /* background: #222222; */
+    border-radius: 12px;
+    margin-right: 10px;
+}
+.Envir__Bar .AccountArea:hover{
+    transform: scale(1.03);
+    background: #222222;
+}
+.Envir__Bar .AccountArea .ActionWrap{
+    display: inline-flex;
+    min-width: 50px;
+    height: 60px;
+    width: 50px;
+    max-width: 50px;
+    align-items: center;
+    justify-content: center;
+}   
+.Envir__Bar .AccountArea .ActionWrap img{
+    width: 23px;
+    height: 23px;
+}
+.Envir__Bar .AccountArea .InfoWrap{
+    display: flex;
+    width: 100%;
+    padding: 0px 10px;
+    overflow: hidden;
+    line-height: 1.2;
+    align-items: center;
+    justify-content: start;
+    height: 60px;
+}   
+.Envir__Bar .AccountArea .InfoWrap .Title{
+    display: block;
+    width: 100%;
+    font-size: 19px;
+    color: #eee;
+}
+.Envir__Bar .AccountArea .InfoWrap .Ad{
+    display: block;
+    width: 100%;
+    font-size: 17px;
+    color: grey;
+}
+.Envir__Bar .Box.AccountBox{
+    width: 230px;
+    min-width: 230px;
+    border-left: 3px solid #222222;
+    flex-flow: row nowrap;
+    gap: 15px;
+    padding: 0px 12px;
+    transition: all 0.2s ease; 
+    cursor: pointer;
+    position: relative;
+}
+.Envir__Bar .Box.AccountBox:hover{
+    background: #121212;
+    border-radius: 14px;
+}
+.Envir__Bar .Box.AccountBox .Notify{
+    display: inline-flex;
+    width: 46px;
+    min-width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: #222222;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease; 
+}
+.Envir__Bar .Box.AccountBox .Notify:hover{
+    transform: scale(1.03);
+}
+.Envir__Bar .Box.AccountBox .Notify img{
+    width: 24px;
+    height: 24px;
+}
+/*Notifications*/
+.Envir__Bar .Box.AccountBox .Notifications{
+    position: absolute;
+    z-index: 90;
+    bottom: -460px;
+    right: 0px;
+    height: 450px;
+    width: 400px;
+    border-radius: 16px;
+    background: #000000;
+    transition: all 0.2s ease; 
+    overflow-y: scroll;
+    opacity: 0;
+    pointer-events: none;
+}
+.Envir__Bar .Box.AccountBox .Notifications .Update{
+    min-height: 450px;
+    display: block;
+    text-align: left;
+}
+.Envir__Bar .Box.AccountBox .Notifications.Active{
+    opacity: 1;
+    pointer-events: auto;
+}
+.Envir__Bar .Box.AccountBox .Notifications .Hide{
+    position: sticky;
+    z-index: 91;
+    top: 0px;
+    right: 0px;
+    border-radius: 10px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background: #121212;
+    width: 46px;
+    height: 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.Envir__Bar .Box.AccountBox .Notifications .Hide:hover{
+    transform: scale(1.02);
+}
+.Envir__Bar .Box.AccountBox .Notifications .Hide img{
+    width: 15px;
+}
+.Envir__Bar .Box.AccountBox .Notifications .Item{
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 15px;
+    border-radius: 12px;
+    height: 100px;
+    transition: all 0.2s ease; 
+    cursor: pointer;
+}
+.Envir__Bar .Box.AccountBox .Notifications .Item:hover{
+    background: #222222;
+}   
+.Envir__Bar .Box.AccountBox .Notifications .Item .Label{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    min-width: 100px;
+    height: 100px;
+}
+.Envir__Bar .Box.AccountBox .Notifications .Item .Label .Ico{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    min-width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    background-size: cover;
+}
+.Envir__Bar .Box.AccountBox .Notifications .Item .InfoX{
+    display: flex;
+    flex-flow: row nowrap;
+    overflow: hidden;
+    padding: 15px 15px 15px 0px;
+    line-height: 1.2;
+    align-items: center;
+    justify-content: start;
+}
+.Envir__Bar .Box.AccountBox .Notifications .Item .InfoX .Title{
+    font-size: 18px;
+    color: #eee;
+}
+.Envir__Bar .Box.AccountBox .Notifications .Item .InfoX .Ad{
+    font-size: 16px;
+    color: #696969;
+}   
+.Envir__Bar .Box.AccountBox .Avatar{
+    display: inline-flex;
+    width: 56px;
+    min-width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #222222;
+    align-items: center;
+    justify-content: center;
+}
+.Envir__Bar .Box.AccountBox .Info{
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    justify-content: start;
+    overflow: hidden;
+    padding: 0px 12px;
+}
+.Envir__Bar .Box.AccountBox .Info .Block{
+    text-align: left;
+}
+.Envir__Bar .Box.AccountBox .Info .Block .Name{
+    font-size: 17px;
+    color: #eee;
+}
+.Envir__Bar .Box.AccountBox .Info .Block .Ad{
+    font-size: 15px;
+    color: #696969;
+}
+
+
+/*Body*/
+.Envir__Body{
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 8px 10px 10px 0px;
+    gap: 6px;
+}
+
+
+/*Account Control*/
+.Envir__SideControl{
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px;
+    min-width: 82px;
+    width: 82px;
+    height: calc(100vh - 90px);
+    animation: Show 0.2s forwards;
+    border-radius: 10px;
+    opacity: 0;
+    /* background: #121212; */
+    overflow: hidden;
+    z-index: 5;
+}
+.Envir__SideControl .Line{
+    height: 3px;
+    min-height: 3px;
+    width: 60px;
+    margin-left: calc(50% - 30px);
+    display: flex;
+    background: #121212;
+}
+.Envir__SideControl .Subscriptions{
+    display: flex;
+    border-radius: 0px;
+    flex-flow: column nowrap;
+    gap: 4px;
+    padding: 0px 0px;
+    overflow: visible;
+}
+.Envir__SideControl .Collection{
+    display: flex;
+    border-radius: 0px;
+    flex-flow: column nowrap;
+    gap: 4px;
+    padding: 0px 0px;
+    overflow: visible;
+}
+.Envir__SideControl .Box{
+    height: 60px;
+    min-height: 60px;
+    width: 82px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #eee;
+    overflow: visible;
+    position: relative;
+}
+.Envir__SideControl .Box .Dash{
+    position: absolute;
+    z-index: 10;
+    display: inline-block;
+    height: 0px;
+    left: 0px;
+    top: 32px;
+    width: 6px;
+    background: #696969;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: all 0.2s ease; 
+    pointer-events: none;
+    opacity: 0;
+}
+.Envir__SideControl .Box:hover .Dash{
+    height: 34px;
+    top: 15px;
+    opacity: 1;
+}
+.Envir__SideControl .Box .Pin{
+    transition: all 0.2s ease; 
+    display: inline-flex;
+    width: 57px;
+    min-width: 57px;
+    height: 57px;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #eee;
+    background-size: cover;
+    box-shadow: 0 0 10px #222222;
+    position: relative;
+    overflow: visible;
+}
+.Envir__SideControl .Box .Pin.Subscriptions{
+    border-radius: 10px;
+    background: #eb3153;
+    background: #3447eddc;
+}
+.Envir__SideControl .Box .Pin.DeepDiscover{
+    border-radius: 10px;
+    background: #eee;
+}
+.Envir__SideControl .Box .Pin.Friends{
+    border-radius: 10px;
+    background: #ed5555;
+}
+
+.Envir__SideControl .SubscriptionsWrap{
+    gap: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+}
+.Envir__SideControl .CollectionWrap{
+    gap: 10px;
+    display: flex;
+    flex-flow: column nowrap;
+}
+.Envir__SideControl .Box .Pin.Album{
+    border-radius: 10px;
+}
+.Envir__SideControl .Box .Pin.Artist{
+    border-radius: 50%;
+}
+.Envir__SideControl .Box .Pin.Avatar{
+    border: 2px solid #696969;
+    border-radius: 50%;
+}
+.Envir__SideControl .Box .Pin img{
+    width: 25px;
+    height: 25px;
+}
+
+/*Control*/
+.Envir__Control{
+    z-index: 1;
+    display: flex;
+    min-width: 0vw;
+    width: 0vw;
+    align-items: start;
+    justify-content: center;
+    height: calc(100vh - 86px);
+    overflow: hidden;
+    background: #121212;
+    opacity: 0;
+    border-radius: 10px;
+}
+.Envir__Control.Compact{
+    width: 0px;
+    min-width: 0px;
+}
+.Envir__Control *{
+    /* outline: 1px dashed violet; */
+}
+.Envir__Control .Title{
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 2vh 1vw;
+    font-size: 19px;
+    color: #eee;
+}
+.Envir__Control .Title .Box{
+    display: inline-flex;
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.Envir__Control .Title .Box img{
+    width: 19px;
+    height: 19px;
+    transition: all 0.2s ease;
+}
+.Envir__Control .Title .Box:hover img{
+    transform: scale(1.05);
+}
+.Envir__Control .Title .Bar{
+    display: flex;
+    flex-basis: 100%;
+    height: 54px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.Envir__Control .Actions{
+    padding: 0px 10px;
+}
+.Envir__Control .Actions .Action{
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 15px;
+    height: 54px;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #222222;
+    transition: all 0.2s ease; 
+    margin: 6px 0px;
+}
+.Envir__Control .Actions .Action:hover{
+    box-shadow: 0 0 10px #222222;
+}
+.Envir__Control .Actions .Action .Ico{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 54px;
+    width: 54px;
+    height: 54px;
+    background-size: cover;
+    background: #000000;
+    border-radius: 8px;
+    background-size: cover;
+}
+.Envir__Control .Actions .Action .Ico img{
+    width: 30px;
+}
+.Envir__Control .Actions .Action .Ad{
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    justify-content: start;
+    min-width: 54px;
+    width: 54px;
+    height: 54px;
+    overflow: hidden;
+    font-size: 16px;
+    color: #eee;
+}
+.Envir__Control .Actions .Action .Ad .Block{
+    padding-right: 15px;
+}
+.Envir__Control .Info{
+    padding: 5px 10px;
+}
+.Envir__Control .Info .Box{
+    margin: 10px 0px;
+    display: block;
+    padding: 12px;
+    background: #000000;
+    font-size: 15px;
+    color: #eee;
+    border-radius: 14px;
+    min-height: 50px;
+}
+.Envir__Control .Info .Box .Button{
+    display: inline-block;
+    padding: 13px 16px;
+    border-radius: 22px;
+    font-size: 16px;
+    color: #000000;
+    background: #eee;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+.Envir__Control .Hints{
+    padding: 5px 20px;
+}
+.Envir__Control .Hints .Hint{
+    fon-size: 14px;
+    color: grey;
+    margin: 3px 0px;
+    transition: all 0.2s ease; 
+    cursor: pointer;
+}
+.Envir__Control .Hints .Hint:hover{
+    color: #eee;
+}
+
+
+
+/*____Active____*/
+.Envir__Active{
+    z-index: 1;
+    display: block;
+    width: 100%;
+    flex-basis: 100%;
+    height: calc(100vh - 90px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: relative;
+    border-radius: 10px;
+    background: rgb(18,18,18);  
+    background: linear-gradient(165deg, rgba(18,18,18,1) 0%, rgba(0,0,0,1) 100%);
+    flex-grow: 1;
+    transition: all 0.2s ease; 
+}
+.Envir__Active .Draft{
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    min-height: calc(100vh - 60px);
+    position: relative;
+}
+
+/*Page State*/
+.Envir__Active .PageState_Inter{
+    display: block;
+    height: 70px;
+}
+.Envir__Active .PageState{
+    transition: all 0.2s ease; 
+    position: sticky;
+    z-index: 50;
+    left: 0px;
+    top: 0px;
+    height: 70px;
+    width: 100%;
+    background: #000000;
+    display: flex;
+    flex-flow: row nowrap;
+    border-bottom: 1px solid #222222;
+    gap: 10px;
+    padding: 0px 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0 0 5px #000000;
+}
+.Envir__Active .PageState .Box{
+    display: inline-flex;
+    height: 70px;
+    width: 70px;
+    min-width: 70px;
+    align-items: center;
+    justify-content: center;
+}
+.Envir__Active .PageState .Box .Button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: rgba(0,0,0,0.4);
+}
+.Envir__Active .PageState .Box .Button img{
+    width: 20px;
+    height: 20px;
+    margin-right: 1px;
+}
+.Envir__Active .PageState .Bar{
+    display: flex;
+    height: 70px;
+    width: 100%;
+    overflow: hidden;
+    align-items: center;
+    justify-content: start;
+}
+.Envir__Active .PageState .Bar .Text{
+    display: block;
+    text-align: left;
+    width: 100%;
+    overflow: hidden;
+}
+.Envir__Active .PageState .Bar .Text .Capture{
+    display: block;
+    width: 100%;
+    font-size: 19px;
+    color: #eee;
+    overflow: hidden;
+}
+.Envir__Active .PageState .Bar .Text .Capture .Swift{
+    display: inline-block;
+    padding: 4px 5px;
+    background: rgba(0,0,0,0.4);
+}
+
+/* Стили для resizer */
+.resizer {
+    width: 2px;
+    background: transparent;
+    cursor: col-resize;
+    cursor: grab;
+    position: relative;
+    z-index: 1;
+    transition: all 0.2s ease; 
+    border-radius: 10px;
+}  
+.resizer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    transform: translateX(-50%);
+}
+.resizer:hover{
+    background: #696969;
+    width: 10px;
+}
+
+/*Ico*/
+.Envir__Show_Ico{
+    position: fixed;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s ease; 
+}
+.Envir__Show_Ico.Active{
+    opacity: 1;
+    pointer-events: auto;
+}
+.Envir__Show_Ico .Wrap{
+    width: 64vh;
+    display: block;
+    text-align: center;
+}
+.Envir__Show_Ico .Wrap .Ico{
+    width: 64vh;
+    height: 64vh;
+    border-radius: 14px;
+    background-size: cover;
+    outline: 1px solid #222222;
+    transition: all 0.2s ease; 
+    box-shadow: 0 0 15px #000000;
+}
+.Envir__Show_Ico .Wrap .Action{
+    text-align: center;
+    padding: 25px;
+    font-size: 16px;
+    color: #eee;
+}
+.Envir__Show_Ico .Wrap .Action .Button{
+    padding: 8px 14px;
+    border-radius: 18px;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.2s ease; 
+}
+.Envir__Show_Ico .Wrap .Action .Button:hover{
+    transform: scale(1.04);
+}
+
+
+/*Discover*/
+.Envir__Discover{
+    position: fixed;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    align-items: start;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s ease; 
+}
+.Envir__Discover.Active{
+    opacity: 1;
+    pointer-events: auto;
+    cursor: pointer;
+}
+.Envir__Discover .Content{
+    display: block;
+    width: 70%;
+    cursor: auto;
+}
+.Envir__Discover .Header{
+    height: 200px;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    overflow: hidden;
+    outline: 1px solid viole;t
+}
+.Envir__Discover .Header .Wrap{
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 50px 0px;
+}
+.Envir__Discover .Header .Wrap .Title{
+    padding: 50px 0px;
+    font-size: 5vw;
+    color: #eee;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: left;
+}
+.Envir__Discover .Header .Wrap .Search input{
+    transition: all 0.2s ease; 
+    width: calc(100% - 40px);
+    height: 66px;
+    border-radius: 6px;
+    background: white;
+    font-size: 19px;
+    color: #000000;
+    outline: none;
+    border: none;
+    padding: 0px 20px;
+    font-weight: 600;
+    box-shadow: 0 0 10px #000000;
+}
+.Envir__Discover .Header .Wrap .Search input:focus{
+    outline: 2px solid #eee;
+}
+.Envir__Discover .Result{
+    transition: all 0.2s ease; 
+    display: inline-block;
+    width: 100%;
+    border-radius: 12px;
+    background: #121212; 
+    overflow: hidden;
+    text-align: left;
+    padding: 10 0px;
+    height: 0%;
+    overflow-y: scroll
+}
+.Envir__Discover .Result.Active{
+    height: calc(100vh - 230px);
+}
+
+
+
+/*Messages*/
+.Envir__Line{
+    position: fixed;
+    z-index: 10000;
+    height: 100vh;
+    width: 1px;
+    background: red;
+    bottom: 0px;
+    left: 50vw;
+}
+
+.Envir__Message{
+    display: inline-flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+    width: 340px;
+    position: fixed;
+    z-index: 600;
+    bottom: 25px;
+    left: calc(50vw - 170px);
+    border-radius: 10px;
+    background: #121212; 
+    border: 1px solid #222222;
+    box-shadow: 0 0 10px #000000;
+    cursor: pointer;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.2s ease; 
+}
+.Envir__Message.Active{
+    opacity: 1;
+}
+.Envir__Message .Box{
+    display: inline-flex;
+    width: 60px;
+    min-width: 60px;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+}
+.Envir__Message .Box img{
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+}
+.Envir__Message .Bar{
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    justify-content: start;
+    overflow: hidden;
+    padding-right: 25px;
+}
+.Envir__Message .Bar .Title{
+    font-size: 18px;
+}
+
+
+
+/*Player State*/
+.Envir__PlayerStateCanvas{
+    display: block;
+    width: 100vw;
+    height: 90px;
+    position: fixed;
+    z-index: 400;
+    bottom: 0px;
+    left: 0px;
+    transition: all 0.2s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+.Envir__PlayerStateCanvas.Active{
+    opacity: 1;
+}
+.Envir__PlayerState{
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 15px;
+    transition: all 0.2s ease; 
+    opacity: 0;
+    pointer-events: none;
+
+    position: fixed;
+    z-index: 500;
+    bottom: 0px;
+    right: 0px;
+    width: calc(100vw - 40px);
+    backdrop-filter: blur(10px);
+    padding: 2px 20px;
+    background: rgba(0,0,0,0.8);
+}
+.Envir__PlayerState.Active{
+    opacity: 1;
+    pointer-events: auto;
+}
+.Envir__PlayerState .Info{
+    display: inline-flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+    width: 300px;
+    max-width: 300px;
+    min-width: 300px;
+    height: 90px;
+    line-height: 1.2;
+}
+.Envir__PlayerState .Info .Box{
+    display: inline-flex;
+    width: 90px;
+    min-width: 90px;
+    height: 90px;
+    align-items: center;
+    justify-content: center;
+}
+.Envir__PlayerState .Info .Box .Ico{
+    width: 70px;
+    height: 70px;
+    display: inline-flex;
+    border-radius: 7px;
+    background-size: cover;
+    position: relative;
+}
+.Envir__PlayerState .Info .Box .Ico .Plug{
+    position: absolute;
+    z-index: 510;
+    top: 0px;
+    left: 0px;
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100%;
+    border-radius: 7px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.Envir__PlayerState .Info .Box .Ico .Plug.Active{
+    display: flex;
+}
+.Envir__PlayerState .Info .Box .Ico .Plug img{
+    width: 24px;
+    height: 24px;
+}       
+.Envir__PlayerState .Info .Bar{
+    display: flex;
+    flex-fasis: 100%;
+    height: 90px;
+    align-items: center;
+    justify-content: start;
+    overflow: hidden;
+}
+.Envir__PlayerState .Info .Bar .Title{
+    font-size: 17px;
+    color: #eee;
+}
+.Envir__PlayerState .Info .Bar .Ad{
+    font-size: 17px;
+    color: grey;
+}
+.Envir__PlayerState .State{
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.Envir__PlayerState .State .Focus{
+    display: inline-flex;
+    width: 380px;
+    min-width: 380px;
+    max-width: 380px;
+    height: 90px;
+    flex-flow: column nowrap;
+} 
+.Envir__PlayerState .State .Focus .Stage1{
+    display: block;
+    text-align: center;
+    padding-top: 5px;
+}
+.Envir__PlayerState .State .Focus .Stage1 .Area{
+    display: inline-flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+    height: 60px;
+}
+.Envir__PlayerState .State .Focus .Stage1 .Area .Box{
+    display: inline-flex;
+    width: 50px;
+    min-width: 50px;
+    max-width: 50px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer
+}
+.Envir__PlayerState .State .Focus .Stage1 .Area .Box.Interval{
+    width: 5px;
+    min-width: 5px;
+    max-width: 5px;
+}
+.Envir__PlayerState .State .Focus .Stage1 .Area .Box.Action{
+    width: 40px;
+    min-width: 40px;
+    max-width: 40px;
+}
+.Envir__PlayerState .State .Focus .Stage1 .Area .Box.Action img{
+    width: 24px;
+}
+.Envir__PlayerState .State .Focus .PlayButton{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #eee;
+    cursor: pointer;
+}
+.Envir__PlayerState .State .Focus .PlayButton img{
+    width: 17px;
+    height: 17px;
+}
+.Envir__PlayerState .State .Focus .Stage2{
+    display: block;
+    text-align: center;
+    padding-top: 2px;
+}
+.Envir__PlayerState .State .Focus .Stage2 .progress-container {
+    width: 100%;
+    height: 4px;
+    background: #222222; /* Цвет оставшейся части */
+    border-radius: 2px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden; /* Чтобы скрыть выходящий за пределы прогресс */
+}
+.Envir__PlayerState .State .Focus .Stage2 .progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #1db954; /* Зеленый цвет, как в Spotify */
+    width: 0%; /* Начальная ширина прогресса */
+    border-radius: 2px;
+    transition: width 0.1s ease; /* Плавное изменение ширины */
+}
+.Envir__PlayerState .State .Focus .Stage2 .player-progress {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    background: transparent;
+    outline: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    cursor: pointer;
+    z-index: 2; /* Чтобы ползунок был поверх прогресса */
+}
+.Envir__PlayerState .State .Focus .Stage2 .player-progress::-webkit-slider-runnable-track {
+    height: 4px;
+    background: transparent; /* Прозрачный фон */
+    border-radius: 2px;
+}
+.Envir__PlayerState .State .Focus .Stage2 .player-progress::-moz-range-track {
+    height: 4px;
+    background: transparent; /* Прозрачный фон */
+    border-radius: 2px;
+}
+.Envir__PlayerState .State .Focus .Stage2 .player-progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0px;
+    height: 0px;
+    background: #1db954;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    margin-top: -4px;
+    transition: transform 0.1s ease;
+}
+.Envir__PlayerState .State .Focus .Stage2 .player-progress::-moz-range-thumb {
+    width: 0px;
+    height: 0px;
+    background: #1db954;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+.Envir__PlayerState .State .Focus .Stage2 .player-progress:hover::-webkit-slider-thumb {
+    transform: scale(1.2);
+}
+.Envir__PlayerState .State .Focus .Stage2 .player-progress:hover::-moz-range-thumb {
+    transform: scale(1.2);
+}
+.Envir__PlayerState .State .Focus .Stage2 .player-progress:active::-webkit-slider-thumb {
+    transform: scale(1.2);
+}
+.Envir__PlayerState .State .Focus .Stage2 .player-progress:active::-moz-range-thumb {
+    transform: scale(1.2);
+}
+/* .Envir__PlayerState *{
+    outline: 1px dashed violet;
+}
+ */
+
+.Envir__PlayerState .Options{
+    display: inline-flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+    width: 300px;
+    min-width: 300px;
+}
+.Envir__PlayerState .Empty{
+    display: flex;
+    flex-basis: 100%;
+}
+.Envir__PlayerState .Option{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    min-width: 70px;
+    height: 90px;
+    line-height: 1.2;
+    cursor: pointer;
+}
+.Envir__PlayerState .Option img{
+    width: 27px;
+    height: 27px;
+}
+.Envir__PlayerState .Option.Volume{
+    width: auto;
+    max-width: auto;
+    min-width: auto;
+}
+/* Основные стили для контейнера */
+.VolumeControl {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    width: auto;
+    padding: 8px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+}
+.VolumeIcon {
+    fill: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    width: 26px;
+    height: 26px;
+}
+/* Ползунок громкости */
+.VolumeSliderWrap {
+    width: 0;
+    opacity: 0;
+    transition: width 0.3s ease, opacity 0.3s ease;
+    padding-bottom: 9px;
+}
+/* Стили для input range */
+.VolumeSlider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    outline: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.VolumeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.VolumeSlider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+/* Анимация при наведении */
+.VolumeControl:hover .VolumeSliderWrap {
+    width: 100px;
+    opacity: 1;
+}
+.VolumeControl:hover .VolumeSlider {
+    opacity: 1;
+}
+.VolumeControl:hover .VolumeIcon {
+    transform: scale(1.1);
+}
+
+
+
+
+/*____Player____*/
+.Envir__Player{
+    display: flex;
+    position: fixed;
+    z-index: 550;
+    bottom: 0px;
+    left: 0px;
+    transition: all 0.2s ease; 
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.95);
+    align-items: center;
+    justify-content: center;
+}
+.Envir__Player.Active{
+    opacity: 1;
+    pointer-events: auto;
+}
+/* .Envir__Player *{
+    outline: 1px dashed violet;
+} */
+
+.Envir__Player .Focus{
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px;
+    width: 30vw;
+}
+.Envir__Player .Focus .Stage1{
+    align-items: center;
+    overflow: hidden;
+    padding: 10px 0px;
+}
+.Envir__Player .Focus .Stage1 .Info{
+    display: block;
+    width: 100%;
+    text-align: center;
+    line-height: 1.2;
+}
+.Envir__Player .Focus .Stage1 .Info .Title{
+    display: block;
+    width: 100%;
+    font-size: 20px;
+    color: #eee;
+}
+.Envir__Player .Focus .Stage1 .Info .Ad{
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    color: grey;
+}
+.Envir__Player .Focus .Stage2{
+}
+.Envir__Player .Focus .Stage2 .Ico{
+    display: inline-flex;
+    width: 30vw;
+    height: 30vw;
+    border-radius: 18px;
+    background-size: cover;
+    position: relative;
+    cursor: pointer;
+}
+.Envir__Player .Focus .Stage2 .Ico .TopRight{
+    transition: all 0.2s ease; 
+    display: inline-flex;
+    position: absolute;
+    z-index: 560;
+    top: 10px;
+    right: 10px;
+    opacity: 0;
+    pointer-events: none;
+}
+.Envir__Player .Focus .Stage2 .Ico:hover .TopRight{
+    opacity: 1;
+    pointer-events: auto;
+}
+.Envir__Player .Focus .Stage3{
+    height: 90px;
+    flex-flow: column nowrap;
+} 
+.Envir__Player .Focus .Stage3 .Stage3-1{
+    display: block;
+    text-align: center;
+    padding-top: 5px;
+}
+.Envir__Player .Focus .Stage3 .Stage3-1 .Area{
+    display: inline-flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+    height: 60px;
+}
+.Envir__Player .Focus .Stage3 .Stage3-1 .Area .Box{
+    display: inline-flex;
+    width: 50px;
+    min-width: 50px;
+    max-width: 50px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer
+}
+.Envir__Player .Focus .Stage3 .Stage3-1 .Area .Box.Interval{
+    width: 5px;
+    min-width: 5px;
+    max-width: 5px;
+}
+.Envir__Player .Focus .Stage3 .Stage3-1 .Area .Box.Action{
+    width: 40px;
+    min-width: 40px;
+    max-width: 40px;
+}
+.Envir__Player .Focus .Stage3 .Stage3-1 .Area .Box.Action img{
+    width: 24px;
+}
+.Envir__Player .Focus .Stage3 .PlayButton{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #eee;
+    cursor: pointer;
+}
+.Envir__Player .Focus .Stage3 .PlayButton img{
+    width: 17px;
+    height: 17px;
+}
+.Envir__Player .Focus .Stage3 .Stage3-2{
+    display: block;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.Envir__Player .Focus .Stage4{
+    height: 30px;
+}
+
+
+
+
+.Envir__Player iframe{
+    visibility: hidden;
+}
+.Envir__Player .Button{
+    background: #222222;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.Envir__Player .Button.Active{
+    display: inline-flex;
+}
+.Envir__Player .Button.Middle{
+    width: 80px;
+    height: 80px;
+}
+.Envir__Player .Button.Middle img{
+    width: 29px;
+    height: 29px;
+}
+.Envir__Player .Close{
+    display: inline-flex;
+    position: fixed;
+    z-inxex: 600;
+    top: 50px;
+    right: 70px;
+}
+
+.Envir__Player .progress-container {
+    width: 100%;
+    height: 6px;
+    background: #222222; /* Цвет оставшейся части */
+    border-radius: 2px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden; /* Чтобы скрыть выходящий за пределы прогресс */
+}
+.Envir__Player .progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #1db954; /* Зеленый цвет, как в Spotify */
+    width: 0%; /* Начальная ширина прогресса */
+    border-radius: 2px;
+    transition: width 0.1s ease; /* Плавное изменение ширины */
+}
+.Envir__Player .player-progress {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    background: transparent;
+    outline: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    cursor: pointer;
+    z-index: 2; /* Чтобы ползунок был поверх прогресса */
+}
+.Envir__Player .player-progress::-webkit-slider-runnable-track {
+    height: 6px;
+    background: transparent; /* Прозрачный фон */
+    border-radius: 2px;
+}
+.Envir__Player .player-progress::-moz-range-track {
+    height: 6px;
+    background: transparent; /* Прозрачный фон */
+    border-radius: 2px;
+}
+.Envir__Player .player-progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0px;
+    height: 0px;
+    background: #1db954;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    margin-top: -4px;
+    transition: transform 0.1s ease;
+}
+.Envir__Player .player-progress::-moz-range-thumb {
+    width: 0px;
+    height: 0px;
+    background: #1db954;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+.Envir__Player .player-progress:hover::-webkit-slider-thumb {
+    transform: scale(1.2);
+}
+.Envir__Player .player-progress:hover::-moz-range-thumb {
+    transform: scale(1.2);
+}
+.Envir__Player .player-progress:active::-webkit-slider-thumb {
+    transform: scale(1.2);
+}
+.Envir__Player .player-progress:active::-moz-range-thumb {
+    transform: scale(1.2);
+}

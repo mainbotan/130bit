@@ -1,0 +1,205 @@
+
+/*Comments*/
+.Element__CommentInput{
+    display: inline-flex;
+    width: 260px;
+    min-width: 260px;
+    transition: all 0.4s ease; 
+    flex-flow: row nowrap;
+    gap: 10px;
+    background: #222222;
+    height: 52px;
+    animation: GrowUp 0.2s forwards;
+    border-radius: 29px;
+    box-shadow: 0 0 10px #000000;
+}
+@keyframes GrowUp{
+    0%{
+        width: 260px;
+        min-width: 260px;
+    }
+    100%{
+        width: 390px;
+        min-width: 390px;
+    }
+}
+.Element__CommentInput .InputArea{
+    display: flex;
+    width: 100%;
+    align-items: ceter;
+    justify-content: start;
+    border-radius: 29px;
+    height: 52px;
+}
+.Element__CommentInput .InputArea input{
+    width: calc(100% - 30px);
+    padding: 0px 15px;
+    border-radius: 29px;
+    height: 100%;
+    background: none;
+    font-size: 17px;
+    color: #eee;
+    outline: none;
+    border: none;
+}
+.Element__CommentInput .SubmitArea{
+    display: innline-flex;
+    width: 52px;
+    min-width: 52px;
+    align-items: ceter;
+    justify-content: center;
+    border-radius: 29px;
+    height: 52px;
+}
+.Element__CommentInput .SubmitButton{
+    background: #eee;
+    display: inline-flex;
+    width: 52px;
+    min-width: 52px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 29px;
+    height: 52px;
+    transition: all 0.2s ease; 
+    cursor: pointer;
+}
+.Element__CommentInput .SubmitButton:hover{
+    margin-left: 15px;
+    transform: scale(1.02);
+}
+.Element__CommentInput .SubmitButton img{
+    width: 28px;
+    height: 28px;
+}
+
+
+/*Comments Canvas*/
+.Element__CommentsCanvas{
+    display: block;
+    min-height: 300px;
+    border-radius: 16px;
+    background: #000000;
+    padding: 30px;
+    margin: 30px;
+}
+.Element__CommentsCanvas .Comment{
+    padding: 20px 25px;
+    border-left: 2px solid #222222;
+    text-align: left;
+    margin-top: 25px;
+}
+.Element__CommentsCanvas .Comment .User{
+    display: inline-flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+    max-width: 300px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    width: 100%;
+}
+.Element__CommentsCanvas .Comment .User .Box{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.Element__CommentsCanvas .Comment .User .Box .Avatar{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    background-size: cover;
+    border: 1px solid #222222;
+}
+.Element__CommentsCanvas .Comment .User .Bar{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    overflow: hidden;
+}
+.Element__CommentsCanvas .Comment .User .Bar .Name{
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-size: 17px;
+    color: #eee;
+}   
+.Element__CommentsCanvas .Comment .Text{
+    font-size: 16px;
+    color: #eee;
+    line-height: 1.2;
+    margin: 8px 0px;
+    margin-bottom: 12px;
+}
+.Element__CommentsCanvas .Comment .Actions{
+    font-size: 15px;
+    line-height: 1.2;
+    margin: 8px 0px;
+    cursor: pointer;
+}
+.Element__CommentsCanvas .Comment .Actions .Action{
+    display: inline-block;
+    transition: all 0.2s ease; 
+    color: grey;
+}
+.Element__CommentsCanvas .Comment .Action:hover{
+    color: #eee;
+}
+.Element__CommentsCanvas .Comment .Response{
+    margin: 12px 0px;
+    transition: all 0.2s ease; 
+}
+.Element__CommentsCanvas .Comment .Children{
+    margin: 12px 0px;
+    transition: all 0.2s ease; 
+}
+
+/*Comments Preview*/
+.Element__CommentsCanvas .Preview{
+    display: flex;
+    min-height: 300px;
+    align-items: center;
+    justify-content: center;
+    background: #121212;
+    border-radius: 14px;
+}
+.Element__CommentsCanvas .Preview *{
+    /* outline: 1px dashed violet; */
+}
+.Element__CommentsCanvas .Preview .Accent{
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    padding: 50px 0px;
+}
+.Element__CommentsCanvas .Preview .Accent .Title{
+    font-size: 36px;
+    color: #eee;
+    line-height: 1.2;
+    margin: 10px 0px;
+}
+.Element__CommentsCanvas .Preview .Accent .Ad{
+    font-size: 17px;
+    color: grey;
+    line-height: 1.2;
+    margin: 10px 0px;
+}
+.Element__CommentsCanvas .Preview .Accent .Actions{
+    margin: 10px 0px;
+}
+.Element__CommentsCanvas .Preview .Accent .Actions .Button{
+    margin: 10px 10px;
+    display: inline-block;
+    text-align: center;
+    padding: 14px 18px;
+    border-radius: 24px;
+    background: #222222;
+    font-size: 18px;
+    color: #eee;
+    cursor: pointer;
+}
+.Element__CommentsCanvas .Preview .Accent .Input{
+    margin: 10px 0px;
+    margin-top: 40px;
+}

@@ -1,0 +1,173 @@
+{% import '_macros.twig' as macros %}
+
+{% if user != null %}
+
+
+<!--META-->
+<div id='__MetaTitle' class='display--none'>{{ user.name  }}</div>
+<div id='__MetaUser-Name' class='display--none'>{{ user.name  }}</div>
+
+<!--PAGE STATE-->
+<div class='__pageState PageState'>
+    <div class='Box'>
+        <div onclick='NavigationModel.returnBack()' class='__returnButton Button'><img src='web/ico/eee/back.png'></div>
+    </div>
+    <div class='Bar'>
+        <div class='Text'>
+            <div class='Capture Cut'>
+                <div class='Swift __captureText Cut'>Пользователь</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--USER-->
+<div class='Draft__User Draft position--relative'>
+    <div class='__animatedPageHead Head'>
+        <div class='Header'>
+            <div class='Avatar'>
+                <div data-picture-url='{{ macros.getUserPicture(user.picture) }}' class='Ico ToolTipeWrap' style='background-image: url({{ macros.getUserPicture(user.picture) }});'>
+                    <div class='ToolTipe'>Увеличить изображение</div>
+                    <div class='Canvas'>
+                        <div class='Info'>
+                            <div class='Wrap'>
+                                <div class='Title Mini'>{{ user.name }}</div>
+                                <div class='inter--2'></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='Actions'>
+            {% if account and account.id != user.id %}
+                <div class='Box User-{{ user.id }}'>
+                    {% if user.id in account.friends.users %}
+                        {% set ico = 'web/ico/1ED760/heart.png'%}
+                    {% else %}
+                        {% set ico = 'web/ico/1ED760/heart_empty.png'%}
+                    {% endif %}
+                    <div data-user-id='{{ user.id }}' class='QuickAction_LikeUser Like'><img class='__Like' src='{{ ico }}'></div>
+                </div>
+            {% endif %}
+                <div class='Box'>
+                    {% if user.id == account.id %}
+                        <div class='Button Active'>Это Ваш профиль</div>
+                    {% else %}
+                        <div class='Button Active'>Пользователь</div>
+                    {% endif %}
+                </div>
+            <div class='Bar'></div>
+        </div>
+    </div>
+    <div class='Content'>
+        <div class='inter--14'></div>
+
+        {# Subscriptions #}
+        {% if user.subscriptions.artists != null and user.subscriptions.access == 'public' %}
+        <div class='inter--18'></div>
+        <div class='Element__Title'>
+            <div class='Bar'>
+                <div class='Block text-size--24px ShowTitle'>Подписки</div>
+            </div>
+        </div>
+        <div class='Element__HorizScroll no-scroll'>
+            {% for artist in user.subscriptions.artists|slice(0, 32) %}
+                <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin Element__Artist Middle Item ToolTipeWrap'>
+                    <div class='ToolTipe'>{{ artist.name }}</div>
+                    <div class='Ico' style='background-image: url({{ artist.picture_small }}); border-radius: 50%;'>
+                        <div class='Ad'></div>
+                    </div>
+                    <div class='Info'>
+                        <div class='Cut Title ShowTitle'>{{ artist.name }}</div>
+                        <div class='Cut Ad'>{{ macros.format_number(artist.followers) }} слушают</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {# Collections #}
+        {% if user.collection.albums != null and user.collection.access == 'public' %}
+        <div class='inter--18'></div>
+        <div class='Element__Title'>
+            <div class='Bar'>
+                <div class='Block text-size--23px ShowTitle'>Альбомы</div>
+            </div>
+        </div>
+        <div class='Element__HorizScroll no-scroll'>
+        {% for release in user.collection.albums|slice(0, 32) %}
+            <div x='album' param='id={{ release.id }}' class='Navigation_UpdateWin Element__Release Middle Item'>
+                <div class='Ico' style='background-image: url({{ release.cover }});'>
+                    <div class='Play'><img src='web/ico/black/play.png'></div>
+                    <div class='Ad'></div>
+                </div>
+                <div class='Info'>
+                    <div class='Cut Title ShowTitle'>{{ release.name }}</div>
+                    <div class='Cut Ad'>
+                        {% for key, artist in release.artists%}
+                            <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin display--block Element__HoverWhite'>{{ artist.name }}</div>
+                            {% if key < release.artists|length -1%}
+                                &
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class='inter--2'></div>
+                    <div class='Cut Ad Regular text-face--regular'>{{ macros.format_year(release.release_date) }} • {{ release.type }}</div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        {% endif %}
+
+
+        {# Favourites #}
+        {% if user.favourites.tracks != null and user.favourites.access == 'public' %}
+            <div class='inter--40'></div>
+            <div class='Element__Title'>
+                <div class='Bar'>
+                    <div class='Block text-size--24px ShowTitle'>Избранное</div>
+                </div>
+            </div>
+            <div class='inter--10'></div>
+            <!--Favourites Playlist-->
+            <div class='__TracksStack FavouritesWrap' style='padding-bottom: 50px;'>
+                {% for key, track in user.favourites.tracks|slice(0, 64) %}
+                    <div data-spotify-uri='{{ track.uri }}' data-spotify-id='{{  track.id }}' class='Player_Track Element__Track_Small Track Track-{{ track.id }}'>
+                        <div class='__TrackTitle display--none'>{{ track.name }}</div>
+                        <div class='__TrackIco display--none'>{{ track.cover }}</div>
+                        <div class='Ico' style='background-image: url({{ track.cover }});'></div>
+                        <div class='Info TrackI'>
+                            <div class='Block'>
+                                <div class='Cut Title'>{{ track.name }}</div>
+                                <div class='__TrackArtists Cut Ad'>
+                                    {% for key, artist in track.artists%}
+                                        {{ macros.artistDiv(artist) }}
+                                        {% if key < track.artists|length -1%}
+                                            &
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>               
+                            </div>
+                        </div>
+                        <div data-spotify-id='{{ track.id }}' class='QuickAction_LikeTrack Box'><img class='__Like' src='web/ico/1ED760/heart.png'></div>
+                    </div> 
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if (user.favourites.tracks == null or user.favourites.access != 'public') and (user.collection.albums == null or user.collection.access != 'public') and (user.subscriptions.artists == null or user.subscriptions.access != 'public') %}
+            <div class='padding--big align--center'>
+                <div class='inter--30'></div>
+                <div class='text-size--15px text-color--grey Regular text-face--regular'>Коллекция скрыта пользователем</div>
+            </div>
+        {% endif %}
+    </div>
+    <div class='inter--100' style='height: 200px;'></div>
+    
+    <script>
+        colorService.animatePage(`{{ user.name }}`, `{{ macros.getUserPicture(user.picture) }}`);
+    </script>
+</div>
+
+{% endif %}

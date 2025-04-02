@@ -1,0 +1,14 @@
+{
+    "require": {
+        "twig/twig": "^3.11",
+        "predis/predis": "^2.3"
+    },
+    "require-dev": {
+        "phpcompatibility/php-compatibility": "^9.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        }
+    }
+}

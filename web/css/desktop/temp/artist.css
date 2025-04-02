@@ -1,0 +1,269 @@
+.Draft__Artist{
+    min-height: 100vw;
+    display: block;
+    text-align: left;
+    line-height: 1.2;
+    position: relative;
+    background-size: cover;
+    padding: 0px;
+}
+.Draft__Artist .Head{
+    display: block;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%);
+    transition: all 0.2s ease; 
+}
+.Draft__Artist .Header{
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 15px;
+    padding: 0px;
+}
+.Draft__Artist .Header .Info{
+    display: flex;
+    flex-basis: 100%;
+    align-items: end;
+    justify-content: start;
+    overflow: hidden;
+}
+.Draft__Artist .Header .Info .Wrap{
+    padding: 2vh 6vh;
+    padding-top: 15vh;
+}
+.Draft__Artist .Header .Info .Wrap .Title{
+    line-height: 1;
+    color: white;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    padding-bottom: 6px;
+    overflow: hidden;
+    white-space: wrap;
+}
+.Draft__Artist .Header .Info .Wrap .Title.Max{
+    font-size: 13vh;
+}
+.Draft__Artist .Header .Info .Wrap .Title.Middle{
+    font-size: 11vh;
+}
+.Draft__Artist .Header .Info .Wrap .Title.Mini{
+    font-size: 7vh;
+}
+.Draft__Artist .Header .Info .Wrap .Title.UltraMini{
+    font-size: 6vh;
+}
+.Draft__Artist .Header .Info .Wrap .Followers{
+    display: block;
+    min-width: 20vw;
+    padding: 0px 5px;
+    border-radius: 10px;
+    line-height: 1.1;
+}
+.Draft__Artist .Header .Info .Wrap .Followers .Count{
+    display: block;
+    color: #1ED760;
+    font-size: 2vw;
+}
+.Draft__Artist .Header .Info .Wrap .Followers .Ad{
+    display: block;
+    color: #1ED760;
+    font-size: 15px;
+}
+
+.Draft__Artist .Header .Avatar{
+    display: inline-flex;
+    width: 370px;
+    min-width: 370px;
+    overflow: hidden;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0px;
+}
+.Draft__Artist .Header .Avatar .Ico{
+    display: inline-flex;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-size: cover;
+    box-shadow: 0 0 10px #000000;
+    cursor: pointer;
+}
+
+/*Actions*/
+.Draft__Artist .Head .Actions{
+    height: 100px;
+    padding: 0px 40px;
+    display: flex;
+    flex-flow: row nowrap; 
+    gap: 26px;
+    border-bottom: 1px solid #222222;
+}
+.Draft__Artist .Head .Actions .Box{
+    display: inline-flex;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+}
+.Draft__Artist .Head .Actions .Box .Like{
+    width: 70px;
+    height: 70px;
+    background: #121212;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease; 
+}
+.Draft__Artist .Head .Actions .Box .Like img{
+    width: 25px;
+}
+.Draft__Artist .Head .Actions .Box .Like.Default{
+    background: #121212;
+}
+.Draft__Artist .Head .Actions .Box .Like.Active{
+    background: #eee;
+}
+.Draft__Artist .Head .Actions .Box .Like:hover{
+    transform: scale(1.04);
+}
+.Draft__Artist .Head .Actions .Box .Button{
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 16px 20px;
+    border-radius: 28px;
+    color: #eee;
+    cursor: pointer;
+    background: #121212;
+    transition: all 0.2s ease; 
+    font-size: 16px;
+    /*background: #121212;*/
+}
+.Draft__Artist .Head .Actions .Box .Button.Active{
+    background: #eee;
+    color: #000000;
+}
+.Draft__Artist .Head .Actions .Box .Button:hover{
+    background: #eee;
+    color: #000000;
+}
+
+
+.Draft__Artist a{
+    color: #696969;
+    text-decoration: none;
+}
+
+/*Stat*/
+.Draft__Artist .StatArea{
+    padding: 50px 25px 100px 25px;
+    display: block;
+}
+.Draft__Artist .StatArea .Item{
+    display: block;
+    line-height: 1.2;
+    font-size: 17px;
+    color: grey;
+    margin-bottom: 20px;
+}
+.Draft__Artist .StatArea .Item .Number{
+    font-size: 34px;
+    color: #eee;
+}
+.Draft__Artist .StatArea .Description{
+    font-size: 14px;
+    color: grey;
+    padding-top: 15px;
+    border-top: 1px solid #222222;
+}
+
+/*Genius Info*/
+.Draft__Artist .Embed{
+    display: none;
+}
+.Draft__Artist .Embed.Active{
+    display: block;
+}
+.Draft__Artist .Embed a{
+    text-decoration: none;
+    color: #eee;
+}
+.Draft__Artist .Embed .Label{
+    height: 58vw;
+    background-size: cover;
+}
+.Draft__Artist .Embed .Info{
+    padding: 20px;
+    color: #eee;
+    line-height: 1.2;
+    font-size: 17px;
+}
+.Draft__Artist .Embed .Info .Title{
+    margin: 10px 0px;
+    font-size: 26px;
+}
+.Draft__Artist .Embed .Info .Title .Ad{
+    font-size: 16px;
+}
+
+/*Similar*/
+.Draft__Artist .Similar{
+    display: none;
+}
+.Draft__Artist .Similar.Active{
+    display: block;
+}
+
+/*Tags*/
+.Draft__Artist .Stat .Tags{
+    padding: 50px 25px 30px 25px;
+    display: none;
+    gap: 10px 10px;
+    flex-flow: row wrap;
+}
+.Draft__Artist .Stat .Tags.Active{
+    display: flex;
+}
+.Draft__Artist .Stat .Tags .Tag{
+    display: inline-flex;
+    font-size: 16px;
+    color: #eee;
+    background: #222222;
+    height: 46px;
+    border-radius: 22px;
+    padding: 0px 16px;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease; 
+}   
+.Draft__Artist .Stat .Tags .Tag:hover{
+    background: #eee;
+    color: #000000;
+}
+
+/*Bio*/
+.Draft__Artist .Bio{
+    margin: 40px 0px;
+    display: none;
+    background: #000000;
+}
+.Draft__Artist .Bio.Active{
+    display: block;
+}
+.Draft__Artist .Bio .Top{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000000;
+    color: #eee;
+    font-size: 6vw;
+    padding: 25px 0px;
+}
+.Draft__Artist .Bio .Text{
+    display: block;
+    padding: 25px;
+    font-size: 17px;
+    color: #eee;
+    line-height: 1.2;
+}

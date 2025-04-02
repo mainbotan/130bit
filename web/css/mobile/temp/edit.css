@@ -1,0 +1,37 @@
+
+.Draft__Edit{
+    position: relative;
+}
+.Draft__Edit .Content{
+    padding: 20px;
+    padding-top: 40px;
+}
+.Draft__Edit .Content .InputWrap input {
+    width: calc(100% - 40px);
+    height: 56px;
+    font-size: 17px;
+    color: #eee;
+    font-weight: 600;
+    box-shadow: rgb(0, 0, 0) 0px 0px 10px;
+    transition: 0.2s;
+    border-radius: 6px;
+    background: #222222;
+    outline: none;
+    border-width: initial;
+    border-style: none;
+    border-image: initial;
+    padding: 0px 20px;
+    box-shadow:0 0 10px #000000;
+}
+.Draft__Edit .Content .Submit {
+    padding: 15px 0px;
+}
+.Draft__Edit .Content .Submit .Button {
+    padding: 14px 16px;
+    text-align: center;
+    background: #eee;
+    color: #000000;
+    font-size: 16px;
+    border-radius: 11px;
+    margin: 10px 0px;
+}

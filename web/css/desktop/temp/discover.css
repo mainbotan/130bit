@@ -1,0 +1,66 @@
+/*____Discover____*/
+.Draft__Discover{
+
+}
+.Draft__Discover .Header{
+    height: 400px;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    overflow: hidden;
+    background: #3447eddc;
+}
+.Draft__Discover .Header .Wrap{
+    display: block;
+    width: 80%;
+    text-align: center;
+    padding: 50px 0px;
+}
+.Draft__Discover .Header .Wrap .Title{
+    padding: 50px 0px;
+    font-size: 5vw;
+    color: #eee;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: left;
+}
+.Draft__Discover .Header .Wrap .Search{
+}
+.Draft__Discover .Header .Wrap .Search input{
+    transition: all 0.2s ease; 
+    width: calc(100% - 40px);
+    height: 66px;
+    border-radius: 10px;
+    background: #222222;
+    font-size: 19px;
+    color: #eee;
+    outline: none;
+    border: none;
+    padding: 0px 20px;
+    font-weight: 600;
+    box-shadow: 0 0 10px #000000;
+}
+.Draft__Discover .Header .Wrap .Search input:focus{
+    outline: 2px solid #eee;
+}
+
+.Draft__Discover .Content{
+    padding: 50px 0px;
+    display: block;
+    text-align: center;
+}
+.Draft__Discover .Content .Result{
+    transition: all 0.2s ease; 
+    display: inline-block;
+    width: 80%;
+    border-radius: 10px;
+    /* background: #121212; */
+    overflow: hidden;
+    text-align: left;
+    padding: 10px;
+    height: 0%;
+}
+.Draft__Discover .Content .Result.Active{
+    height: 100%;
+}

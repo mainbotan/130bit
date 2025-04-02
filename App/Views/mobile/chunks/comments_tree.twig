@@ -1,0 +1,53 @@
+{% import '_macros.twig' as macros %}
+
+{% for comment in comments %}
+    <div data-comment-id='{{ comment.id }}' data-type='{{ object.type }}' data-id='{{ object.id }}' class='__realParentComment __commentParent Comment'>
+        <div class='Navigation_UpdateWin User' x='user' param='id={{ comment.creator.id }}'>
+            <div class='Box'><div class='Avatar' style='background-image: url({{ macros.getUserPicture(comment.creator.picture) }});'></div></div>
+            <div class='Bar'><div class='Name'>{{ comment.creator.name }}</div></div>
+        </div>
+        <div class='Text'>{{ comment.text }}</div>
+        <div class='Actions'><div onclick='commentsService.makeResponse(this)' class='__commentActionButton Action'>Ответить</div></div>
+        <div class='__commentResponse Response'></div>
+        <div class='__commentChildren Children'>
+            {% for comment1 in comment.replies %}
+                <div data-comment-id='{{ comment1.id }}' data-type='{{ object.type }}' data-id='{{ object.id }}' class='__commentParent Comment'>
+                    <div class='Navigation_UpdateWin  User' x='user' param='id={{ comment1.creator.id }}'>
+                        <div class='Box'><div class='Avatar' style='background-image: url({{ macros.getUserPicture(comment1.creator.picture) }});'></div></div>
+                        <div class='Bar'><div class='Name'>{{ comment1.creator.name }}</div></div>
+                    </div>
+                    <div class='Text'>{{ comment1.text }}</div>
+                    <div class='Actions'><div onclick='commentsService.makeResponse(this)' class='__commentActionButton Action'>Ответить</div></div>
+                    <div class='__commentResponse Response'></div>
+                    <div class='__commentChildren Children'>
+                        {% for comment2 in comment1.replies %}
+                            <div data-comment-id='{{ comment2.id }}' data-type='{{ object.type }}' data-id='{{ object.id }}' class='__commentParent Comment'>
+                                <div class='Navigation_UpdateWin User' x='user' param='id={{ comment2.creator.id }}'>
+                                    <div class='Box'><div class='Avatar' style='background-image: url({{ macros.getUserPicture(comment2.creator.picture) }});'></div></div>
+                                    <div class='Bar'><div class='Name'>{{ comment2.creator.name }}</div></div>
+                                </div>
+                                <div class='Text'>{{ comment2.text }}</div>
+                                <div class='Actions'><div onclick='commentsService.makeResponse(this)' class='__commentActionButton Action'>Ответить</div></div>
+                                <div class='__commentResponse Response'></div>
+                                <div class='__commentChildren Children'>
+                                    {% for comment3 in comment2.replies %}
+                                        <div data-comment-id='{{ comment3.id }}' data-type='{{ object.type }}' data-id='{{ object.id }}' class='__commentParent Comment'>
+                                            <div class='Navigation_UpdateWin User' x='user' param='id={{ comment3.creator.id }}'>
+                                                <div class='Box'><div class='Avatar' style='background-image: url({{ macros.getUserPicture(comment3.creator.picture) }});'></div></div>
+                                                <div class='Bar'><div class='Name'>{{ comment3.creator.name }}</div></div>
+                                            </div>
+                                            <div class='Text'>{{ comment3.text }}</div>
+                                            <div class='Actions'><div onclick='commentsService.makeResponse(this)' class='__commentActionButton Action'>Ответить</div></div>
+                                            <div class='__commentResponse Response'></div>
+                                            <div class='__commentChildren Children'></div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endfor %}

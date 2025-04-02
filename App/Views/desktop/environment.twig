@@ -1,0 +1,361 @@
+{# environment.twig #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!--Manifest-->
+    <link rel="manifest" href="/manifest.json?v=14">
+
+    <!--Meta-->
+    <title>{{ meta.title }}</title> 
+    <link rel="icon" href="{{ meta.icon }}">
+    <meta name="description" content="{{ meta.description }}">
+    <meta name="keywords" content="{{ meta.keywords }}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ meta.canonical }}">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ meta.og.title }}">
+    <meta property="og:description" content="{{ meta.og.description }}">
+    <meta property="og:url" content="{{ meta.og.url }}">
+    <meta property="og:image" content="{{ meta.og.image }}">
+    <meta property="og:type" content="{{ meta.og.type }}">
+    <meta property="og:site_name" content="{{ meta.og.site_name }}">
+
+    <!-- VK -->
+    <meta property="vk:image" content="{{ meta.vk.image }}">
+    <meta name="vk:title" content="{{ meta.vk.title }}">
+    <meta name="vk:description" content="{{ meta.vk.description }}">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="{{ meta.twitter.card }}">
+    <meta name="twitter:title" content="{{ meta.twitter.title }}">
+    <meta name="twitter:description" content="{{ meta.twitter.description }}">
+    <meta name="twitter:image" content="{{ meta.twitter.image }}">
+    <meta name="twitter:site" content="{{ meta.twitter.site }}">
+
+    <!-- Telegram -->
+    <meta name="telegram:title" content="{{ meta.telegram.title }}">
+    <meta name="telegram:description" content="{{ meta.telegram.description }}">
+    <meta name="telegram:image" content="{{ meta.telegram.image }}">
+
+    <!--130bit Ico-->
+    <link rel="icon" href="web/ico/logos/130bit_black_logo.ico">
+
+    <!--Flash-->
+    <link rel='stylesheet' href='web/css/flash/all_in_one.css?v=500'>
+
+    <!--Fonts Modules-->
+    <link rel='stylesheet' href='web/css/android/UI_Fonts.css?v=500'>
+
+    <!--DESKTOP CONFIG STYLES-->
+    <link rel='stylesheet' href='web/css/desktop/config.css?v=810'>
+    <link rel='stylesheet' href='web/css/desktop/environment.css?v=889'>
+
+    <!--DESKTOP ELEMENTS STYLES-->
+    <link rel='stylesheet' href='web/css/desktop/elements/basic.css?v=505'>
+    <link rel='stylesheet' href='web/css/desktop/elements/media.css?v=600'>
+    <link rel='stylesheet' href='web/css/desktop/elements/comments.css?v=641'>
+
+    <!--DESKTOP TEMPLATES STYLES-->
+    <link rel='stylesheet' href='web/css/desktop/temp/deep-viewer.css?v=500'>
+    <link rel='stylesheet' href='web/css/desktop/temp/viewer.css?v=582'>
+    <link rel='stylesheet' href='web/css/desktop/temp/album.css?v=519'>
+    <link rel='stylesheet' href='web/css/desktop/temp/artist.css?v=507'>
+    <link rel='stylesheet' href='web/css/desktop/temp/track.css?v=501'>
+    <link rel='stylesheet' href='web/css/desktop/temp/discover.css?v=500'>
+    <link rel='stylesheet' href='web/css/desktop/temp/tag.css?v=519'>
+    <link rel='stylesheet' href='web/css/desktop/temp/user.css?v=4'>
+    <link rel='stylesheet' href='web/css/desktop/temp/profile.css?v=810'>
+
+</head>
+<body class='VkSans text-color--light_white text-size--17px text-weight--600 no-scroll'>
+    <div id='__PLAYER__' class='Envir__Player no-scroll'>
+        <div class='Close'>
+            <div class='EnvirHandler_displayPlayer Button Middle Active'><img src='web/ico/eee/down-right.png'></div>
+        </div>
+        <div class='Focus'>
+            <div class='Stage1'>
+                <div class='Info'>
+                    <div class='Title Cut __Title'></div>
+                    <div class='Ad Cut text-face--regular Regular __Ad'></div>
+                </div>
+            </div>
+            <div class='Stage2'>
+                <div class='Ico __Ico'>
+                    <div class='TopRight'>
+                        <div class='QuickAction_LikeTrack __LikeArea Button Middle'><div class=''><img class='__Like' src='web/ico/1ED760/heart.png'></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class='Stage3'>
+                <div class='Stage3-1'>
+                    <div class='Area'>
+                        <div class='PlayerAction_CurrentTrack Box Action ToolTipeWrap'>
+                            <div class='ToolTipe'>О треке</div>
+                            <img src='web/ico/696969/a.png'>
+                        </div>
+                        <div class='PlayerAction_PreviousTrack __StackAction Box Action'><img src='web/ico/eee/left-arrow.png'></div>
+                        <div class='Box Interval'></div>
+                        <div class='Box'>
+                            <div class='PlayerAction_PlayOrPause PlayButton __PlayButton'><img src='web/ico/black/play.png'></div>
+                        </div>
+                        <div class='Box Interval'></div>
+                        <div class='PlayerAction_NextTrack __StackAction Box Action'><img src='web/ico/eee/right-arrow.png'></div>
+                        <div class='PlayerAction_RepeatTrack __RepeatButton Box Action ToolTipeWrap'>
+                            <div class='ToolTipe'>Повтор трека</div>
+                            <img src='web/ico/696969/repeat.png'>
+                        </div>
+                    </div>
+                </div>
+                <div class='Stage3-2'>
+                    <div class="progress-container">
+                        <div id='real-player-progress-bar' class="progress-bar"></div>
+                        <input id='__REAL-PLAYER-PROGRESS__' class='player-progress' type="range" min="0" max="100" value="0">
+                    </div>
+                </div>
+            </div>
+            <div class='Stage4'>
+                <iframe id='__PLAYER-IFRAME__' class='SC_Iframe' scrolling='no' frameborder='no' allow='autoplay' src=''></iframe>
+            </div>
+        </div>
+    </div>
+    <div id='__PLAYER-STATE-CANVAS__' class='Envir__PlayerStateCanvas'></div>
+    <div id='__PLAYER-STATE__' class='Envir__PlayerState'>
+        <div class='Info'>
+            <div class='Box'><div class='__Ico Ico state--pointer'>
+                <div class='__LikeArea Plug QuickAction_LikeTrack'>
+                    <div class=''><img class='__Like' src='web/ico/1ED760/heart.png'></div>
+                </div>
+            </div></div>
+            <div class='Bar'>
+                <div class='Block'>
+                    <div class='__Title Title Cut'></div>
+                    <div class='__Ad Ad Cut Regular text-face--regular'></div>
+                </div>
+            </div>
+        </div>
+        <div class='State'>
+            <div class='Focus'>
+                <div class='Stage1'>
+                    <div class='Area'>
+                        <div class='PlayerAction_CurrentTrack Box Action ToolTipeWrap'>
+                            <div class='ToolTipe'>О треке</div>
+                            <img src='web/ico/696969/a.png'>
+                        </div>
+                        <div class='PlayerAction_PreviousTrack __StackAction Box Action'><img src='web/ico/eee/left-arrow.png'></div>
+                        <div class='Box Interval'></div>
+                        <div class='Box'>
+                            <div class='PlayerAction_PlayOrPause PlayButton __PlayButton'><img src='web/ico/black/play.png'></div>
+                        </div>
+                        <div class='Box Interval'></div>
+                        <div class='PlayerAction_NextTrack __StackAction Box Action'><img src='web/ico/eee/right-arrow.png'></div>
+                        <div class='PlayerAction_RepeatTrack __RepeatButton Box Action ToolTipeWrap'>
+                            <div class='ToolTipe'>Повтор трека</div>
+                            <img src='web/ico/696969/repeat.png'>
+                        </div>
+                    </div>
+                </div>
+                <div class='Stage2'>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progress-bar"></div>
+                        <input class='player-progress' type="range" id="__PLAYER-PROGRESS__" min="0" max="100" value="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='Options'>
+            <div class='Empty'></div>
+            <div class='Option Volume'>
+                <div class="VolumeControl">
+                    <!-- Иконка громкости (SVG) -->
+                    <svg class="VolumeIcon" viewBox="0 0 26 26">
+                        <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                    </svg>
+                    <!-- Ползунок громкости -->
+                    <div class="VolumeSliderWrap">
+                        <input id='__PLAYER-VOLUME__' type="range" min="0" max="100" value="50" class="VolumeSlider">
+                    </div>
+                </div>
+            </div>
+            <div class='EnvirHandler_displayPlayer Option'>
+                <img src='web/ico/1ED760/resize.png'>
+            </div>
+        </div>
+    </div>
+    <div id='__MESSAGE__' class='Envir__Message'>
+        <div class='Box'><img src='https://130bit.com/open/web/logos/130bit_white_logo.png'></div>
+        <div class='Bar'>
+            <div class='__Title Title Cut Regular text-face--regular'></div>
+        </div>
+    </div>
+    <div id='__DISCOVER__' class='Envir__Discover'>
+        <div class='Content'>
+            <div class='Header'>
+                <div class='Wrap'>
+                    <div class='Search'>
+                        <input id='__DISCOVER-INPUT__' class='VkSans' type='text' placeholder="Артист, трек, альбом...">
+                    </div>
+                </div>
+            </div>
+            <div id='__DISCOVER-RESULT__' class='__Update Result'>
+
+            </div>
+        </div>
+    </div>
+    <div class='Envir__Show_Ico EnvirHandler_displayPicture'>
+        <div class='Wrap'>
+            <div class='Ico' onclick='event.stopPropagation();'></div>
+            <div class='Action'><div class='Button'>Скрыть</div></div>
+        </div>
+    </div>
+    <div class='Envir__Bar'>
+        <div class='Box BrandBox'><img src='https://130bit.com/open/web/logos/130bit_white_logo.png'></div>
+        <div class='Box' style='width: 10px; min-width: 10px;'></div>
+        <div class='Box'><div x='viewer' class='Navigation_UpdateWin Action'><img src='web/ico/eee/home.png'></div></div>
+        <div class='Box'><div x='new-releases' class='Navigation_UpdateWin Action'><img src='web/ico/eee/signal-stream.png'></div></div>
+        <div class='Box' style='width: 10px; min-width: 10px;'></div>
+        <div class='Section'>
+            <div class='Block Cut Text'>Prime</div>
+        </div>
+        <div class='Box' style='width: 10px; min-width: 10px;'></div>
+        <div class='Bar'>
+            <div id='__SEARCH-WRAP__' class='Search'>
+                <div class='Input'><input id='__SEARCH-VALUE__' class='VkSans' type='text' placeholder="Название трека, артист, альбом..."></div>
+                <div class='Ico'></div>
+                <div id='__SEARCH-BLOCK__' class='Result'></div>
+            </div>
+            <div class='Box' style='width: 100px; min-width: 100px;'>
+                <div class='ShortCut'>Ctrl</div>
+                <div class='ShortCut'>K</div>
+            </div>
+            <div class='Box' style='width: 10px; min-width: 10px;'></div>
+        </div>
+        {% if isUser %}
+        <div class='AccountArea Navigation_UpdateWin' x='profile'>
+            <div class='InfoWrap'>
+                <div class='Block'>
+                    <div class='Title Cut'>{{  accountData.name }}</div>
+                    <div class='Ad Cut'>REF::{{  accountData.id }}</div>
+                </div>
+            </div>
+            <div class='ActionWrap'>
+                <img src='web/ico/eee/dots-menu.png'>
+            </div>
+        </div>
+        {% else %}
+            <div class='VerifyArea'>
+                <div style='background: #eee;' onclick='window.location.href = `https://my.130bit.com/create`;' class='VerifyButton Main'>
+                    <div class='Block Cut' style='color: #000000;'>Создать аккаунт</div>
+                </div>
+                <div onclick='window.location.href = `https://my.130bit.com`;' class='VerifyButton'>
+                    <div class='Block Cut'>Войти</div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    <div class='Envir__Body'>
+        <div id='__ACCOUNT-CONTROL__' class='Envir__SideControl'>
+            {% if isUser %}
+                {% if accountData.picture == null %}
+                    {% set profile_picture = 'https://130bit.com/web/ico/default/default_user_avatar.jpg'  %}
+                {% else %}
+                    {% set profile_picture = accountData.picture  %}
+                {% endif %}
+            {% else %}
+                {% set profile_picture = 'https://130bit.com/web/ico/default/default_user_avatar.jpg' %}
+            {% endif %}
+            <div x='profile' class='Navigation_UpdateWin Box ToolTipeWrap'>
+                <div class='Dash'></div>
+                <div class='ToolTipe'>Мой аккаунт</div>
+                <div class='Pin Avatar' style='background-image: url({{ profile_picture }});'></div>
+            </div>
+            <div class='Line'></div>
+            {# <div x='deep-viewer' class='Navigation_UpdateWin Box'>
+                <div class='Dash'></div>
+                <div class='Pin DeepDiscover ToolTipeWrap'>
+                    <div class='ToolTipe'>Слушают</div>
+                    <img src='web/ico/black/wave.png'>
+                </div>
+            </div> #}
+            {% if isUser %}
+                <div x='collection' class='Navigation_UpdateWin Box'>
+                    <div class='Dash'></div>
+                    <div class='Pin Subscriptions ToolTipeWrap'>
+                        <div class='ToolTipe'>Коллекция</div>
+                        <svg data-encore-id="icon" role="img" aria-hidden="true" viewBox="0 0 24 24" style='width: 24px; height: 24px; fill: #eee;'><path d="M8.667 1.912a6.257 6.257 0 0 0-7.462 7.677c.24.906.683 1.747 1.295 2.457l7.955 9.482a2.015 2.015 0 0 0 3.09 0l7.956-9.482a6.188 6.188 0 0 0 1.382-5.234l-.49.097.49-.099a6.303 6.303 0 0 0-5.162-4.98h-.002a6.24 6.24 0 0 0-5.295 1.65.623.623 0 0 1-.848 0 6.257 6.257 0 0 0-2.91-1.568z"></path></svg>
+                    </div>
+                </div>
+                <div class='__Subscriptions SubscriptionsWrap' style='margin-top: 10px;'></div>
+                <div class='__Collection CollectionWrap'></div>
+            {% endif %}
+        </div>
+        <div id='__ACTIVE__' class='Envir__Active'></div>
+    </div>
+    
+    <!--sc api-->
+    <script src="https://w.soundcloud.com/player/api.js"></script>
+    <script>
+        /*Полетели ёпта*/
+        const AUTHO_TOKEN = `{{ sessionToken }}`;
+        const HEADER = $('#__HEADER__');
+        const ACTIVE = document.getElementById('__ACTIVE__');
+        const CONTROL = $('#__CONTROL__');
+        const DISCOVER = $('#__DISCOVER__');
+        const DISCOVER_VALUE = $('#__DISCOVER-INPUT__');
+        const LOADING_PLUG_X = `<div class='Element__LoadingWrap'><div class='Element__CircleLoader Big' style='margin-bottom: 10vh;'></div></div>`;
+        const SEARCH_VALUE = $('#__SEARCH-VALUE__');
+        const SEARCH_BLOCK = $('#__SEARCH-BLOCK__');
+        const PLAYER = $('#__PLAYER__');
+        const PLAYER_STATE = $('#__PLAYER-STATE__');
+        const PLAYER_STATE_CANVAS = $('#__PLAYER-STATE-CANVAS__');
+        const PLAYER_IFRAME = $('#__PLAYER-IFRAME__');
+        const ACCOUNT_CONTROL = $('#__ACCOUNT-CONTROL__');
+        const ACCOUNT_NOTIFICATIONS = $('#__ACCOUNT-NOTIFICATIONS__');
+        const IS_USER = '{{ isUser|raw }}';
+
+        $(ACTIVE).html(LOADING_PLUG_X);
+
+    </script>
+
+    <!--Services-->
+    <script src="web/js/MessageService.js?v=3000"></script>
+    <script src="web/js/PlayerStateModel.js?v=3000"></script>
+    <script src="web/js/SoundCloudEmulationService.js?v=3001"></script>
+
+    <!--Models-->
+    <script src="web/js/ApiModel.js?v=3000"></script>
+    <script src="web/js/EnvironmentModel.js?v=3000"></script>
+    <script src="web/js/NavigationModel.js?v=3000"></script>
+    <script src="web/js/PlayerModel.js?v=3001"></script>
+    <script src="web/js/QuickActionsModel.js?v=3000"></script>
+    <script src="web/js/ProfileActionsModel.js?v=3000"></script>
+
+    <!--Event Delegator-->
+    <script src="web/js/EventDelegatorModel.js?v=3000"></script>
+
+    <!--Services-->
+    <script src="web/js/OnloadService.js?v=3000"></script>
+    <script src="web/js/TooltipeService.js?v=3000"></script>
+    <script src="web/js/ControlResizerService.js?v=3000"></script>
+    <script src="web/js/ShortCutsService.js?v=3000"></script>
+    <script src="web/js/LightSearchService.js?v=3000"></script>
+    <script src="web/js/CommunitySearchService.js?v=3000"></script>
+    <script src="web/js/HardSearchService.js?v=3000"></script>
+    <script src="web/js/ColorThiefService.js?v=3001"></script>
+    <script src="web/js/VolumeService.js?v=3000"></script>
+    <script src="web/js/HorizontalScrollService.js?v=3000"></script>
+    <script src="web/js/CommentsService.js?v=3000"></script>
+    <script src="web/js/HolaPrevent.js?v=3000"></script>
+    
+    </body>
+</html>

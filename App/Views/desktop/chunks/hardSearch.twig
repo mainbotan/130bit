@@ -1,0 +1,192 @@
+{% import '_macros.twig' as macros %}
+<div class='inter--20'></div>
+
+{% if search.artists != null %}
+<!--Artists-->
+<div class='Element__Title'>
+    <div class='Bar'>
+        <div class='Block text-size--29px ShowTitle'>Артисты</div>
+    </div>
+    <div class='Bar'>
+        <div class='Block align--right'>
+        </div>
+    </div>
+</div>
+<div class='Element__HorizScroll no-scroll'>
+{% for artist in search.artists %}
+    <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin Element__Artist Middle Item ToolTipeWrap'>
+        <div class='ToolTipe'>{{ artist.name }}</div>
+        <div class='Ico' style='background-image: url({{ artist.images.0.url }});'>
+            <div class='Ad'></div>
+        </div>
+        <div class='Info'>
+            <div class='Cut Title ShowTitle'>{{ artist.name }}</div>
+            <div class='Cut Ad Regular text-face--regular'>{{ macros.format_number(artist.followers.total) }} слушают • {{ artist.type }}</div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+{% endif %}
+
+
+{% if search.users != null %}
+<!--Users-->
+<div class='Element__Title'>
+    <div class='Bar'>
+        <div class='Block text-size--29px ShowTitle'>Пользователи</div>
+    </div>
+    <div class='Bar'>
+        <div class='Block align--right'>
+        </div>
+    </div>
+</div>
+<div class='Element__HorizScroll no-scroll'>
+{% for user in search.users %}
+    <div x='user' param='id={{ user.id }}' class='Navigation_UpdateWin Element__Artist Middle Item ToolTipeWrap'>
+        <div class='ToolTipe'>{{ user.name }}</div>
+        <div class='Ico' style='background-image: url({{ macros.getUserPicture(user.picture) }});'>
+            <div class='Ad'></div>
+        </div>
+        <div class='Info'>
+            <div class='Cut Title ShowTitle'>{{ user.name }}</div>
+            <div class='Cut Ad Regular text-face--regular'>Пользователь</div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+{% endif %}
+
+
+{% if search.albums != null %}
+<!--Releases-->
+<div class='Element__Title'>
+    <div class='Bar'>
+        <div class='Block text-size--29px ShowTitle'>Альбомы</div>
+    </div>
+    <div class='Bar'>
+        <div class='Block align--right'>
+        </div>
+    </div>
+</div>
+<div class='Element__HorizScroll no-scroll'>
+    {% for album in search.albums %}
+    <div x='album' param='id={{ album.id }}' class='Navigation_UpdateWin Element__Release Middle Item ToolTipeWrap'>
+        <div class='ToolTipe'>{{ album.name }}</div>
+        <div class='Ico' style='background-image: url({{ album.images.0.url }});'>
+            <div class='Play'><img src='web/ico/black/play.png'></div>
+            <div class='Ad'></div>
+        </div>
+        <div class='Info'>
+            <div class='Cut Title ShowTitle'>{{ album.name }}</div>
+            <div class='Cut Ad'>
+                {% for key, artist in album.artists %}
+                    {{ macros.artistDiv(artist) }}
+                    {% if key < album.artists|length - 1 %}
+                        &
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class='inter--2'></div>
+            <div class='Cut Ad Regular text-face--regular'>
+                {{ macros.format_year(album.release_date) }} • {{ album.type }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+
+
+{% if search.playlists != null %}
+<!--Releases-->
+<div class='Element__Title'>
+    <div class='Bar'>
+        <div class='Block text-size--29px ShowTitle'>Плейлисты</div>
+    </div>
+    <div class='Bar'>
+        <div class='Block align--right'>
+        </div>
+    </div>
+</div>
+<div class='Element__HorizScroll no-scroll'>
+    {% for playlist in search.playlists %}
+    {% if playlist != null %}
+    <div x='playlist' param='id={{ playlist.id }}' class='Navigation_UpdateWin Element__Release Middle Item ToolTipeWrap'>
+        <div class='ToolTipe'>{{ playlist.name }}</div>
+        <div class='Ico' style='background-image: url({{ playlist.images.0.url }});'>
+            <div class='Play'><img src='web/ico/black/play.png'></div>
+            <div class='Ad'></div>
+        </div>
+        <div class='Info'>
+            <div class='Cut Title ShowTitle'>{{ playlist.name }}</div>
+            <div class='inter--2'></div>
+            <div class='Cut Ad Regular text-face--regular'>
+                Плейлист
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endif %}
+
+
+{% if search.tracks != null %}
+<!--Tracks-->
+<div class='Element__Title'>
+    <div class='Bar'>
+        <div class='Block text-size--29px ShowTitle'>Треки</div>
+    </div>
+    <div class='Bar'>
+        <div class='Block align--right'>
+        </div>
+    </div>
+</div>
+<div class='__TracksStack' style='padding: 10px 15px;'>
+{% for track in search.tracks %}
+    <div data-spotify-uri='{{ track.uri }}' data-spotify-id='{{  track.id }}' class='Player_Track Element__Track_Small Track Track-{{ track.id }}'>
+        <div class='__TrackTitle display--none'>{{ track.name }}</div>
+        <div class='__TrackIco display--none'>{{ track.album.images.0.url }}</div>
+        <div class='Ico' style='background-image: url({{ track.album.images.0.url }});'></div>
+        <div class='Info TrackI'>
+            <div class='Block'>
+                <div class='Cut Title Regular text-face--regular'>{{ track.name }}</div>
+                <div class='__TrackArtists Cut Ad Regular text-face--regular'>
+                    {% for key, artist in track.artists %}
+                        {{ macros.artistDiv(artist) }}
+                        {% if key < track.artists|length - 1 %}
+                            &
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class='Info AlbumI'>
+            <div class='Block'>
+                <div class='Cut AlbumTitle Regular text-face--regular Navigation_UpdateWin' x='album' param='id={{ track.album.id }}'>
+                    <div class='Element__HoverWhite ToolTipeWrap'>
+                        <div class='ToolTipe'>{{ track.album.name }}</div>{{ track.album.name }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div x='track' param='id={{ track.id }}' class='Box ToolTipeWrap Navigation_UpdateWin'>
+            <div class='ToolTipe'>К треку</div><img src='web/ico/eee/a.png'>
+        </div>
+        {% if user != false %}
+            {% if track.id in user.favourites.tracks %}
+                {% set ico = 'web/ico/1ED760/heart.png' %}
+            {% else %}
+                {% set ico = 'web/ico/1ED760/heart_empty.png' %}
+            {% endif %}
+            <div data-spotify-id='{{ track.id }}' class='QuickAction_LikeTrack Box'>
+                <img class='__Like' src='{{ ico }}'>
+            </div>
+        {% endif %}
+    </div>
+{% endfor %}
+</div>
+{% endif %}
+
+<div class='inter--100'></div>

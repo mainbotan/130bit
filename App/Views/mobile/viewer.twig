@@ -1,0 +1,361 @@
+{% import '_macros.twig' as macros %}
+
+
+<!--Brand Header-->
+<div class='ViewerHeader'>
+    <div class='Box Logo'><img src='https://130bit.com/open/web/logos/130bit_white_logo.png'></div>
+    <div class='Bar'>
+        <div class='Wrap Cut ShowTitle'>Обзор | 130bit</div>
+    </div>
+    <div class='Box Avatar'><div x='profile' class='Ico Navigation_UpdateWin' style='background-image: url({{ macros.getUserPicture(user.picture) }})'></div></div>
+</div>
+
+<!--Embed Template-->
+<div class='Draft__Viewer Draft'>
+
+    {# Brand Zone #}
+    <div class='BrandBox'>
+        <div class='Wrap'>
+            <div class='Title'>Next Up</div>
+            <div class='Ad'>in music → 130bit</div>
+            <div class='inter--10'></div>
+            <div class='Actions'><div class='Action'>Мне похуй</div></div>
+        </div>
+    </div>
+
+    {# VPN Warning #}
+    <div class='WarningBox'>
+        <div class='Title Cut'>Включите VPN</div>
+        <div class='Ad Regular text-face--regular Cut'>Это влияет на доступность некоторых треков</div>
+    </div>
+
+
+    {# Artists Zone #}
+    {% if artists_zone != null %}
+        <div class='LogicalBlock Head'>
+            <div class='TagsScroll'>
+                {% for artist in artists_zone|slice(0, 8) %}
+                <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin Item'>
+                    <div class='Ico' style='background-image: url({{ artist.picture_big }});'></div>
+                    <div class='Info'>
+                        <div class='Txt Cut'>{{ artist.name }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+    
+
+    {# New Releases #}
+    {% if new_releases != null %}
+        <div class='LogicalBlock'>
+            <div class='Element__Title'>
+                <div class='Bar'>
+                    <div class='Block'>Новые релизы</div>
+                </div>
+                <div class='Box'>
+                    <div x='new-releases' class='Navigation_UpdateWin Button White'>Все</div>
+                </div>
+            </div>
+            <div class='Element__HorizScroll no-scroll'>
+                {% for release in new_releases %}
+                <div x='album' param='id={{ release.id }}' class='Navigation_UpdateWin Element__Release Middle Item ToolTipeWrap'>
+                    <div class='ToolTipe'>{{ release.name }}</div>
+                    <div class='Ico' style='background-image: url({{ release.cover }});'>
+                        <div class='Play'><img src='web/ico/black/play.png'></div>
+                        <div class='Ad'></div>
+                    </div>
+                    <div class='Info'>
+                        <div class='Cut Title'>{{ release.name }}</div>
+                        <div class='Cut Ad'>
+                            {% for key, artist in release.artists%}
+                                <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin display--block Element__HoverWhite'>{{ artist.name }}</div>
+                                {% if key < release.artists|length -1%}
+                                    &
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class='inter--2'></div>
+                        <div class='Cut Ad'>{{ macros.format_year(release.release_date) }} • {{ release.type }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    {# Apple Music Chart #}
+    {% if usa_chart != null %}
+        <div class='LogicalBlock'>
+            <div class='Element__Title'>
+                <div class='Bar'>
+                    <div class='Block'>Apple Music Chart</div>
+                </div>
+                <div class='Box'>
+                    <div x='playlist' param='id={{ usa_chart.id }}' class='Navigation_UpdateWin Button White'>Все</div>
+                </div>
+            </div>
+            <div class='Element__ColumnTracks no-scroll'>
+                <div class='Flex'>
+                 {% for key, track in usa_chart.tracks|slice(0, 12) %}
+                    {% if track.id != null %}
+                    <div class='Item'>
+                    <div data-spotify-uri='{{ track.uri }}' data-spotify-id='{{  track.id }}' class='Player_Track Element__Track_Small Track Track-{{ track.id }}'>
+                        <div class='__TrackTitle display--none'>{{ track.name }}</div>
+                        <div class='__TrackIco display--none'>{{ track.cover }}</div>
+                        <div class='Ico' style='background-image: url({{ track.cover }});'></div>
+                        <div class='Info TrackI'>
+                            <div class='Block'>
+                                <div class='Cut Title'>{{ track.name }}</div>
+                                <div class='__TrackArtists Cut Ad'>
+                                {% for key, artist in track.artists%}
+                                    {{ macros.artistDiv(artist) }}
+                                    {% if key < track.artists|length -1%}
+                                        &
+                                    {% endif %}
+                                {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        {% if user != false %}
+                            {% if track.id in user.favourites.tracks %}
+                                {% set ico = 'web/ico/1ED760/heart.png' %}
+                            {% else %}
+                                {% set ico = 'web/ico/1ED760/heart_empty.png' %}
+                            {% endif %}
+                            <div data-spotify-id='{{ track.id }}' class='QuickAction_LikeTrack Box'><img class='__Like' src='{{ ico }}'></div>
+                        {% endif %}
+                    </div> 
+                    </div>
+                    {% endif %}
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {# Recommended Releases #}
+    {% if recommend_releases != null %}
+        <div class='LogicalBlock CenterGradient'>
+            <div class='Element__Title'>
+                <div class='Bar'>
+                    <div class='Block'>Рекомендуют</div>
+                </div>
+                <div class='Box'>
+                    <div x='recommend-releases' class='Navigation_UpdateWin Button'>Все</div>
+                </div>
+            </div>
+            <div class='Element__HorizScroll no-scroll'>
+                {% for release in recommend_releases %}
+                <div x='album' param='id={{ release.id }}' class='Navigation_UpdateWin Element__Release Middle Item ToolTipeWrap'>
+                    <div class='ToolTipe'>{{ release.name }}</div>
+                    <div class='Ico' style='background-image: url({{ release.cover }});'>
+                        <div class='Play'><img src='web/ico/black/play.png'></div>
+                        <div class='Ad'></div>
+                    </div>
+                    <div class='Info'>
+                        <div class='Cut Title'>{{ release.name }}</div>
+                        <div class='Cut Ad'>
+                            {% for key, artist in release.artists%}
+                                <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin display--block Element__HoverWhite'>{{ artist.name }}</div>
+                                {% if key < release.artists|length -1%}
+                                    &
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class='inter--2'></div>
+                        <div class='Cut Ad'>{{ macros.format_year(release.release_date) }} • {{ release.type }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+
+
+    
+    {# From Subscriptions #}
+    {% if my_releases != null %}
+        <div class='LogicalBlock'>
+            <div class='Element__Title'>
+                <div class='Bar'>
+                    <div class='Block'>Из подписок</div>
+                </div>
+            </div>
+            <div class='Element__HorizScroll no-scroll'>
+                {% for release in my_releases %}
+                <div x='album' param='id={{ release.id }}' class='Navigation_UpdateWin Element__Release Middle Item ToolTipeWrap'>
+                    <div class='ToolTipe'>{{ release.name }}</div>
+                    <div class='Ico' style='background-image: url({{ release.cover }});'>
+                        <div class='Play'><img src='web/ico/black/play.png'></div>
+                        <div class='Ad'></div>
+                    </div>
+                    <div class='Info'>
+                        <div class='Cut Title'>{{ release.name }}</div>
+                        <div class='Cut Ad'>
+                            {% for key, artist in release.artists%}
+                                <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin display--block Element__HoverWhite'>{{ artist.name }}</div>
+                                {% if key < release.artists|length -1%}
+                                    &
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class='inter--2'></div>
+                        <div class='Cut Ad'>{{ macros.format_year(release.release_date) }} • {{ release.type }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+
+    {# Playlists #}
+    {% if playlists_by_countries != null %}
+        <div class='LogicalBlock'>
+            <div class='Element__Title'>
+                <div class='Bar'>
+                    <div class='Block'>По странам</div>
+                </div>
+            </div>
+            <div class='Element__HorizScroll no-scroll'>
+                {% for playlist in playlists_by_countries %}
+                <div x='playlist' param='id={{ playlist.id }}' class='Navigation_UpdateWin Element__Playlist Middle Item ToolTipeWrap'>
+                    <div class='ToolTipe'>{{ playlist.name }}</div>
+                    <div class='Ico'>
+                        <div class='Canvas'>
+                            <div class='Wrap'>
+                                <div class='Cut Ad'>{{ playlist.total_tracks }} tracks</div>
+                                <div class='Title'>{{ playlist.name }}</div>
+                                <div class='Line'></div>
+                            </div>
+                        </div>
+                        <div class='Circle' style='background-image: url({{ playlist.cover }});'></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+
+    {# Playlists #}
+    {% if playlists_by_genres != null %}
+        <div class='LogicalBlock'>
+            <div class='Element__Title'>
+                <div class='Bar'>
+                    <div class='Block'>По жанру</div>
+                </div>
+            </div>
+            <div class='Element__HorizScroll no-scroll'>
+                {% for playlist in playlists_by_genres %}
+                <div x='playlist' param='id={{ playlist.id }}' class='Navigation_UpdateWin Element__Playlist Middle Item ToolTipeWrap'>
+                    <div class='ToolTipe'>{{ playlist.name }}</div>
+                    <div class='Ico'>
+                        <div class='Canvas'>
+                            <div class='Wrap'>
+                                <div class='Cut Ad'>{{ playlist.total_tracks }} tracks</div>
+                                <div class='Title'>{{ playlist.name }}</div>
+                                <div class='Line' style='background: #ed5555;'></div>
+                            </div>
+                        </div>
+                        <div class='Circle' style='background-image: url({{ playlist.cover }});'></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+
+    {# Playlists #}
+    {% if playlists_by_artists != null %}
+        <div class='LogicalBlock'>
+            <div class='Element__Title'>
+                <div class='Bar'>
+                    <div class='Block'>По артистам</div>
+                </div>
+            </div>
+            <div class='Element__HorizScroll no-scroll'>
+                {% for playlist in playlists_by_artists %}
+                <div x='playlist' param='id={{ playlist.id }}' class='Navigation_UpdateWin Element__Playlist Middle Item ToolTipeWrap'>
+                    <div class='ToolTipe'>{{ playlist.name }}</div>
+                    <div class='Ico'>
+                        <div class='Canvas'>
+                            <div class='Wrap'>
+                                <div class='Cut Ad'>{{ playlist.total_tracks }} tracks</div>
+                                <div class='Title'>{{ playlist.name }}</div>
+                                <div class='Line' style='background: #b8a7ea;'></div>
+                            </div>
+                        </div>
+                        <div class='Circle' style='background-image: url({{ playlist.cover }});'></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+
+
+
+    {# Playlists #}
+    {% if playlists_by_unreleased != null %}
+        <div class='LogicalBlock'>
+            <div class='Element__Title'>
+                <div class='Bar'>
+                    <div class='Block'>Unreleased</div>
+                </div>
+            </div>
+            <div class='Element__HorizScroll no-scroll'>
+                {% for playlist in playlists_by_unreleased %}
+                <div x='playlist' param='id={{ playlist.id }}' class='Navigation_UpdateWin Element__Playlist Middle Item ToolTipeWrap'>
+                    <div class='ToolTipe'>{{ playlist.name }}</div>
+                    <div class='Ico'>
+                        <div class='Canvas'>
+                            <div class='Wrap'>
+                                <div class='Cut Ad'>{{ playlist.total_tracks }} tracks</div>
+                                <div class='Title'>{{ playlist.name }}</div>
+                                <div class='Line' style='background: #b7e0dc;'></div>
+                            </div>
+                        </div>
+                        <div class='Circle' style='background-image: url({{ playlist.cover }});'></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+
+
+    {# Playlists #}
+    {% if playlists_by_mood != null %}
+        <div class='LogicalBlock'>
+            <div class='Element__Title'>
+                <div class='Bar'>
+                    <div class='Block'>По настроению</div>
+                </div>
+            </div>
+            <div class='Element__HorizScroll no-scroll'>
+                {% for playlist in playlists_by_mood %}
+                <div x='playlist' param='id={{ playlist.id }}' class='Navigation_UpdateWin Element__Playlist Middle Item ToolTipeWrap'>
+                    <div class='ToolTipe'>{{ playlist.name }}</div>
+                    <div class='Ico'>
+                        <div class='Canvas'>
+                            <div class='Wrap'>
+                                <div class='Cut Ad'>{{ playlist.total_tracks }} tracks</div>
+                                <div class='Title'>{{ playlist.name }}</div>
+                                <div class='Line' style='background: #DA70D6;'></div>
+                            </div>
+                        </div>
+                        <div class='Circle' style='background-image: url({{ playlist.cover }});'></div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+</div>

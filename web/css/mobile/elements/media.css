@@ -1,0 +1,1083 @@
+
+
+/*People Card*/
+.Element__PeopleCard.Middle.Color{
+}
+.Element__PeopleCard.Middle{
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+    height: 60px;
+    padding: 0px 10px;
+    transition: all 0.1s ease; 
+    border-radius: 5px;
+    margin: 5px 0px;
+}
+.Element__PeopleCard.Middle *{
+    transition: all 0.1s ease; 
+}
+.Element__PeopleCard.Middle .Box{
+    display: inline-flex;
+    height: 60px;
+    width: 60px;
+    min-width: 60px;
+    max-width: 60px;
+    align-items: center;
+    justify-content: center;
+}
+.Element__PeopleCard.Middle .Bar{
+    display: flex;
+    height: 60px;
+    width: 100%;
+    overflow: hidden;
+    align-items: center;
+    justify-content: start;
+}
+.Element__PeopleCard.Middle .Box.Avatar .Ico{
+    display: inline-flex;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-size: cover;
+    border: 1px solid #222222;
+}
+.Element__PeopleCard.Middle .Bar.Info .Wrap{
+    display: block;
+    width: 100%;
+    line-height: 1.2;
+}
+.Element__PeopleCard.Middle .Bar.Info .Wrap .Title{
+    font-size: 16px;
+    color: #eee;
+}
+.Element__PeopleCard.Middle .Box.Action{
+    width: 120px;
+    min-width: 120px;
+    max-width: 120px;
+}
+.Element__PeopleCard.Middle .Box.Action .Button{
+    display: inline-block;
+    width: 120px;
+    padding: 13px 16px;
+    background: #222222;
+    font-size: 15px;
+    color: #eee;
+    text-align: center;
+    border-radius: 25px;
+}
+.Element__PeopleCard.Middle .Box.Action .Button.Active{
+    background: #eee;
+    color: #000000;
+}
+
+
+
+/*Tracks Column*/
+.Element__ColumnTracks{
+    display: block;
+    overflow-x: scroll;
+}
+.Element__ColumnTracks .Flex{
+    display: flex;
+    flex-flow: column wrap;
+    gap: 10px 10px;
+    height: 270px;
+    padding: 15px 2vw;
+}   
+.Element__ColumnTracks .Flex .Item{
+    display: block;
+    width: 90vw;
+    min-width: 90vw;
+    max-width: 90vw;
+}
+
+@keyframes TranformIco{
+    0%{
+        opacity: 0;
+        transform: scale(0.94);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/*Playlists*/
+.Element__Playlist.Middle{
+    display: inline-block;
+    width: 180px;
+    border-radius: 7px;
+    transition: all 0.2s ease; 
+    text-align: center;
+    overflow: hidden;
+    padding-bottom: 0px;
+    background: #000000;
+}
+/* .Element__Release.Middle:hover{
+    background: #2e2d2d91;
+} */
+.Element__Playlist.Middle .IcoWrap{
+    padding: 0px 0px;
+    text-align: center;
+}
+.Element__Playlist.Middle .Ico{
+    display: inline-block;
+    margin-top: 7px;
+    width: 170px;
+    height: 170px;
+    position: relative;
+    border-radius: 6px;
+    background-size: cover;
+    overflow: hidden;
+    position: relative;
+    /* box-shadow: 0 0 10px #222222; */
+
+    opacity: 0;
+    transition: all 0.2s ease; 
+    transform: scale(0.94);
+    animation: TranformIco 0.1s forwards;
+}
+.Element__Playlist.Middle .Ico .Circle{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 5;
+    top: -20px;
+    right: -20px;
+    background-size: cover;
+}
+.Element__Playlist.Middle .Ico .Canvas{
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+    position: absolute;
+    z-index: 10;
+    display: flex;
+    align-items: end;
+}
+.Element__Playlist.Middle .Ico .Canvas .Wrap{
+    display: block;
+    width: 100%;
+    padding: 20px 17px;
+    text-align: left;
+}
+.Element__Playlist.Middle .Ico .Canvas .Title{
+    width: 96%;
+    font-size: 20px;
+    color: #eee;
+    line-height: 1.1;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: wrap;
+}
+.Element__Playlist.Middle .Ico .Canvas .Line{
+    display: block;
+    width: 96%;
+    margin-top: 14px;
+    height: 9px;
+    background: violet;
+}
+.Element__Playlist.Middle .Ico .Canvas .Ad{
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: #696969;
+}
+
+
+
+/*Half Grid*/
+.Element__HalfGrid{
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px 5px;
+}
+.Element__HalfCard{
+    display: inline-block;
+    width: calc(50vw - 5px);
+    border-radius: 7px;
+    transition: all 0.2s ease; 
+    text-align: center;
+    overflow: hidden;
+    padding-bottom: 40px;
+}
+/* .Element__HalfCard:hover{
+    background: #2e2d2d91;
+} */
+.Element__HalfCard .IcoWrap{
+    padding: 0px 0px;
+    text-align: center;
+}
+.Element__HalfCard .Ico{
+    display: inline-block;
+    margin-top: 10px;
+    width: calc(50vw - 20px);
+    height: calc(50vw - 20px);
+    position: relative;
+    border-radius: 6px;
+    background-size: cover;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.2s ease; 
+    transform: scale(0.94);
+    animation: TranformIco 0.1s forwards;
+}
+.Element__HalfCard .Ico .Play{
+    background: #1ED760;
+    background: white;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 10;
+    bottom: -60px;
+    right: 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    opacity: 0;
+}
+.Element__HalfCard .Ico .Play img{
+    width: 17px;
+    height: 17px;    
+}
+.Element__HalfCard .Ico .Ad{
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100px;
+    padding: 5px 13px;
+    border-radius: 16px;
+    font-size: 14px;
+    position: absolute;
+    text-align: left;
+    z-index: 10;
+    bottom: -60px;
+    left: 6px;
+    transition: all 0.2s ease;
+    opacity: 0;
+}
+.Element__HalfCard:hover .Ico .Ad{
+    bottom: 6px;
+    opacity: 1;
+}
+.Element__HalfCard .Info{
+    display: block;
+    padding: 5px 15px 10px 15px;
+    text-align: left;
+    line-height: 1.2;
+}
+.Element__HalfCard .Info .Title{
+    font-size: 20px;
+    color: #eee;
+}
+.Element__HalfCard .Info .Ad{
+    font-size: 15px;
+    color: #696969;
+}
+
+
+
+
+/*Universal Card*/
+.Element__UniversalCard.Mini{
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+    height: 54px;
+    padding: 6px 10px;
+    transition: all 0.1s ease; 
+    border-radius: 5px;
+}
+.Element__UniversalCard.Mini:hover{
+    background: #222222;
+}
+.Element__UniversalCard.Mini .Ico{
+    display: inline-flex;
+    width: 54px;
+    min-width: 54px;
+    height: 54px;
+    align-items: center;
+    justify-content: center;
+    outline: 1px solid #222222;
+    background-size: cover;
+    position: relative;
+}   
+.Element__UniversalCard.Mini.Release .Ico{
+    border-radius: 8px;
+}
+.Element__UniversalCard.Mini.Artist .Ico{
+    border-radius: 50%;
+}
+.Element__UniversalCard.Mini .Info{
+    padding: 0px 6px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    line-height: 1.2;
+    overflow: hidden;
+    transition: all 0.1s ease;
+}
+.Element__UniversalCard.Mini .Info.Main{
+    flex-basis: 100%;
+}
+.Element__Track_Small .Info.Inter{
+    flex-basis: 40%;
+}
+.Element__UniversalCard.Mini .Info .Title{
+    font-size: 17px;
+    transition: all 0.1s ease;
+}
+.Element__UniversalCard.Mini .Info .Ad{
+    font-size: 14px;
+    color: #696969;
+    transition: all 0.1s ease;
+}
+.Element__UniversalCard.Mini .Box{
+    display: inline-flex;
+    height: 54px;
+    min-width: 54px;
+    width: 54px;
+    align-items: center;
+    justify-content: center;
+    color: #696969;
+    font-size: 18px;
+    opacity: 0;
+    transition: all 0.1s ease;
+}
+.Element__UniversalCard.Mini:hover .Box{
+    opacity: 1;
+}
+.Element__UniversalCard.Mini .Box img{
+    width: 22px;
+    height: 22px;
+}
+
+
+/*Grid*/
+.Element__ReleasesGrid{
+    padding: 0px 12px;
+}
+.Element__ReleasesGrid .Item{
+    margin: 0px 0px 0px 0px;
+}
+
+/*HighLighting*/
+.Element__HoverWhite{
+    transition: all 0.2s ease; 
+}
+.Element__HoverWhite:hover{
+    color: #eee;
+}
+
+/*Titles*/
+.Element__Title{
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+    padding: 0px 15px 0px 20px;
+    font-size: 20px;
+}
+.Element__Title *{
+}
+.Element__Title .Box{
+    display: inline-flex;
+    height: 40px;
+    align-items: center;
+    justify-content: end;
+    overflow: hidden;
+    min-width: 100px;
+}
+.Element__Title .Bar{
+    display: flex;
+    flex-basis: 100%;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.Element__Title .Bar .Block{
+    padding: 0px 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.Element__Title .Button{
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 15px;
+    color: #eee;
+    transition: all 0.2s ease; 
+    background: #222222;
+    padding: 9px 13px;
+    text-align: center;
+    min-width: 60px;
+    border-radius: 22px;
+}
+.Element__Title .Button.White{
+    background: #eee;
+    color: #000000;
+}
+.Element__Title .Button:hover{
+    color: #000000;
+    background: white;
+}
+.Element__Title .Link{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 16px;
+    color: #696969;
+    transition: all 0.2s ease; 
+}
+.Element__Title .Link:hover{
+    color: white;
+}
+
+
+
+
+/*Artists*/
+.Element__Artist.Compact{
+    display: inline-block;
+    width: 160px;
+    height: 200px;
+    border-radius: 16px;
+    transition: all 0.2s ease; 
+    text-align: center;
+    overflow: hidden;
+    background-size: cover;
+    position: relative;
+}
+.Element__Artist.Compact:hover{
+    box-shadow: 0 0 10px #2e2d2d91;
+    transform: scale(1.01);
+}
+.Element__Artist.Compact .Wrap{
+    position: absolute;
+    z-index: 10;
+    width: 160px;
+    height: 200px;
+    background: linear-gradient(180deg, rgba(255,0,0,0) 0%, rgba(0,0,0,1) 100%);
+    display: flex;
+    align-items: end;
+    justify-content: start;
+    overflow: hidden;
+}
+.Element__Artist.Compact .Bottom{
+    display: block;
+    width: 160px;
+    text-align: left;
+}
+.Element__Artist.Compact .Wrap .Info{
+    display: block;
+    padding: 15px;
+    text-align: left;
+}
+.Element__Artist.Compact .Wrap .Info .Name{
+    font-size: 19px;
+    color: #eee;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.Element__Artist.Compact .Wrap .Info .Ad{
+    font-size: 13px;
+    color: #696969;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.Element__Artist.Compact .Wrap .Action{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Element__Artist.Compact .Wrap .Action .Like{
+    display: inline-flex;
+    width: 46px;
+    height: 46px;
+    background: #222222;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+.Element__Artist.Compact .Wrap .Action .Like img{
+    width: 19px;
+    height: 19px;
+}
+
+.Element__Artist.Big{
+    display: inline-block;
+    width: 260px;
+    border-radius: 10px;
+    transition: all 0.2s ease; 
+    text-align: center;
+    overflow: hidden;
+}
+/* .Element__Artist.Big:hover{
+    background: #2e2d2d91;
+    box-shadow: 0 0 10px #2e2d2d91;
+} */
+.Element__Artist.Big .IcoWrap{
+    padding: 0px 0px;
+    text-align: center;
+}
+.Element__Artist.Big .Ico{
+    display: inline-block;
+    width: 240px;
+    height: 240px;
+    position: relative;
+    border-radius: 10px;
+    background-size: cover;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-top: 10px;
+    opacity: 0;
+    transition: all 0.2s ease; 
+    transform: scale(0.94);
+    animation: TranformIco 0.1s forwards;
+}
+.Element__Artist.Big .Ico .Ad{
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 40%;
+    left: 30%;
+    border-radius: 16px;
+    font-size: 16px;
+    position: absolute;
+    text-align: center;
+    z-index: 10;
+    bottom: -60px;
+    transition: all 0.2s ease;
+    opacity: 0;
+}
+.Element__Artist.Big:hover .Ico .Ad{
+    bottom: 15px;
+    opacity: 1;
+}
+.Element__Artist.Big .Info{
+    display: block;
+    padding: 5px 15px 10px 15px;
+    text-align: center;
+    line-height: 1.2;
+}
+.Element__Artist.Big .Info .Title{
+    font-size: 26px;
+    color: #eee;
+}
+.Element__Artist.Big .Info .Ad{
+    font-size: 14px;
+    color: #696969;
+}
+
+.Element__Artist.Middle{
+    display: inline-block;
+    width: 210px;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+    text-align: center;
+    overflow: hidden;
+    padding-bottom: 30px;
+}
+/* .Element__Artist.Middle:hover{
+    background: #2e2d2d91;
+} */
+.Element__Artist.Middle .IcoWrap{
+    padding: 0px 0px;
+    text-align: center;
+}
+.Element__Artist.Middle .Ico{
+    display: inline-block;
+    margin-top: 10px;
+    width: 190px;
+    height: 190px;
+    position: relative;
+    background-size: cover;
+    overflow: hidden;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.2s ease; 
+    transform: scale(0.94);
+    animation: TranformIco 0.1s forwards;
+}
+.Element__Artist.Middle .Ico .Ad{
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 40%;
+    left: 30%;
+    border-radius: 16px;
+    font-size: 16px;
+    position: absolute;
+    text-align: center;
+    z-index: 10;
+    bottom: -60px;
+    transition: all 0.2s ease;
+    opacity: 0;
+}
+.Element__Artist.Middle:hover .Ico .Ad{
+    bottom: 15px;
+    opacity: 1;
+}
+.Element__Artist.Middle .Info{
+    display: block;
+    padding: 15px 15px 10px 15px;
+    text-align: left;
+    line-height: 1.2;
+}
+.Element__Artist.Middle .Info .Title{
+    font-size: 19px;
+    color: #eee;
+}
+.Element__Artist.Middle .Info .Ad{
+    font-size: 14px;
+    color: #696969;
+}
+
+.Element__ArtistsMiniGrid{
+    padding: 20px;
+}
+.Element__ArtistsMiniGrid .Item{
+    margin: 0px 12px 12px 0px;
+}
+.Element__Artist.Mini{
+    display: inline-flex;
+    width: 440px;
+    border-radius: 10px;
+    transition: all 0.2s ease; 
+    flex-flow: row nowrap;
+    gap: 18px;
+    height: 62px;
+    padding-right: 10px;
+}
+/* .Element__Artist.Mini:hover{
+    background: #2e2d2d91;
+    box-shadow: 0 0 10px #2e2d2d91;
+} */
+.Element__Artist.Mini .IcoWrap{
+    padding: 0px 0px;
+    text-align: center;
+}
+.Element__Artist.Mini .Ico{
+    display: inline-flex;
+    width: 62px;
+    min-width: 62px;
+    height: 62px;
+    position: relative;
+    border-radius: 10px;
+    background-size: cover;
+    overflow: hidden;
+}
+.Element__Artist.Mini .Ico .Ad{
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    left: 0px;
+    border-radius: 16px;
+    font-size: 16px;
+    position: absolute;
+    text-align: center;
+    z-index: 10;
+    bottom: -30px;
+    transition: all 0.2s ease;
+    opacity: 0;
+}
+.Element__Artist.Mini:hover .Ico .Ad{
+    bottom: 5px;
+    opacity: 1;
+}
+.Element__Artist.Mini .Info{
+    display: flex;
+    flex-basis: 100%;
+    height: 62px;
+    line-height: 1.2;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.Element__Artist.Mini .Info .Title{
+    font-size: 20px;
+    color: #eee;
+}
+.Element__Artist.Mini .Info .Ad{
+    font-size: 15px;
+    color: #696969;
+}
+
+
+
+/*Releases*/
+.Element__Release.Big{
+    display: inline-block;
+    width: 260px;
+    border-radius: 10px;
+    transition: all 0.2s ease; 
+    text-align: center;
+    overflow: hidden;
+}
+.Element__Release.Big:hover{
+    background: #2e2d2d91;
+    box-shadow: 0 0 10px #2e2d2d91;
+}
+.Element__Release.Big .IcoWrap{
+    padding: 0px 0px;
+    text-align: center;
+}
+.Element__Release.Big .Ico{
+    display: inline-block;
+    width: 260px;
+    height: 260px;
+    position: relative;
+    border-radius: 10px;
+    background-size: cover;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.2s ease; 
+    transform: scale(0.94);
+    animation: TranformIco 0.1s forwards;
+}
+.Element__Release.Big .Ico .Play{
+    background: #1ED760;
+    background: white;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 10;
+    bottom: -60px;
+    right: 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    opacity: 0;
+}
+.Element__Release.Big .Ico .Play img{
+    width: 20px;
+    height: 20px;    
+}
+.Element__Release.Big:hover .Ico .Play{
+    bottom: 15px;
+    opacity: 1;
+}   
+.Element__Release.Big .Ico .Ad{
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 140px;
+    padding: 5px 13px;
+    border-radius: 16px;
+    font-size: 16px;
+    position: absolute;
+    text-align: left;
+    z-index: 10;
+    bottom: -60px;
+    left: 6px;
+    transition: all 0.2s ease;
+    opacity: 0;
+}
+.Element__Release.Big:hover .Ico .Ad{
+    bottom: 6px;
+    opacity: 1;
+}
+.Element__Release.Big .Info{
+    display: block;
+    padding: 5px 15px 10px 15px;
+    text-align: left;
+    line-height: 1.2;
+}
+.Element__Release.Big .Info .Title{
+    font-size: 32px;
+    color: #eee;
+}
+.Element__Release.Big .Info .Ad{
+    font-size: 16px;
+    color: #696969;
+}
+
+
+.Element__Release.Middle{
+    display: inline-block;
+    width: 180px;
+    border-radius: 7px;
+    transition: all 0.2s ease; 
+    text-align: center;
+    overflow: hidden;
+    padding-bottom: 0px;
+}
+/* .Element__Release.Middle:hover{
+    background: #2e2d2d91;
+} */
+.Element__Release.Middle .IcoWrap{
+    padding: 0px 0px;
+    text-align: center;
+}
+.Element__Release.Middle .Ico{
+    display: inline-block;
+    margin-top: 10px;
+    width: 170px;
+    height: 170px;
+    position: relative;
+    border-radius: 6px;
+    background-size: cover;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.2s ease; 
+    transform: scale(0.94);
+    animation: TranformIco 0.1s forwards;
+}
+.Element__Release.Middle .Ico .Play{
+    background: #1ED760;
+    background: white;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 10;
+    bottom: -60px;
+    right: 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    opacity: 0;
+}
+.Element__Release.Middle .Ico .Play img{
+    width: 17px;
+    height: 17px;    
+}
+.Element__Release.Middle .Ico .Ad{
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100px;
+    padding: 5px 13px;
+    border-radius: 16px;
+    font-size: 14px;
+    position: absolute;
+    text-align: left;
+    z-index: 10;
+    bottom: -60px;
+    left: 6px;
+    transition: all 0.2s ease;
+    opacity: 0;
+}
+.Element__Release.Middle:hover .Ico .Ad{
+    bottom: 6px;
+    opacity: 1;
+}
+.Element__Release.Middle .Info{
+    display: block;
+    padding: 5px 7px 10px 7px;
+    text-align: left;
+    line-height: 1.2;
+}
+.Element__Release.Middle .Info .Title{
+    font-size: 18px;
+    color: #eee;
+}
+.Element__Release.Middle .Info .Ad{
+    font-size: 15px;
+    color: #696969;
+}
+
+.Element__Release.Mini{
+    display: inline-block;
+    width: 170px;
+    border-radius: 10px;
+    transition: all 0.2s ease; 
+    text-align: center;
+    overflow: hidden;
+}
+.Element__Release.Mini:hover{
+    background: #2e2d2d91;
+    box-shadow: 0 0 10px #2e2d2d91;
+}
+.Element__Release.Mini .IcoWrap{
+    padding: 0px 0px;
+    text-align: center;
+}
+.Element__Release.Mini .Ico{
+    display: inline-block;
+    width: 170px;
+    height: 170px;
+    position: relative;
+    border-radius: 10px;
+    background-size: cover;
+    overflow: hidden;
+}
+.Element__Release.Mini .Ico .Play{
+    background: #1ED760;
+    background: white;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 10;
+    bottom: -60px;
+    right: 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    opacity: 0;
+}
+.Element__Release.Mini .Ico .Play img{
+    width: 20px;
+    height: 20px;    
+}
+.Element__Release.Mini:hover .Ico .Play{
+    bottom: 15px;
+    opacity: 1;
+}   
+.Element__Release.Mini .Ico .Ad{
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 140px;
+    padding: 5px 13px;
+    border-radius: 16px;
+    font-size: 16px;
+    position: absolute;
+    text-align: left;
+    z-index: 10;
+    bottom: -60px;
+    left: 6px;
+    transition: all 0.2s ease;
+    opacity: 0;
+}
+.Element__Release.Mini:hover .Ico .Ad{
+    bottom: 6px;
+    opacity: 1;
+}
+.Element__Release.Mini .Info{
+    display: block;
+    padding: 5px 15px 10px 15px;
+    text-align: left;
+    line-height: 1.2;
+}
+.Element__Release.Mini .Info .Title{
+    font-size: 22px;
+    color: #eee;
+}
+.Element__Release.Mini .Info .Ad{
+    font-size: 12px;
+    color: #696969;
+}
+
+/*Tracks*/
+.Element__TracksWrap{
+    padding: 10px 0px;
+}
+.Element__Track_Small{
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+    height: 70px;
+    padding: 6px 20px;
+    transition: all 0.1s ease; 
+    border-radius: 0px;
+}
+.Element__Track_Small.Active{
+    background: #222222;
+}
+/* .Element__Track_Small:hover{
+    background: #222222;
+} */
+.Element__Track_Small.active {
+    animation: TapCard 0.4s forwards;
+}
+.Element__Track_Small .Ico{
+    display: inline-flex;
+    width: 70px;
+    min-width: 70px;
+    height: 70px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    outline: 1px solid #222222;
+    background-size: cover;
+    position: relative;
+}   
+.Element__Track_Small .Ico .Plug{
+    position: absolute;
+    z-index: 10;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.Element__Track_Small .Info{
+    padding: 0px 6px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    line-height: 1.5;
+    overflow: hidden;
+    transition: all 0.1s ease;
+}
+.Element__Track_Small .Info.TrackI{
+    flex-basis: 100%;
+}
+.Element__Track_Small .Info.AlbumI{
+    flex-basis: 40%;
+}
+/* .Element__Track_Small .Info:hover {
+    transform: scale(1.05);
+} */
+.Element__Track_Small .Info .Title{
+    font-size: 17px;
+    transition: all 0.1s ease;
+}
+.Element__Track_Small .Info .AlbumTitle{
+    font-size: 16px;
+    color: #696969;
+    transition: all 0.1s ease;
+}
+.Element__Track_Small .Info .Ad{
+    font-size: 14px;
+    color: #696969;
+    transition: all 0.1s ease;
+}
+.Element__Track_Small .Box{
+    height: 70px;
+    min-width: 50px;
+    width: 50px;
+    align-items: center;
+    justify-content: center;
+    color: #696969;
+    font-size: 18px;
+    opacity: 0;
+    transition: all 0.1s ease;
+    display: none;
+}
+.Element__Track_Small.Active .Box{
+    opacity: 1;
+    display: inline-flex;
+}
+.Element__Track_Small:hover .Box{
+    /* opacity: 1;
+    display: inline-flex; */
+}
+.Element__Track_Small .Box img{
+    width: 22px;
+    height: 22px;
+}

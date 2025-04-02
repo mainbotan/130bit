@@ -1,0 +1,113 @@
+{% import '_macros.twig' as macros %}
+
+{% if user != false %}
+
+<div id='__MetaTitle' class='display--none'>Профиль</div>
+
+<!--PAGE STATE-->
+<div class='__pageState PageState'>
+    <div class='Box'>
+        <div onclick='NavigationModel.returnBack()' class='__returnButton Button'><img src='web/ico/eee/back.png'></div>
+    </div>
+    <div class='Bar'>
+        <div class='Text'>
+            <div class='Capture Cut'>
+                <div class='__captureText Swift Cut'>Профиль</div>
+            </div>
+        </div>
+    </div>
+    <div class='Box Mini'>
+        <div onclick='shareService.shareFromObject(this)' data-share-title='Профиль' data-share-text='{{ user.name }} на 130bit.'  data-share-url='https://130bit.com?x=user&id={{ user.id }}'  class='Button'><img src='web/ico/eee/share.png' style='width: 24px; height: 24px;'></div>
+    </div>
+    <div class='Box Mini' style='margin-right: 5px;'>
+        <div class='Navigation_UpdateWin Button' x='profile-edit'><img src='web/ico/eee/stars.png' style='width: 24px; height: 24px;'></div>
+    </div>
+</div>
+
+<!--Profile-->
+<div class='Draft__Profile'>    
+    <div class='Focus'>
+        <div class='__animatedPageHead Header'>
+            <div data-picture-url='{{ macros.getUserPicture(user.picture) }}' class='EnvirHandler_displayPicture Avatar' style='background-image: url({{ macros.getUserPicture(user.picture) }});'></div>
+            <div class='Wrap'>
+                <div class='Name'>
+                    {{ user.name }}
+                </div>
+            </div>
+        </div>
+        <div class='Content'>
+            <div class='Settings'>
+                <div class='text-size--21px text-color--eee'>Приватность</div>
+                <div class='inter--6'></div>
+                <div class='Regular text-face--regular text-color--grey text-size--14px'>
+                    Настройки доступа к Вашим коллекция. Откройте доступ, если хотите, чтобы пользователи могли их видеть.
+                </div>
+                <div class='inter--20'></div>
+                <div class='Item ToolTipeWrap'>
+                    <div class='Title'>
+                        <div class='Wrap Cut'>Подписки</div>
+                    </div>
+                    <div class='Action'>
+                        <div class='ToolTipe'>
+                            Скрыть/открыть
+                        </div>
+                        {% if subscriptions.access == 'public' %}
+                            <div data-setting-name='subscriptions' onclick='profileActionsModel.resetSetting(this)' class='Element__CheckBox Active'><div class='Circle'></div></div>
+                        {% else %}
+                            <div data-setting-name='subscriptions' onclick='profileActionsModel.resetSetting(this)' class='Element__CheckBox'><div class='Circle'></div></div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class='Item'>
+                    <div class='Title'>
+                        <div class='Wrap Cut'>Альбомы</div>
+                    </div>
+                    <div class='Action'>
+                        {% if collection.access == 'public' %}
+                            <div data-setting-name='collection' onclick='profileActionsModel.resetSetting(this)' class='Element__CheckBox Active'><div class='Circle'></div></div>
+                        {% else %}
+                            <div data-setting-name='collection' onclick='profileActionsModel.resetSetting(this)' class='Element__CheckBox'><div class='Circle'></div></div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class='Item'>
+                    <div class='Title'>
+                        <div class='Wrap Cut'>Треки</div>
+                    </div>
+                    <div class='Action'>
+                        {% if favourites.access == 'public' %}
+                            <div data-setting-name='favourites' onclick='profileActionsModel.resetSetting(this)' class='Element__CheckBox Active'><div class='Circle'></div></div>
+                        {% else %}
+                            <div data-setting-name='favourites' onclick='profileActionsModel.resetSetting(this)' class='Element__CheckBox'><div class='Circle'></div></div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class='inter--30'></div>
+            <div class='OtherActions'>
+                <div class='Item' onclick='profileActionsModel.totalLogOut()'>
+                    <div class='Title'>
+                        <div class='Wrap Cut text-color--red'>Выйти из аккаунта</div>
+                    </div>
+                    <div class='Action'>
+                    </div>
+                </div>
+                <div class='Item' onclick='profileActionsModel.totalLogOut()'>
+                    <div class='Title'>
+                        <div class='Wrap Cut text-color--red'>Завершить все сессии</div>
+                    </div>
+                    <div class='Action'>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        colorService.animatePage(`Профиль`, `{{ macros.getUserPicture(user.picture) }}`);
+    </script>
+</div>
+{% else %}
+    <!--PROFILE PLUG-->
+    {% embed 'chunks/profile_plug.twig' %}
+    {% endembed %}
+{% endif %}

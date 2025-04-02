@@ -1,0 +1,234 @@
+.Draft__Track{
+    min-height: 100vw;
+    display: block;
+    text-align: left;
+    line-height: 1.2;
+    position: relative;
+    background-size: cover;
+    padding: 0px;
+}
+.Draft__Track .Head{
+    display: block;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%);
+    transition: all 0.2s ease; 
+}
+.Draft__Track .Header{
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 15px;
+    padding: 0px;
+}
+.Draft__Track .Header .Label{
+    display: inline-flex;
+    width: 330px;
+    min-width: 330px;
+    align-items: center;
+    justify-content: center;
+    height: 350px;
+    cursor: pointer;
+}
+.Draft__Track .Header .Label .Ico{
+    display: inline-flex;
+    position: relative;
+    width: 280px;
+    height: 280px;
+    border-radius: 14px;
+    background-size: cover;
+    box-shadow: 0 0 15px #000000;
+    transition: all 0.2s ease; 
+}
+.Draft__Track .Header .Label .Ico:hover{
+    transform: scale(1.04);
+}
+.Draft__Track .Header .InfoWrap{
+    display: flex;
+    flex-basis: 100%;
+    align-items: end;
+    justify-content: start;
+    overflow: hidden;
+}
+.Draft__Track .Header .InfoWrap .Wrap{
+    padding: 40px 25px;
+}
+.Draft__Track .Header .InfoWrap .Wrap .Title{
+    line-height: 1;
+    color: white;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    padding-bottom: 6px;
+    overflow: hidden;
+    white-space: wrap;
+}
+.Draft__Track .Header .InfoWrap .Wrap .Title.Max{
+    font-size: 13vh;
+}
+.Draft__Track .Header .InfoWrap .Wrap .Title.Middle{
+    font-size: 12vh;
+}
+.Draft__Track .Header .InfoWrap .Wrap .Title.Mini{
+    font-size: 8vh;
+}
+.Draft__Track .Header .InfoWrap .Wrap .Title.UltraMini{
+    font-size: 6vh;
+}
+.Draft__Track .Header .InfoWrap .Wrap .AdInfo{
+    padding: 10px 4px;
+    font-size: 17px;
+    color: #eee;
+}
+.Draft__Track .Header .InfoWrap .Wrap .AdInfo .HighLight{
+    color: #eee;
+    cursor: pointer;
+}
+
+/*Actions*/
+.Draft__Track .Head .Actions{
+    height: 100px;
+    padding: 0px 40px;
+    display: flex;
+    flex-flow: row nowrap; 
+    gap: 26px;
+    border-bottom: 1px solid #222222;
+}
+.Draft__Track .Head .Actions .Box{
+    display: inline-flex;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+}
+.Draft__Track .Head .Actions .Box .Like{
+    width: 70px;
+    height: 70px;
+    background: #121212;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease; 
+}
+.Draft__Track .Head .Actions .Box .Like img{
+    width: 25px;
+}
+.Draft__Track .Head .Actions .Box .Like.Default{
+    background: #121212;
+}
+.Draft__Track .Head .Actions .Box .Like.Active{
+    background: #eee;
+}
+.Draft__Track .Head .Actions .Box .Like:hover{
+    transform: scale(1.04);
+}
+.Draft__Track .Head .Actions .Box .Button{
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 16px 20px;
+    border-radius: 28px;
+    color: #eee;
+    cursor: pointer;
+    background: #121212;
+    transition: all 0.2s ease; 
+    font-size: 16px;
+    /*background: #121212;*/
+}
+.Draft__Track .Head .Actions .Box .Button.Active{
+    background: #eee;
+    color: #000000;
+}
+.Draft__Track .Head .Actions .Box .Button:hover{
+    background: #eee;
+    color: #000000;
+}
+
+.Draft__Track .Content .LabelWrap{
+    display: block;
+    padding: 15px 36px;
+    font-size: 16px;
+    color: #696969;
+    line-height: 1.2;
+}
+
+/*Genius Info*/
+.Draft__Track .AdditionWrap{
+    padding: 10px;
+}
+.Draft__Track .Addition{
+    background: #222222;
+    border-radius: 10px;
+    display: block;
+}
+.Draft__Track .Addition .Stage1{
+    background: #222222;
+    padding: 20px;
+    font-size: 17px;
+    color: #eee;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.Draft__Track .Addition .Stage1 .Title{
+    font-size: 19px;
+}
+.Draft__Track .Addition .Stage1 a{
+    text-decoration: none;
+    color: #eee;
+}
+.Draft__Track .Addition .Stage2{
+    min-height: 200px;
+    background: #000000;
+    padding: 20px;
+    font-size: 17px;
+    color: #eee;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 15px 15px;
+}
+.Draft__Track .Addition .Stage2 .Item{
+    display: inline-block;
+    width: 200px;
+    overflow: hidden;
+}
+.Draft__Track .Addition .Stage2 .Item .Title{
+    font-size: 17px;
+    color: #eee;
+}
+.Draft__Track .Addition .Stage2 .Item .Ad{
+    font-size: 15px;
+    color: #696969;
+}
+
+.Draft__Track .Addition .Stage3{
+    display: block;
+    padding: 15px;
+    color: #eee;
+    font-size: 16px;
+}
+.Draft__Track .Addition .Stage3 a{
+    text-decoration: none;
+    color: #eee;
+}
+
+/*Error*/
+.Draft__TrackError{
+    display: block;
+    padding: 30px;
+}
+.Draft__TrackError .Wrap{
+    display: block;
+    width: 50%;
+    padding: 25px;
+    border-radius: 14px;
+    line-height: 1.2;
+}
+.Draft__TrackError .Wrap .Title{
+    font-size: 28px;
+    color: #eee;
+}
+.Draft__TrackError .Wrap .Ad{
+    margin-top: 10px;
+    font-size: 16px;
+    color: #696969;
+}

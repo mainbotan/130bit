@@ -1,0 +1,167 @@
+{% import '_macros.twig' as macros %}
+{% if user != false %}
+
+<div class='inter--20'></div>
+
+{# Subscriptions #}
+{% if all_subscriptions != null %}
+<div class='Element__Title'>
+    <div class='Bar'>
+        <div class='Block text-size--24px'>Подписки</div>
+    </div>
+    <div class='Bar'>
+        <div class='Block align--right'>
+            <div x='my-subscriptions' class='Navigation_UpdateWin Button'>Смотреть все</div>
+        </div>
+    </div>
+</div>
+<div class='Element__HorizScroll no-scroll'>
+    {% for artist in all_subscriptions %}
+        <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin Element__Artist Middle Item ToolTipeWrap'>
+            <div class='ToolTipe'>{{ artist.name }}</div>
+            <div class='Ico' style='background-image: url({{ artist.picture_small }}); border-radius: 50%;'>
+                <div class='Ad'></div>
+            </div>
+            <div class='Info'>
+                <div class='Cut Title'>{{ artist.name }}</div>
+                <div class='Cut Ad'>{{ macros.format_number(artist.followers) }} слушают</div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<div class='inter--2'></div>
+{% endif %}
+               
+{# Albums #}
+
+{% if all_collection != null %}
+<div class='Element__Title'>
+    <div class='Bar'>
+        <div class='Block text-size--23px'>Альбомы</div>
+    </div>
+    <div class='Bar'>
+        <div class='Block align--right'>
+            <div x='my-collection' class='Navigation_UpdateWin Button'>Смотреть все</div>
+        </div>
+    </div>
+</div>
+<div class='Element__HorizScroll no-scroll'>
+{% for release in all_collection %}
+    <div x='album' param='id={{ release.id }}' class='Navigation_UpdateWin Element__Release Middle Item'>
+        <div class='Ico' style='background-image: url({{ release.cover }});'>
+            <div class='Play'><img src='web/ico/black/play.png'></div>
+            <div class='Ad'></div>
+        </div>
+        <div class='Info'>
+            <div class='Cut Title'>{{ release.name }}</div>
+            <div class='Cut Ad'>
+                {% for key, artist in release.artists%}
+                    <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin display--block Element__HoverWhite'>{{ artist.name }}</div>
+                    {% if key < release.artists|length -1%}
+                        &
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class='inter--2'></div>
+            <div class='Cut Ad Regular text-face--regular'>{{ macros.format_year(release.release_date) }} • {{ release.type }}</div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+{% endif %}
+
+{# Friends #}
+{% if all_friends != null %}
+<div class='inter--20'></div>
+<div class='Element__Title'>
+    <div class='Bar'>
+        <div class='Block text-size--24px'>Друзья</div>
+    </div>
+    <div class='Bar'>
+        <div class='Block align--right'>
+            <div x='my-friends' class='Navigation_UpdateWin Button'>Смотреть все</div>
+        </div>
+    </div>
+</div>
+<div class='Element__HorizScroll no-scroll'>
+    {% for user in all_friends %}
+        <div x='user' param='id={{ user.id }}' class='Navigation_UpdateWin Element__Artist Middle Item ToolTipeWrap'>
+            <div class='ToolTipe'>{{ user.name }}</div>
+            <div class='Ico' style='background-image: url({{ macros.getUserPicture(user.picture) }}); border-radius: 50%;'>
+                <div class='Ad'></div>
+            </div>
+            <div class='Info'>
+                <div class='Cut Title'>{{ user.name }}</div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{# Favourites #}
+{% if all_favourites != null %}
+<div class='inter--2'></div>
+<div class='inter--20'></div>
+<div class='Element__Title'>
+    <div class='Bar'>
+        <div class='Block text-size--24px'>Избранное</div>
+    </div>
+    <div class='Bar'>
+        <div class='Block align--right'>
+            {% set favourites_count = user.favourites.tracks|length %}
+            <div class='Button'>{{ macros.pluralize(favourites_count, 'трек', 'трека', 'треков') }}</div>
+        </div>
+    </div>
+</div>
+<div class='inter--14'></div>
+<div id='__ACTIVE-CONTENT-AREA__' class='__TracksStack FavouritesWrap' style='padding-bottom: 50px;'>
+    {% for key, track in all_favourites %}
+        <div data-spotify-uri='{{ track.uri }}' data-spotify-id='{{  track.id }}' class='Player_Track Element__Track_Small Track Track-{{ track.id }}'>
+            <div class='__TrackTitle display--none'>{{ track.name }}</div>
+            <div class='__TrackIco display--none'>{{ track.cover }}</div>
+            <div class='Ico' style='background-image: url({{ track.cover }});'></div>
+            <div class='Info TrackI'>
+                <div class='Block'>
+                    <div class='Cut Title'>{{ track.name }}</div>
+                    <div class='__TrackArtists Cut Ad'>
+                        {% for key, artist in track.artists%}
+                            {{ macros.artistDiv(artist) }}
+                            {% if key < track.artists|length -1%}
+                                &
+                            {% endif %}
+                        {% endfor %}
+                    </div>               
+                </div>
+            </div>
+            <div data-spotify-id='{{ track.id }}' class='QuickAction_LikeTrack Box'><img class='__Like' src='web/ico/1ED760/heart.png'></div>
+        </div> 
+    {% endfor %}
+</div>
+
+<div id='__TRIGGER__'></div>
+{% endif %}
+
+{% if all_collection == null and all_favourites == null and all_friends == null and all_subscriptions == null %}
+    <div class='NoneCollectionPlug'>
+        <div class='Wrap'>
+            <img src='web/ico/fun/sadly-cat.png' class='Ico'>
+            <div class='Title'>Пополните коллекцию</div>
+            <div class='Ad'>Артисты, треки, альбомы, пользователи...</div>
+        </div>
+    </div>
+{% else %}
+<div class='inter--100' style='height: 20vh;'></div>
+{% endif %}
+
+
+<script>
+    var LAZY_ACTION = 'myFavourites';
+    var CONTENT_OFFSET = Number({{ start_offset }}); 
+</script>
+<script src="web/js/LazyLoadingService.js?v=55"></script>
+
+{% else %}
+    <!--PROFILE PLUG-->
+    {% embed 'chunks/profile_plug.twig' %}
+    {% endembed %}
+{% endif %}

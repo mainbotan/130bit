@@ -1,0 +1,54 @@
+{% macro artistDiv(artist) %}
+    <div x="artist" param="id={{ artist.id }}" data-artist-id='{{ artist.id }}' data-artist-name='{{ artist.name }}' class="__Artist Navigation_UpdateWin display--block Element__HoverWhite ToolTipeWrap">
+        {{ artist.name }}
+        <div class="ToolTipe">{{ artist.name }}</div>
+    </div>
+{% endmacro %}
+
+{% macro format_year(date) %}
+    {{ date|date("Y") }}
+{% endmacro %}
+
+{% macro format_number(number) %}
+    {{ number | number_format(0, '', ' ') }}
+{% endmacro %}
+
+{% macro pluralize(count, word_singular, word_genitive, word_plural) %}
+    {% if count == 1 %}
+        {{ count }} {{ word_singular }}
+    {% elseif count >= 2 and count <= 4 %}
+        {{ count }} {{ word_genitive }}
+    {% else %}
+        {{ count }} {{ word_plural }}
+    {% endif %}
+{% endmacro %}
+
+{% macro number_format(number) %}
+    {# Удаляем все пробелы и нечисловые символы #}
+    {% set cleaned_number = number|replace({' ': '', ',': '', '.': ''}) %}
+
+    {# Разбиваем число на группы по 3 цифры с конца #}
+    {% set formatted_number = '' %}
+    {% set length = cleaned_number|length %}
+    {% for i in 0..length - 1 %}
+        {% if (length - i) % 3 == 0 and i != 0 %}
+            {% set formatted_number = formatted_number ~ ' ' %}
+        {% endif %}
+        {% set formatted_number = formatted_number ~ cleaned_number[i] %}
+    {% endfor %}
+
+    {# Возвращаем отформатированное число #}
+    {{ formatted_number }}
+{% endmacro %}
+
+{% macro formatDate(isoDate, format = 'd.m.Y H:i') %}
+    {{ isoDate|date(format) }}
+{% endmacro %}
+
+{% macro getUserPicture(picture) %}
+    {% if picture is null or picture is empty %}
+        https://130bit.com/web/ico/default/default_user_avatar.jpg
+    {% else %}
+        {{ picture }}
+    {% endif %}
+{% endmacro %}

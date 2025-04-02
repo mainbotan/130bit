@@ -1,0 +1,386 @@
+{% import '_macros.twig' as macros %}
+{% set all_releases = artist.all_releases %}
+{% set albums = artist.albums %}
+{% set appears_on = artist.appears_on %}
+{% set tracks = artist.tracks %}
+{% set artist = artist.info %}
+
+<!--META-->
+<div id='__MetaTitle' class='display--none'>{{ artist.name  }}</div>
+<div id='__MetaArtist-Title' class='display--none'>{{ artist.name  }}</div>
+<div id='__MetaArtist-Ad' class='display--none'>{{ artist.followers  }} слушают</div>
+
+<!--PAGE STATE-->
+{% embed 'chunks/classic_pageState.twig' %}
+{% endembed %}
+
+<!--ARTIST-->
+<div class='Draft__Artist Draft position--relative'>
+    <div class='__animatedPageHead Head'>
+        <div class='Header'>
+            <div class='Info'>
+                <div class='Wrap Block'>
+                    <div class='Title {{ artist.name_size }}'>{{ artist.name }}</div>
+                    <div class='inter--2'></div>
+                    <div class='Followers ShowTitle ToolTipeWrap'>
+                        <div class='ToolTipe'>{{ artist.followers }} уже слушают</div>
+                        <div class='Count'>{{ artist.followers }}</div>
+                        <div class='Ad Regular text-face--regular'>слушают</div>
+                    </div>
+                </div>
+            </div>
+            <div class='Avatar'>
+                <div data-picture-url='{{ artist.cover }}' class='EnvirHandler_displayPicture Ico ToolTipeWrap' style='background-image: url({{ artist.cover }});'>
+                    <div class='ToolTipe'>Увеличить изображение</div>
+                </div>
+            </div>
+        </div>
+        <div class='Actions'>
+            {% if user %}
+                <div class='Box Artist-{{ artist.id }}'>
+                    {% if artist.id in user.subscriptions.artists %}
+                        {% set ico = 'web/ico/1ED760/heart.png'%}
+                    {% else %}
+                        {% set ico = 'web/ico/1ED760/heart_empty.png'%}
+                    {% endif %}
+                    <div data-spotify-id='{{ artist.id }}' class='QuickAction_LikeArtist Like'><img class='__Like' src='{{ ico }}'></div>
+                </div>
+            {% endif %}
+            {% if artist.isRecommend %}
+                <div class='Box'>
+                    <div class='Button Active'>В рекомендациях</div>
+                </div>
+            {% else %}
+                <div class='Box'>
+                    <div data-spotify-id='{{ artist.id }}' class='QuickAction_RecommendArtist Button'>Рекомендовать</div>
+                </div>
+            {% endif %}
+            <div class='Bar'></div>
+        </div>
+    </div>
+    <div class='Content'>
+        <div class='inter--30'></div>
+        <!--New Releases-->
+        <div class='Element__Title'>
+            <div class='Bar'>
+                <div class='Block text-size--24px ShowTitle'>Релизы</div>
+            </div>
+            <div class='Bar'>
+                <div class='Block align--right'>
+                    <div onclick='Artist__RebuildReleases(this)' class='Button'>Все</div>
+                </div>
+            </div>
+        </div>
+        <div id='__Artist-LastReleases' class='Element__HorizScroll no-scroll'>
+            {% for release in all_releases %}
+            <div x='album' param='id={{ release.id }}' class='Navigation_UpdateWin Element__Release Middle Item ToolTipeWrap'>
+                <div class='ToolTipe'>{{ release.name }}</div>
+                <div class='Ico' style='background-image: url({{ release.images.0.url }});'>
+                    <div class='Play'><img src='web/ico/black/play.png'></div>
+                    <div class='Ad'></div>
+                </div>
+                <div class='Info'>
+                    <div class='Cut Title ShowTitle'>{{ release.name }}</div>
+                    <div class='Cut Ad'>
+                        {% for key, artist in release.artists%}
+                            <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin display--block Element__HoverWhite'>{{ artist.name }}</div>
+                            {% if key < release.artists|length -1%}
+                                &
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class='inter--2'></div>
+                    <div class='Cut Ad Regular text-face--regular'>{{ macros.format_year(release.release_date) }} • {{ release.type }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% if all_releases != null %}
+        <div class='PromoBlocks'>
+         {% for release in all_releases|slice(0,2) %}    
+                <div x='album' param='id={{ release.id }}' class='Navigation_UpdateWin PromoBlock' data-img='{{ release.cover }}'>
+                    <div class='IcoWrap'><div class='Ico' style='background-image: url({{ release.images.0.url }});'></div></div>
+                    <div class='InfoWrap'>
+                        <div class='Wrap'>
+                            <div class='Title'>{{ release.name }}</div>
+                            <div class='inter--20'></div>
+                            <div class='Ad'>
+                                {% for key, artist in release.artists%}
+                                    <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin display--block Element__HoverWhite'>{{ artist.name }}</div>
+                                    {% if key < release.artists|length -1%}
+                                        &
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class='inter--6'></div>
+                            <div class='Tags'>
+                                <div class='Tag'>{{ macros.format_year(release.release_date) }}</div>
+                                <div class='Tag'>{{ release.type }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <div class='inter--50'></div>
+        {% if tracks != null %}
+        <!--Popular Tracks-->
+        <div class='Element__Title'>
+            <div class='Bar'>
+                <div class='Block text-size--25px ShowTitle'>Популярные треки</div>
+            </div>
+            <div class='Bar'>
+                <div class='Block align--right'>
+                </div>
+            </div>
+        </div>
+        <div class='__TracksStack Element__TracksWrap'>
+        {% for key, track in tracks %}
+            <div data-spotify-uri='{{ track.uri }}' data-spotify-id='{{  track.id }}' class='Player_Track Element__Track_Small Track Track-{{ track.id }}'>
+                <div class='__TrackTitle display--none'>{{ track.name }}</div>
+                <div class='__TrackIco display--none'>{{ track.album.images.0.url }}</div>
+                <div class='Ico' style='background-image: url({{ track.album.images.0.url }});'></div>
+                <div class='Info TrackI'>
+                    <div class='Block'>
+                        <div class='Cut Title Regular text-face--regular'>{{ track.name }}</div>
+                        <div class='__TrackArtists Cut Ad Regular text-face--regular'>
+                        {% for key, artist in track.artists%}
+                            {{ macros.artistDiv(artist) }}
+                            {% if key < track.artists|length -1%}
+                                &
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class='Info AlbumI'>
+                    <div class='Block'>
+                        <div x='album' param='id={{ track.album.id }}' class='Navigation_UpdateWin Cut AlbumTitle Regular text-face--regular'>
+                            <div class='Element__HoverWhite ToolTipeWrap'>
+                                <div class='ToolTipe'>{{ track.album.name }}</div>
+                                {{ track.album.name }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div x='track' param='id={{ track.id }}' class='Navigation_UpdateWin Box ToolTipeWrap'><div class='ToolTipe'>К треку</div><img src='web/ico/eee/a.png'></div>
+                
+                {% if user != false %}
+                    {% if track.id in user.favourites.tracks %}
+                        {% set ico = 'web/ico/1ED760/heart.png' %}
+                    {% else %}
+                        {% set ico = 'web/ico/1ED760/heart_empty.png' %}
+                    {% endif %}
+                    <div data-spotify-id='{{ track.id }}' class='QuickAction_LikeTrack Box'><img class='__Like' src='{{ ico }}'></div>
+                {% endif %}
+                
+            </div> 
+        {% endfor %}
+        </div>
+        {% endif %}
+        {% if albums != null %}
+        <div class='inter--18'></div>
+        <div class='__HorizontalScrollWrap'>
+            <!--Albums-->
+            <div class='Element__Title'>
+                <div class='Bar'>
+                    <div class='Block text-size--24px ShowTitle'>Альбомы</div>
+                </div>
+                <div class='Bar' style='justify-content: end;'>
+                    <div class='Element__ScrollControl'>
+                        <div onclick='horizontalScroll.scroll(this)' data-scroll-step='-200' class='ButtonX'>
+                            <svg class='Arrow' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div onclick='horizontalScroll.scroll(this)' data-scroll-step='200' class='ButtonX'>
+                            <svg class='Arrow' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            <div id='__Artist-LastReleases' class='__HorizontalScroll Element__HorizScroll no-scroll'>
+                {% for release in albums %}
+                <div x='album' param='id={{ release.id }}' class='Navigation_UpdateWin Element__Release Middle Item ToolTipeWrap'>
+                    <div class='ToolTipe'>{{ release.name }}</div>
+                    <div class='Ico' style='background-image: url({{ release.images.0.url }});'>
+                        <div class='Play'><img src='web/ico/black/play.png'></div>
+                        <div class='Ad'></div>
+                    </div>
+                    <div class='Info'>
+                        <div class='Cut Title ShowTitle'>{{ release.name }}</div>
+                        <div class='Cut Ad'>
+                            {% for key, artist in release.artists%}
+                                <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin display--block Element__HoverWhite'>{{ artist.name }}</div>
+                                {% if key < release.artists|length -1%}
+                                    &
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class='inter--2'></div>
+                        <div class='Cut Ad Regular text-face--regular'>{{ macros.format_year(release.release_date) }} • {{ release.type }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        {% if appears_on != null %}
+        <div class='inter--18'></div>
+        <div class='__HorizontalScrollWrap'>
+            <!--Appears On-->
+            <div class='Element__Title'>
+                <div class='Bar'>
+                    <div class='Block text-size--24px ShowTitle'>Участие на релизах</div>
+                </div>
+                <div class='Bar' style='justify-content: end;'>
+                    <div class='Element__ScrollControl'>
+                        <div onclick='horizontalScroll.scroll(this)' data-scroll-step='-200' class='ButtonX'>
+                            <svg class='Arrow' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div onclick='horizontalScroll.scroll(this)' data-scroll-step='200' class='ButtonX'>
+                            <svg class='Arrow' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            <div id='__Artist-LastReleases' class='__HorizontalScroll Element__HorizScroll no-scroll'>
+                {% for release in appears_on %}
+                <div x='album' param='id={{ release.id }}' class='Navigation_UpdateWin Element__Release Middle Item ToolTipeWrap'>
+                    <div class='ToolTipe'>{{ release.name }}</div>
+                    <div class='Ico' style='background-image: url({{ release.images.0.url }});'>
+                        <div class='Play'><img src='web/ico/black/play.png'></div>
+                        <div class='Ad'></div>
+                    </div>
+                    <div class='Info'>
+                        <div class='Cut Title ShowTitle'>{{ release.name }}</div>
+                        <div class='Cut Ad'>
+                            {% for key, artist in release.artists%}
+                                <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin display--block Element__HoverWhite'>{{ artist.name }}</div>
+                                {% if key < release.artists|length -1%}
+                                    &
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class='inter--2'></div>
+                        <div class='Cut Ad Regular text-face--regular'>{{ macros.format_year(release.release_date) }} • {{ release.type }}</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <!--Similar-->
+    <div class='__Similar Similar'>
+        <div class='Element__Title'>
+            <div class='Bar'>
+                <div class='Block text-size--24px ShowTitle'>Похожие</div>
+            </div>
+        </div>
+        <div class='__Artists Element__HorizScroll no-scroll'></div>
+    </div>
+    <!---->
+    <!--Genius Bio-->
+    <div class='__Bio Bio Active Stat'>
+        <div class='Top'>Bio</div>
+        <div class='__Update Text text-face--regular Regular'>
+            Здесь пусто.
+        </div>
+        <!--Tags-->
+        <div class='__Tags Tags'></div>
+
+        <!--Global Stat-->
+        <div class='__Stat'></div>
+    
+        <div style='height: 30vh;'></div>
+    </div>
+    
+    <script>
+        colorService.animatePage('{{ artist.name }}', '{{ artist.cover }}');
+
+        /*Genius Request*/
+        async function getArtistInfo(){
+            let artistName = $('#__MetaTitle').html();
+            let result = await API.getArtistInfo({name: artistName});
+            let Embed = $('#__Genius-Info');
+            if (result.status == 'success'){
+                let artist = result.data.info;
+                $('.__Bio .__Update').html(artist.description);
+            }
+        }
+
+        /*Last Fm Request*/
+        function generateTagsHTML(tags){
+            return tags.map(tag => {
+                return `<div x='tag' param='name=${tag.name}' class='state--pointer Navigation_UpdateWin Tag' data-tag-name='${tag.name}'>${tag.name}</div>`;
+            }).join(' ');
+        }
+        function generateArtistsHTML(artists){
+            return artists.map(artist => {
+                if (artist.cover == 'https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png'){
+                    artist.cover = 'https://i.scdn.co/image/ab6761610000e5eb8683dd0698fb59ad7039a46f';
+                }
+                return `
+                    <div x='artist' param='name=${artist.name}' class='Navigation_UpdateWin Element__Artist Middle Item ToolTipeWrap'>
+                        <div class='ToolTipe'>${artist.name}</div>
+                        <div class='Ico' style='background-image: url(${artist.cover});'>
+                            <div class='Ad'></div>
+                        </div>
+                        <div class='Info'>
+                            <div class='Cut Title ShowTitle'>${artist.name}</div>
+                        </div>
+                    </div>
+                `;
+            }).join(' ');
+        } 
+        /*Last Fm Request*/
+        async function getArtistStat(){
+            let artistName = $('#__MetaTitle').html();
+            let result = await API.getArtistStat({artist: artistName});
+            if (result.status == 'success'){
+                $('.__Stat').html(`
+                    <div class='StatArea'>
+                        <div class='Item'>
+                            <div class='Number'>${result.data.info.listeners_for_display}</div>
+                            <div class='Ad'>слушателей</div>
+                        </div>
+                        <div class='Item'>
+                            <div class='Number'>${result.data.info.playcount_for_display}</div>
+                            <div class='Ad'>прослушиваний</div>
+                        </div>
+                        <div class='Description Regular text-face--regular'>По всему миру</div>
+                    </div>
+                `);
+                if (Boolean(result.data.info.tags)){
+                    $('.__Tags').html(generateTagsHTML(result.data.info.tags));
+                    $('.__Tags').addClass('Active');
+                }
+                if (result.data.info.similar.length > 1){
+                    $('.__Similar .__Artists').html(generateArtistsHTML(result.data.info.similar));
+                    $('.__Similar').addClass('Active');
+                }
+            }
+        }
+        getArtistInfo();
+        getArtistStat();
+
+        function Artist__RebuildReleases(obj){
+            $('#__Artist-LastReleases').removeClass('Element__HorizScroll');
+            $('#__Artist-LastReleases').addClass('Element__ReleasesGrid');
+            $(obj).css('display', 'none');
+        }
+        function Artist__RebuildAppearsOn(obj){
+            $('#__Artist-AppearsOn').removeClass('Element__HorizScroll');
+            $('#__Artist-AppearsOn').addClass('Element__ReleasesGrid');
+            $(obj).css('display', 'none');
+        }
+    </script>
+</div>

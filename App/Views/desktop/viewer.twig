@@ -1,0 +1,216 @@
+{% import '_macros.twig' as macros %}
+<!--Embed Template-->
+<div class='Draft__Viewer Draft'>
+
+    <!--Artists Zone-->
+    <div class='inter--40'></div>
+    {% if artists_zone != null %}
+    <div class='QuickButtons'>
+        {% for artist in artists_zone|slice(0, 8) %}
+        <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin Button'>
+            <div class='Ico' style='background-image: url({{ artist.picture_big }});'></div>
+            <div class='Info'>
+                <div class='Txt'>{{ artist.name }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!--Promo New Releases-->
+    <div class='inter--40'></div>
+    <div class='PromoBlocks'>
+    <!--Focus Releases-->
+    {% for release in new_releases|slice(0,2) %}
+        <div x='album' param='id={{ release.id }}' class='Navigation_UpdateWin PromoBlock' data-img='{{ release.cover }}'>
+            <div class='IcoWrap'><div class='Ico' style='background-image: url({{ release.cover }});'></div></div>
+            <div class='InfoWrap'>
+                <div class='Wrap'>
+                    <div class='Title'>{{ release.name }}</div>
+                    <div class='inter--20'></div>
+                    <div class='Ad'>
+                        {% for key, artist in release.artists%}
+                            <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin display--block Element__HoverWhite'>{{ artist.name }}</div>
+                            {% if key < release.artists|length -1%}
+                                &
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class='inter--6'></div>
+                    <div class='Tags'>
+                        <div class='Tag'>{{ macros.format_year(release.release_date) }}</div>
+                        <div class='Tag'>{{ release.type }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    
+    <!--New Releases-->
+    <div class='inter--40'></div>
+    <div class='Element__Title'>
+        <div class='Bar'>
+            <div class='Block text-size--29px ShowTitle'>Последние релизы</div>
+        </div>
+        <div class='Bar'>
+            <div class='Block align--right'>
+                <div x='new-releases' class='Navigation_UpdateWin Button'>Смотреть все</div>
+            </div>
+        </div>
+    </div>
+    <div class='inter--10'></div>
+    <div class='Element__HorizScroll no-scroll'>
+        <!--New Releases-->
+        {% for release in new_releases %}
+            <div x='album' param='id={{ release.id }}' class='Navigation_UpdateWin Element__Release Big Item'>
+                <div class='Ico' style='background-image: url({{ release.cover }});'>
+                    <div class='Play'><img src='web/ico/black/play.png'></div>
+                    <div class='Ad'></div>
+                </div>
+                <div class='Info'>
+                    <div class='Cut Title ShowTitle'>{{ release.name }}</div>
+                    <div class='Cut Ad'>
+                        {% for key, artist in release.artists%}
+                            <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin display--block Element__HoverWhite'>{{ artist.name }}</div>
+                            {% if key < release.artists|length -1%}
+                                &
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class='inter--2'></div>
+                    <div class='Cut Ad Regular text-face--regular'>{{ macros.format_year(release.release_date) }} • {{ release.type }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!--Popular On Spotify-->
+    {% if top_artists_releases != null %}
+        <div class='inter--30'></div>
+        <div class='__HorizontalScrollWrap'>
+            <div class='Element__Title'>
+                <div class='Bar'>
+                    <div class='Block text-size--29px ShowTitle'>Популярно на Spotify</div>
+                </div>
+                <div class='Bar' style='justify-content: end;'>
+                    <div class='Element__ScrollControl'>
+                        <div onclick='horizontalScroll.scroll(this)' data-scroll-step='-400' class='ButtonX'>
+                            <svg class='Arrow' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div onclick='horizontalScroll.scroll(this)' data-scroll-step='400' class='ButtonX'>
+                            <svg class='Arrow' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            <div class='inter--20'></div>
+            <div class='__HorizontalScroll Element__HorizScroll no-scroll'>
+            {% for artist in top_artists_releases %}
+                <div x='album' param='id={{ artist.release.id }}' class='Navigation_UpdateWin PromoArtist Item'>
+                    <div class='AvatarWrap'><div class='Avatar' style='background-image: url({{ artist.avatar }})'></div></div>
+                    <div class='InfoWrap'>
+                        <div class='IcoArea'><div class='Ico' style='background-image: url({{ artist.release.cover }});'></div></div>
+                        <div class='InfoArea'>
+                            <div class='Title Cut'>{{ artist.release.name }}</div>
+                            <div class='Ad Cut'>
+                            {% for key, artist in artist.release.artists%}
+                                <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin display--block Element__HoverWhite'>{{ artist.name }}</div>
+                                {% if key < release.artists|length -1%}
+                                    &
+                                {% endif %}
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+    
+    <!--From Subscriptions-->
+    {% if my_releases != null %}
+    <div class='inter--50'></div>
+    <div class='__HorizontalScrollWrap'>
+        <div class='Element__Title'>
+            <div class='Bar'>
+                <div class='Block text-size--29px ShowTitle'>Из подписок</div>
+            </div>
+            <div class='Bar' style='justify-content: end;'>
+                <div class='Element__ScrollControl'>
+                    <div onclick='horizontalScroll.scroll(this)' data-scroll-step='-200' class='ButtonX'>
+                        <svg class='Arrow' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.41 16.59L10.83 12L15.41 7.41L14 6L8 12L14 18L15.41 16.59Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div onclick='horizontalScroll.scroll(this)' data-scroll-step='200' class='ButtonX'>
+                        <svg class='Arrow' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>  
+        </div>
+        <div class='inter--10'></div>
+        <div class='__HorizontalScroll Element__HorizScroll no-scroll'>
+            <!--New Releases-->
+            {% for release in my_releases|slice(0, 10) %}
+                <div x='album' param='id={{ release.id }}' class='Navigation_UpdateWin Element__Release Big Item'>
+                    <div class='Ico' style='background-image: url({{ release.cover }});'>
+                        <div class='Play'><img src='web/ico/black/play.png'></div>
+                        <div class='Ad'></div>
+                    </div>
+                    <div class='Info'>
+                        <div class='Cut Title ShowTitle'>{{ release.name }}</div>
+                        <div class='Cut Ad'>
+                            {% for key, artist in release.artists%}
+                                <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin display--block Element__HoverWhite'>{{ artist.name }}</div>
+                                {% if key < release.artists|length -1%}
+                                    &
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class='inter--2'></div>
+                        <div class='Cut Ad Regular text-face--regular'>{{ macros.format_year(release.release_date) }} • {{ release.type }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!--Recommend-->
+    <div class='inter--20'></div>
+    <div class='Element__Title'>
+        <div class='Bar'>
+            <div class='Block text-size--24px ShowTitle'>Слушает <div class='text-color--spotify text-size--29px'>Юра Борисов</div></div>
+        </div>
+        <div class='Bar'>
+            <div class='Block align--right'>
+                <div x='recommend-releases' class='Navigation_UpdateWin Button'>Смотреть все</div>
+            </div>
+        </div>
+    </div>
+    <div class='inter--40'></div>
+    <!--Wall-->
+    <div class='ReleasesWall'>
+        <!--Recommend Releases-->
+        {% for release in recommend_releases %}
+            <div x='album' param='id={{ release.id }}' class='Navigation_UpdateWin Release' style='background-image: url({{ release.cover }});'>
+                <div class='Canvas'>
+                    <div class='Info'>
+                        <div class='Title'>
+                            {{ release.name }}
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class='inter--100'></div>
+</div>

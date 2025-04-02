@@ -1,0 +1,50 @@
+
+@font-face {
+	font-family: 'VKSansDisplay-Regular';
+	src: url('../fonts/vksansdisplay-regular.eot'); /* IE 9 Compatibility Mode */
+	src: url('../fonts/vksansdisplay-regular.eot?#iefix') format('embedded-opentype'), /* IE < 9 */
+		url('../fonts/vksansdisplay-regular.woff2') format('woff2'), /* Super Modern Browsers */
+		url('../fonts/vksansdisplay-regular.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+		url('../fonts/vksansdisplay-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+		url('../fonts/vksansdisplay-regular.svg#vksansdisplay-regular') format('svg'); /* Chrome < 4, Legacy iOS */
+}
+@font-face {
+    font-family: 'Nugget'; /* Название шрифта, которое вы будете использовать в CSS */
+    src: url('../fonts/nugget/nugget.woff2') format('truetype'); /* Путь к файлу */
+    font-weight: normal; /* Укажите обычный или жирный шрифт */
+    font-style: normal;  /* Укажите стиль шрифта (обычный, наклонный и т.д.) */
+}
+.VkSans{
+    /* font-family: 'Nugget', sans-serif; Примените шрифт */
+    font-family: 'VKSansDisplay-Regular';
+    letter-spacing: 0px;
+}
+/* Используйте новый шрифт для элемента */
+/* body {
+    font-family: 'Nugget', sans-serif; /* Примените шрифт */
+} */
+
+.MainFont {
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+}
+
+/* Дефолтные значения (под iOS/Safari) */
+.MainFont,
+.MainFont * {
+    letter-spacing: 0.01em; /* Нормальное для iOS */
+}
+
+/* Увеличенные отступы ТОЛЬКО на Android */
+@supports (font-variation-settings: normal) {
+    .MainFont,
+    .MainFont * {
+        letter-spacing: 0.05em !important; /* Больше для Android */
+    }
+    .VkSans{
+        letter-spacing: 0.9px;
+    }
+}

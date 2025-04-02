@@ -1,0 +1,90 @@
+.Draft__Search *{
+    /* outline: 1px dashed violet; */
+}
+.Draft__Search .HeaderWrap{
+    display: block;
+    width: 100%;
+    position: fixed;
+    z-index: 200;
+    top: 0px;
+    left: 0px;
+    background: black;
+}
+.Draft__Search .Header{
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+    height: 58px;
+    padding: 0px 15px;
+    margin-top: 6px;
+}
+.Draft__Search .Header .Bar{
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    justify-content: start;
+    padding: 0px 0px;
+}
+.Draft__Search .Header .Box{
+    display: inline-flex;
+    min-width: 58px;
+    width: 58px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 0px;
+}
+.Draft__Search .Header input{
+    outline: none;
+    border: none;
+    height: calc(100% - 12px);
+    width: 100%;
+    padding: 0px 16px;
+    background: #262626;
+    border-radius: 7px;
+    font-size: 17px;
+    color: white;
+    /*With Regular Font*/
+}
+.Draft__Search .Markers{
+    display: block;
+    white-space: nowrap;
+    oveflow-x: scroll;
+    padding: 0px 15px;
+}
+.Draft__Search .Markers .Marker{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0px 15px;
+    border-bottom: 2px solid black;
+    font-size: 16px;
+    color: grey;
+    /*With Regular Font*/
+}
+.Draft__Search .Markers .Marker.Active{
+    color: white;
+    border-bottom: 2px solid white;
+}
+.Draft__Search .Content{
+    padding: 0px 0px;
+    padding-top: 130px;
+}
+.Draft__Search .Preview{
+    min-height: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    padding: 15vh 7vw;
+    lin-height: 1.2;
+}
+.Draft__Search .Preview .Ico{
+    width: 70px;
+    height: 70px;
+    border-radius: 6px;
+}
+.Draft__Search .Preview .Title{
+    font-size: 25px;
+    color: lightwhite;
+}

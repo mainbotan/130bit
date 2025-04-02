@@ -1,0 +1,84 @@
+{% import '_macros.twig' as macros %}
+
+{% if search.artists != null %}
+{% for artist in search.artists %}
+    <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin ToolTipeWrap Element__UniversalCard Mini Artist'>
+        <div class='ToolTipe'>{{ artist.name }}</div>
+        <div class='Ico' style='background-image: url({{ artist.images.0.url }});'></div>
+        <div class='Info Main'>
+            <div class='Block'>
+                <div class='Cut Title Regular text-face--regular'>{{ artist.name }}</div>
+                <div class='Cut Ad Regular text-face--regular'>{{ macros.format_number(artist.followers.total) }} слушают • {{ artist.type }}</div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% endif %}
+{% if search.users != null %}
+{% for user in search.users %}
+    <div x='user' param='id={{ user.id }}' class='Navigation_UpdateWin ToolTipeWrap Element__UniversalCard Mini Artist'>
+        <div class='ToolTipe'>{{ user.name }}</div>
+        <div class='Ico' style='background-image: url({{ macros.getUserPicture(user.picture) }});'></div>
+        <div class='Info Main'>
+            <div class='Block'>
+                <div class='Cut Title Regular text-face--regular'>{{ user.name }}</div>
+                <div class='Cut Ad Regular text-face--regular'>user</div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% endif %}
+{% if search.albums != null %}
+{% for album in search.albums %}
+    <div x='album' param='id={{ album.id }}' class='Navigation_UpdateWin Element__UniversalCard Mini Release'>
+        <div class='Ico' style='background-image: url({{ album.images.0.url }});'></div>
+        <div class='Info Main'>
+            <div class='Block'>
+                <div class='Cut Title Regular text-face--regular'>{{ album.name }}</div>
+                <div class='Cut Ad Regular text-face--regular'>
+                    {% for key, artist in album.artists%}
+                        {{ macros.artistDiv(artist) }}
+                        {% if key < album.artists|length -1%}
+                            &
+                        {% endif %}
+                    {% endfor %}
+                    • 
+                    {{ album.type }}</div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+{% endif %}
+{% if search.albums != null %}
+<div class='__TracksStack'>
+{% for track in search.tracks %}
+    <div data-spotify-uri='{{ track.uri }}' data-spotify-id='{{  track.id }}' class='Player_Track Track Track-{{ track.id }} Element__UniversalCard Mini Release'>
+        <div class='__TrackTitle display--none'>{{ track.name }}</div>
+        <div class='__TrackIco display--none'>{{ track.album.images.0.url }}</div>
+        <div class='Ico' style='background-image: url({{ track.album.images.0.url }});'></div>
+        <div class='Info Main'>
+            <div class='Block'>
+                <div class='Cut Title Regular text-face--regular'>{{ track.name }}</div>
+                <div class='__TrackArtists Cut Ad Regular text-face--regular'>
+                    {% for key, artist in track.artists%}
+                        {{ macros.artistDiv(artist) }}
+                        {% if key < track.artists|length -1%}
+                            &
+                        {% endif %}
+                    {% endfor %}
+                    • {{ track.type }}
+                </div>
+            </div>
+        </div>
+        {% if user != false %}
+            {% if track.id in user.favourites.tracks %}
+                {% set ico = 'web/ico/1ED760/heart.png' %}
+            {% else %}
+                {% set ico = 'web/ico/1ED760/heart_empty.png' %}
+            {% endif %}
+            <div data-spotify-id='{{ track.id }}' class='QuickAction_LikeTrack Box'><img class='__Like' src='{{ ico }}'></div>
+        {% endif %}
+    </div>
+{% endfor %}
+</div>
+{% endif %}

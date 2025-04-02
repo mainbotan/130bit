@@ -1,0 +1,30 @@
+
+<!--Discover Point-->
+<div class='Draft__Discover __SearchArea'>
+    <div class='Head'>
+        <div class="Search">
+            <input onkeyup='SearchingModel.debouncedSearchIt(this)' id="__DISCOVER-INPUT__" class="Regular text-face--regular" type="text" placeholder="Артист, трек, альбом, пользователь, плейлист...">
+        </div>
+    </div>
+    <div class='Content'>
+        <div class='__Update'>
+            {% if artists_zone != null %}
+                <div class='' style='padding: 0px 10px;'>
+                {% for artist in artists_zone|slice(0, 30) %}
+                    <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin Element__PeopleCard Middle'>
+                        <div class='Box Avatar'><div class='Ico' style='background-image: url({{ artist.picture_big }});'></div></div>
+                        <div class='Bar Info'><div class='Wrap'><div class='Title Cut'>{{ artist.name }}</div></div></div>
+                        {% if user != false %}
+                            {% if artist.id in user.subscriptions.artists %}
+                                <div class='Box Action'><div data-spotify-id='{{ artist.id }}' class='QuickAction_ExternalLikeArtist Button Cut Active'>Followed</div></div>
+                            {% else %}
+                                <div class='Box Action'><div data-spotify-id='{{ artist.id }}' class='QuickAction_ExternalLikeArtist Button Cut'>Follow</div></div>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>  

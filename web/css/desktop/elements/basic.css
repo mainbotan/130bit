@@ -1,0 +1,603 @@
+
+/*Scroll Control*/
+.Element__ScrollControl{
+    display: inline-flex;
+    height: 50px;
+    flex-flow: row nowrap;
+    gap: 22px;
+    margin: 0px 35px;
+}
+.Element__ScrollControl .ButtonX{
+    width: 50px;
+    height: 50px;
+    display: inline-flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: #222222;
+    transition: all 0.2s ease; 
+}
+.Element__ScrollControl .ButtonX .Arrow {
+    width: 32px;
+    height: 32px;
+    color: #696969;
+    transition: all 0.2s ease; 
+}
+.Element__ScrollControl .ButtonX:hover .Arrow {
+    color: #eee;
+}
+
+/*ToolTipe*/
+.ToolTipeWrap {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+.ToolTipe {
+    position: fixed; /* Используем fixed вместо absolute */
+    top: 0;
+    left: 0;
+    padding: 8px 12px;
+    background-color: #333;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 4px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    white-space: nowrap;
+    z-index: 1000;
+    pointer-events: none; /* Чтобы ToolTipe не мешал взаимодействию */
+}
+.ToolTipe .TitleTxt{
+    max-width: 240px;
+}
+.ToolTipe .DescriptionTxt{
+    margin-top: 2px;
+    font-size: 14px;
+    color: grey;
+    max-width: 240px;
+    white-space: wrap;
+}
+.ToolTipe .AdTxt{
+    margin-top: 2px;
+    font-size: 14px;
+    color: #eee;
+}
+.ToolTipeWrap:hover .ToolTipe {
+    opacity: 1;
+    visibility: visible;
+}
+/* Стрелка для ToolTipe */
+.ToolTipe::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent #333 transparent;
+}
+
+/*Walls*/
+.Element__WallCompactArtists{
+    display: block;
+    padding: 15px; 
+}
+.Element__WallCompactArtists .Item{
+    margin: 0px 12px 12px 0px;
+}
+
+.Element__WallReleases {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); /* Автоматически подбираем колонки */
+    gap: 10px;
+    justify-content: start;
+    align-items: start;
+}
+.Element__WallReleases * {
+    outline: 1px solid red;
+}
+.Element__WallReleases .Item {
+    box-sizing: border-box;
+    background: #222222;
+    display: inline-flex;
+}
+.Element__WallReleases .Item.Big {
+    grid-column: span 2; /* Занимает 2 колонки */
+    grid-row: span 2; /* Занимает 2 строки */
+    width: 100%; /* Ширина будет автоматически подстраиваться */
+    height: 100%; /* Высота будет автоматически подстраиваться */
+}
+.Element__WallReleases .Item.Middle {
+    grid-column: span 1; /* Занимает 1 колонку */
+    grid-row: span 1; /* Занимает 1 строку */
+    width: 100%; /* Ширина будет автоматически подстраиваться */
+    height: 100%; /* Высота будет автоматически подстраиваться */
+}
+.Element__WallReleases .Item.Mini {
+    grid-column: span 1; /* Занимает 1 колонку */
+    grid-row: span 1; /* Занимает 1 строку */
+    width: 100%; /* Ширина будет автоматически подстраиваться */
+    height: 100%; /* Высота будет автоматически подстраиваться */
+}
+
+/*Error Area*/
+.Element__ErrorArea{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 90px);
+}
+.Element__ErrorArea .Wrap{
+    text-align: center;
+    line-height: 1.1;
+    margin-bottom: 3vh;
+    display: inline-block;
+    width: 300px;
+    background: #000000;
+    padding: 25px;
+    border-radius: 22px;
+}
+.Element__ErrorArea .Wrap .Title{
+    font-size: 21px;
+    color: white;
+    margin-bottom: 10px;
+}
+.Element__ErrorArea .Wrap .Ad{
+    /*With Regular Font*/
+    font-size: 16px;
+    color: grey;
+}
+
+
+
+/*Mini Loading*/
+.Element__LoadingMiniWrap{
+    display: flex;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
+.Element__PrimaryVisible{
+    animation: Show 0.3s forwards;
+}
+
+.Element__SearchLoadingWrap{
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/*Circle Loader*/
+.Element__LoaderBlock.Mini {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+}
+.Element__WhiteCircleLoader.Mini {
+    width: 26px;
+    height: 26px;
+    border: 3px solid #eee;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+.Element__CircleLoader.Mini {
+    width: 26px;
+    height: 26px;
+    border: 3px solid #eee;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+.Element__CircleLoader.Big {
+    width: 50px;
+    height: 50px;
+    border: 3px solid #eee;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+} 
+
+
+
+/*Loading*/
+.Element__LoadingWrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 70px);
+}
+.Element__LoadingWrap .MusicalLoader{
+    width: 40px;
+    aspect-ratio: 1;
+    --c: linear-gradient(#d33a17 0 0); /* Изменено на #d33a17 */
+    --r1: radial-gradient(farthest-side at bottom, #d33a17 93%, #0000); /* Изменено на #d33a17 */
+    --r2: radial-gradient(farthest-side at top, #d33a17 93%, #0000); /* Изменено на #d33a17 */
+    background: 
+      var(--c), var(--r1), var(--r2),
+      var(--c), var(--r1), var(--r2),
+      var(--c), var(--r1), var(--r2);
+    background-repeat: no-repeat;
+    animation: l2 1s infinite alternate;
+}
+
+@keyframes l2 {
+    0%, 25% {
+        background-size: 8px 0, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px;
+        background-position: 0 50%, 0 calc(50% - 2px), 0 calc(50% + 2px), 50% 50%, 50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px), 100% calc(50% + 2px);
+    }
+    50% {
+        background-size: 8px 100%, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px;
+        background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%, 50% calc(50% - 2px), 50% calc(50% + 2px), 100% 50%, 100% calc(50% - 2px), 100% calc(50% + 2px);
+    }
+    75% {
+        background-size: 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px, 8px 0, 8px 4px, 8px 4px;
+        background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%, 50% calc(0% - 2px), 50% calc(100% + 2px), 100% 50%, 100% calc(50% - 2px), 100% calc(50% + 2px);
+    }
+    95%, 100% {
+        background-size: 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px, 8px 100%, 8px 4px, 8px 4px;
+        background-position: 0 50%, 0 calc(0% - 2px), 0 calc(100% + 2px), 50% 50%, 50% calc(0% - 2px), 50% calc(100% + 2px), 100% 50%, 100% calc(0% - 2px), 100% calc(100% + 2px);
+    }
+}
+
+/*Explicit Marks*/
+.Element__ExplicitMark_Middle{
+    width: 14px;
+    height: 14px;
+    color: grey;
+    border-radius: 2px;
+    display: inline-flex;
+    margin: 0px 2px;
+    align-items: center;
+    justify-content: center;
+    outline: 1px solid grey;
+    font-size: 13px;
+    /*With Regular Font*/
+}
+
+/*Buttons*/
+.Element__ClassicBlock{
+    display: block;
+    padding: 12px 16px;
+    text-align: center;
+    background: #eee;
+    border-radius: 26px;
+    font-size: 17px;
+    line-height: 1.1;
+    color: black;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: pointer;
+}
+.Element__WhiteButtonRadius_Large{
+    display: block;
+    padding: 16px 16px;
+    text-align: center;
+    background: #eee;
+    border-radius: 26px;
+    font-size: 17px;
+    line-height: 1.1;
+    color: black;
+    cursor: pointer;
+}
+.Element__WhiteButtonRadius_Middle{
+    display: block;
+    padding: 12px 16px;
+    text-align: center;
+    background: #eee;
+    border-radius: 22px;
+    font-size: 17px;
+    line-height: 1.1;
+    color: black;
+    cursor: pointer;
+}
+.Element__WhiteButton_Middle{
+    display: block;
+    padding: 12px 16px;
+    text-align: center;
+    background: #eee;
+    border-radius: 6px;
+    font-size: 17px;
+    line-height: 1.1;
+    color: black;
+    cursor: pointer;
+}
+.Element__GeniusButton_Middle{
+    display: block;
+    padding: 12px 16px;
+    text-align: center;
+    background: #fffc65;
+    border-radius: 6px;
+    font-size: 17px;
+    line-height: 1.1;
+    color: black;
+    cursor: pointer;
+}
+
+/*Play State*/
+.Element__Indicator{
+    width: 60%;
+    height: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+.Element__Indicator .Bar {
+    width: 20%;  
+    height: 20%;  
+    background-color: #eee; 
+    border-radius: 10px;
+    animation: bounce 0.5s infinite alternate;
+}
+.Element__Indicator .Bar:nth-child(1) {
+    animation-delay: 0s;
+}
+.Element__Indicator .Bar:nth-child(2) {
+    animation-delay: 0.1s;
+}
+.Element__Indicator .Bar:nth-child(3) {
+    animation-delay: 0.2s;
+}
+.Element__Indicator .Bar:nth-child(4) {
+    animation-delay: 0.3s;
+}
+@keyframes bounce {
+    0% {
+        height: 20%;
+    }
+    100% {
+        height: 80%;
+    }
+}
+
+/*Scroll**/
+.Element__HorizScroll{
+    display: block;
+    overflow-x: scroll;
+    white-space: nowrap;
+    padding: 10px 15px;
+}
+.Element__HorizScroll .Item{
+    margin-right: 7px;
+    vertical-align: top;
+}
+
+/*Tags*/
+.Element__Tag_Small{
+    /*With Regular Font*/
+    display: inline-block;
+    background: #222222;
+    padding: 1px 8px;
+    margin-right: 2px;
+    border-radius: 20px;
+    font-size: 15px;
+    color: grey;
+}
+.Element__Tag_Middle{
+    /*With Regular Font*/
+    display: inline-block;
+    background: #222222;
+    padding: 2px 10px;
+    margin-right: 2px;
+    border-radius: 22px;
+    font-size: 17px;
+    color: grey;
+    margin-bottom: 3px;
+}
+
+
+/*Cards*/
+.Element__PlaylistCard_Middle{
+    display: inline-block;
+    width: 210px;
+}
+.Element__PlaylistCard_Middle .IcoWithoutImg{
+    display: block;
+    width: 210px;
+    height: 210px;
+    position: relative;
+    border-radius: 10px;
+    background-size: cover;
+    box-shadow: 0 0 6px #222222;
+    overflow: hidden;
+    background: rgb(0,0,0);
+    background: linear-gradient(28deg, rgba(0,0,0,0) 0%, rgba(30,215,96,0.2813973050157564) 100%);
+}
+.Element__PlaylistCard_Middle .IcoWithoutImg .Circle-1{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.2);
+    left: -30px;
+    bottom: -30px;
+}
+.Element__PlaylistCard_Middle .Ico{
+    display: block;
+    width: 210px;
+    height: 210px;
+    position: relative;
+    border-radius: 10px;
+    background-size: cover;
+    box-shadow: 0 0 6px #222222;
+}
+.Element__PlaylistCard_Middle .Label{
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    background: rgba(0,0,0,0.3);
+}
+.Element__PlaylistCard_Middle .Label .Title{
+    padding: 25px;
+    font-size: 40px;
+    color: black;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: wrap;
+    line-height: 1;
+    color: white;
+}
+.Element__PlaylistCard_Middle .Actions{
+    position: absolute;
+    z-index: 20;
+    top: 8px;
+    right: 8px;
+    width: 40px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0px 0px;
+}
+.Element__PlaylistCard_Middle .Actions .Box{
+    display: inline-flex;
+    align-items: center;
+    height: 40px;
+    justify-content: center;
+}
+.Element__PlaylistCard_Middle .Actions .Box img{
+    width: 27px;
+    height: 27px;
+}
+.Element__PlaylistCard_Middle .Info{
+    padding: 13px 6px 0px 6px;
+    line-height: 1.2;
+}
+.Element__PlaylistCard_Middle .Info .Title{
+    font-size: 22px;
+}
+.Element__PlaylistCard_Middle .Info .Ad{
+    font-size: 16px;
+    color: grey;
+}   
+
+
+.Element__ReleaseCard_Middle{
+    display: inline-block;
+    width: 210px;
+}
+.Element__ReleaseCard_Middle .Ico{
+    display: block;
+    width: 210px;
+    height: 210px;
+    position: relative;
+    border-radius: 10px;
+    background-size: cover;
+    box-shadow: 0 0 6px #222222;
+}
+.Element__ReleaseCard_Middle .Ico .Markers{
+    position: absolute;
+    z-index: 10;
+    top: 8px;
+    left: 8px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px 0px;
+}
+.Element__ReleaseCard_Middle .Ico .Markers .Box{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.Element__ReleaseCard_Middle .Ico .Actions{
+    position: absolute;
+    z-index: 10;
+    top: 8px;
+    right: 8px;
+    width: 40px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0px 0px;
+}
+.Element__ReleaseCard_Middle .Ico .Actions .Box{
+    display: inline-flex;
+    align-items: center;
+    height: 40px;
+    justify-content: center;
+}
+.Element__ReleaseCard_Middle .Ico .Actions .Box img{
+    width: 27px;
+    height: 27px;
+}
+.Element__ReleaseCard_Middle .Info{
+    padding: 13px 6px 0px 6px;
+    line-height: 1.2;
+}
+.Element__ReleaseCard_Middle .Info .Title{
+    font-size: 22px;
+}
+.Element__ReleaseCard_Middle .Info .Ad{
+    font-size: 16px;
+    color: grey;
+}   
+
+.Element__ReleaseCard_Middle_Size1{
+    display: inline-block;
+    width: 190px;
+}
+.Element__ReleaseCard_Middle_Size1 .Ico{
+    display: block;
+    width: 190px;
+    height: 190px;
+    position: relative;
+    border-radius: 10px;
+    background-size: cover;
+    box-shadow: 0 0 6px #222222;
+}
+.Element__ReleaseCard_Middle_Size1 .Ico .Markers{
+    position: absolute;
+    z-index: 10;
+    top: 8px;
+    left: 8px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px 0px;
+}
+.Element__ReleaseCard_Middle_Size1 .Ico .Markers .Box{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.Element__ReleaseCard_Middle_Size1 .Ico .Actions{
+    position: absolute;
+    z-index: 10;
+    top: 8px;
+    right: 8px;
+    width: 40px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0px 0px;
+}
+.Element__ReleaseCard_Middle_Size1 .Ico .Actions .Box{
+    display: inline-flex;
+    align-items: center;
+    he

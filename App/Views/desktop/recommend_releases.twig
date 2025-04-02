@@ -1,0 +1,52 @@
+{% import '_macros.twig' as macros %}
+<!--Recommend Releases-->
+
+<!--META-->
+<div id='__MetaTitle' class='display--none'>Рекомендуемые релизы</div>
+
+<div class='inter--100'></div>
+<!--RECOMMEND RELEASES-->
+<div class='Draft' style='min-height: 100vh; padding: 0px 10px;'>
+    <div class='Content'>
+        <div class='inter--20'></div>
+        <!--Collection-->
+        <div class='Element__Title'>
+            <div class='Bar'>
+                <div class='Block text-size--29px ShowTitle'>Рекомендуют</div>
+            </div>
+            <div class='Bar'>
+            </div>
+        </div>
+        <div class='inter--30'></div>
+        <div id='__ACTIVE-CONTENT-AREA__' class='LazyLoading_Content no-scroll' style='padding: 0px 10px;'>
+            {% for release in recommend_releases %}
+                <div x='album' param='id={{ release.id }}' class='Navigation_UpdateWin Element__Release Middle Item'>
+                    <div class='Ico' style='background-image: url({{ release.cover }});'>
+                        <div class='Play'><img src='web/ico/black/play.png'></div>
+                        <div class='Ad'></div>
+                    </div>
+                    <div class='Info'>
+                        <div class='Cut Title ShowTitle'>{{ release.name }}</div>
+                        <div class='Cut Ad'>
+                            {% for key, artist in release.artists%}
+                                {{ macros.artistDiv(artist) }}
+                                {% if key < release.artists|length -1%}
+                                    &
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class='inter--2'></div>
+                        <div class='Cut Ad Regular text-face--regular'>{{ macros.format_year(release.release_date) }} • {{ release.type }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div id='__TRIGGER__'></div>
+        <div class='inter--100' style='height: 20vh;'></div>
+    </div>
+    <script>
+        var LAZY_ACTION = 'recommendedReleases';
+        var CONTENT_OFFSET = Number({{ start_offset }}); 
+    </script>
+    <script src="web/js/LazyLoadingService.js?v=55"></script>
+</div>

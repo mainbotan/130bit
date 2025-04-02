@@ -1,0 +1,435 @@
+
+/*Brand Box*/
+.Draft__Viewer .BrandBox{
+    display: flex;
+    height: 250px;
+    background: #ffcdd2;
+    align-items: center;
+    justify-content: start;
+    position: relative;
+}
+.Draft__Viewer .BrandBox .Wrap{
+    position: absolute;
+    z-index: 20;
+    top: 0px;
+    left: 0px;
+    display: block;
+    width: calc(100% - 64px);
+    height: calc(100% - 80px);
+    padding: 40px 32px;
+}
+.Draft__Viewer .BrandBox .Wrap .TitleArea{
+    height: 20vw;
+    overflow: hidden;
+    outline: 1px dashed red;
+}
+.Draft__Viewer .BrandBox .Wrap .Title{
+    font-size: 17vw;
+    color: #000000;
+    transition: all 0.2s ease; 
+    animation: Show 0.2s forwards;
+}
+.Draft__Viewer .BrandBox .Wrap .Ad{
+    font-size: 16px;
+    color: #000000;
+    padding: 0px 5px;
+}
+.Draft__Viewer .BrandBox .Wrap .Actions{
+    margin-top: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px 10px;
+}
+.Draft__Viewer .BrandBox .Wrap .Actions .Action{
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 15px;
+    color: #eee;
+    background: #000000;
+    text-align: center;
+    border-radius: 23px;
+}
+
+/*VPN Box*/
+.Draft__Viewer .WarningBox{
+    display: block;
+    padding: 14px 20px;
+    background: #222222;
+    line-height: 1.2;
+}
+.Draft__Viewer .WarningBox .Title{
+    font-size: 15px;
+    color: #eee;
+}
+.Draft__Viewer .WarningBox .Ad{
+    margin-top: 2px;
+    font-size: 13px;
+    color: grey;
+}
+
+
+/*Brand Header*/
+@keyframes TranformBox{
+    0%{
+        opacity: 0;
+        transform: scale(0.94);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.ViewerHeader .Box.Logo img,
+.ViewerHeader .Box.Avatar .Ico{
+    opacity: 0;
+    transition: all 0.2s ease; 
+    transform: scale(0.94);
+    animation: TranformBox 0.1s forwards;
+}
+.ViewerHeader{
+    transition: all 0.2s ease; 
+    position: sticky;
+    z-index: 50;
+    left: 0px;
+    top: 0px;
+    height: 70px;
+    width: calc(100% - 14px);
+    background: #000000;
+    display: flex;
+    flex-flow: row nowrap;
+    border-bottom: 1px solid #222222;
+    gap: 10px;
+    padding: 0px 7px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    box-shadow: 0 0 5px #000000;
+}
+.ViewerHeader .Box{
+    display: inline-flex;
+    height: 70px;
+    width: 70px;
+    min-width: 70px;
+    align-items: center;
+    justify-content: center;
+}
+.ViewerHeader .Box.Avatar .Ico{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #222222;
+    background-size: cover;
+}
+.ViewerHeader .Box.Logo img{
+    width: 40px;
+    height: 40px;
+    border-radius: 13px;
+}
+.ViewerHeader .Bar{
+    display: flex;
+    height: 70px;
+    width: 100%;
+    overflow: hidden;
+    align-items: center;
+    justify-content: start;
+}
+.ViewerHeader .Bar .Wrap{
+    display: block;
+    width: 100%;
+    font-size: 20px;
+    color: #eee;
+}
+
+
+
+.Draft__Viewer .LogicalBlock.CenterGradient{
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,0.040781058517156854) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.03517881762079833) 100%);
+}
+.Draft__Viewer .LogicalBlock{
+    padding: 20px 0px 10px 0px;
+}
+.Draft__Viewer .LogicalBlock.Accent{
+    background: #222222;
+}   
+.Draft__Viewer .LogicalBlock.Head{
+    background: #000000;
+    padding-bottom: 20px;
+    position: sticky;
+}
+
+.Draft__Viewer{
+    padding: 0px 0px 200px 0px;
+}   
+
+/*____ARTISTS TAGS_____*/
+.TagsScroll{
+    display: block;
+    overflow-x: scroll;
+    white-space: nowrap;
+    padding: 0px 20px;
+}
+.TagsScroll .Item{
+    display: inline-flex;
+    flex-flow: row nowrap;
+    gap: 15px;
+    margin-right: 10px;
+    padding: 2px;
+    border: 2px solid #121212;
+    max-width: 250px;
+    transition: all 0.2s ease; 
+    border-radius: 26px;
+    transform: scale(0.94);
+    animation: ShowProfilePlug 0.1s forwards;
+}
+@keyframes ShowProfilePlug{
+    0%{
+        opacity: 0;
+        transform: scale(0.94);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.TagsScroll .Item:hover{
+    outliine: 2px solid #eee;
+}
+.TagsScroll .Item .Ico{
+    display: inline-flex;
+    height: 48px;
+    min-width: 48px;
+    width: 48px;
+    background-size: cover;
+    border-radius: 50%;
+}
+.TagsScroll .Item .Info{
+    display: flex;
+    width: 100%;
+    height: 48px;
+    overflow: hidden;
+    align-items: center;
+    justify-content: start;
+    padding-right: 20px;
+}
+.TagsScroll .Item .Info .Txt{
+    display: block;
+    width: 100%;
+}
+
+
+/*_____SPIZDILI U YMUSIKI______*/
+.SpizdiliUYMusic{
+    display: block;
+    white-space: nowrap;
+    overflow-x: scroll;
+    padding: 0px 5vw;
+}
+.SpizdiliUYMusic .Item{
+    width: 90vw;
+    display: inline-block;
+    margin-right: 4vw;
+}
+.SpizdiliUYMusic .Item .AvatarWrap{
+    height: 68vw;
+    overflow: hidden;
+    text-align: center;
+    padding-top: 3px;
+}
+.SpizdiliUYMusic .Item .AvatarWrap .Avatar{
+    display: inline-block;
+    width: 78vw;
+    height: 78vw;
+    border-radius: 50%;
+    background-size: cover;
+}
+.SpizdiliUYMusic .Item .InfoWrap{
+    background: #222222;
+    border-radius: 14px;
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+    padding: 0px 15px;
+}
+.SpizdiliUYMusic .Item .IcoArea{
+    height: 90px;
+    width: 90px;
+    min-width: 90px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.SpizdiliUYMusic .Item .IcoArea .Ico{
+    height: 70px;
+    width: 70px;
+    min-width: 70px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+}
+.SpizdiliUYMusic .Item .InfoArea{
+    height: 90px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    overflow: hidden;
+}
+.SpizdiliUYMusic .Item .InfoArea .Wrap{
+    display: block;
+    width: 100%;
+}
+.SpizdiliUYMusic .Item .InfoArea .Wrap .Title{
+    font-size: 19px;
+    color: #eee;
+}
+.SpizdiliUYMusic .Item .InfoArea .Wrap .Ad{
+    font-size: 15px;
+    color: grey;
+}
+
+
+
+
+/*______Artists Zone_______*/
+.ArtistsZone{
+    display: block;
+    width: 100vw;
+    padding: 26px;
+    display: flex;
+    gap: 10px 10px;
+    flex-flow: row wrap;
+}
+.ArtistsZone .Button{
+    display: inline-block;
+    width: calc(50% - 30px);
+    gap: 10px;
+    background: #222222;
+    border-radius: 12px;
+    transition: all 0.2s ease; 
+    box-shadow: 2px 2px 7px #000000;
+}
+.ArtistsZone .Button:hover{
+    transform: scale(1.02);
+    box-shadow: 2px 2px 7px #9146FF;
+}
+.ArtistsZone .Button .Ico{
+    width: 62px;
+    min-width: 62px;
+    max-width: 62px;
+    height: 62px;
+    border-radius: 12px;
+    background-size: cover;
+}
+.ArtistsZone .Button .Info{
+    display: flex;
+    flex-basis: 100%;
+    height: 62px;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 15px;
+    color: #eee;
+}
+.ArtistsZone .Button .Info .Txt{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 19px;
+}
+
+
+/*____Promo Albums____*/
+.PromoBlocks {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 15px 15px;
+    padding: 0px 20px;
+}
+.PromoBlocks.Big {
+    padding: 0px 10px;
+}
+.PromoBlock {
+    display: inline-flex;
+    width: 100%;
+    height: 170px;
+    background: #222222;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+.PromoBlocks.Big .PromoBlock {
+    padding: 0px;
+    border-radius: 4px;
+}
+.PromoBlock:hover {
+    transform: scale(1.02);
+}
+.PromoBlock .IcoWrap {
+    display: inline-flex;
+    width: 170px;
+    min-width: 170px;
+    align-items: center;
+    justify-content: center;
+}
+.PromoBlock .IcoWrap .Ico {
+    display: inline-flex;
+    width: 160px;
+    min-width: 160px;
+    height: 160px;
+    border-radius: 12px;
+    background-size: cover;
+}
+.PromoBlocks.Big .PromoBlock .IcoWrap .Ico {
+    border-radius: 6px;
+}
+.PromoBlock .InfoWrap {
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    justify-content: start;
+    overflow: hidden;
+    padding: 0px 15px;
+    padding-right: 25px;
+}
+.PromoBlock .InfoWrap .Wrap {
+    display: block;
+    width: 100%;
+    line-height: 1.2;
+}
+.PromoBlock .InfoWrap .Wrap .Title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    width: 100%;
+}
+.PromoBlock .InfoWrap .Wrap .Ad {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+.PromoBlock .InfoWrap .Wrap .Title {
+    font-size: 34px;
+    color: #eee;
+}
+.PromoBlock .InfoWrap .Wrap .Ad {
+    font-size: 16px;
+    color: #eee;
+}
+.PromoBlock .InfoWrap .Wrap .Tags {
+    padding: 10px 0px 0px 0px;
+    display: inline-flex;
+    flex-flow: row wrap;
+    gap: 10px 10px;
+}
+.PromoBlock .InfoWrap .Wrap .Tags .Tag {
+    display: inline-flex;
+    font-size: 16px;
+    color: #eee;
+}

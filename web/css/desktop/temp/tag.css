@@ -1,0 +1,55 @@
+.Draft__Tag{
+    min-height: 100vh;
+}
+.Draft__Tag .Head{
+    min-height: 10vh;
+    padding: 70px;
+    padding-top: 100px;
+    line-height: 1.2;
+    background: rgb(29,40,180); 
+    background: linear-gradient(180deg, rgba(29,40,180,0.4357390417104342) 0%, rgba(66,97,203,0) 100%);
+}
+/* .Draft__Tag .Head *{
+    outline: 1px dashed violet;
+} */
+.Draft__Tag .Head .Title{
+    font-size: 7vw;
+    color: #eee;
+    line-height: 1.1;
+}
+.Draft__Tag .Head .StatArea{
+    display: inline-flex;
+    flex-flow: row wrap;
+    gap: 10px 10px;
+}
+.Draft__Tag .Head .StatArea .Stat{
+    display: inline-flex;
+    max-width: 260px;
+    overflow: hidden;
+    padding: 20px;
+    border-radius: 15px;
+    background: #000000;
+}
+.Draft__Tag .Head .StatArea .Stat .Count{
+    display: block;
+    width: 100%;
+    font-size: 25px;
+    color: #eee;
+}
+.Draft__Tag .Head .StatArea .Stat .Ad{
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    color: grey;
+}
+.Draft__Tag .Head .Description{
+    display: block;
+    font-size: 17px;
+    color: #eee;
+    line-height: 1.2;
+    position: relative;
+}
+.Draft__Tag .Content{
+    padding: 15px 0px;
+    background: #000000;
+}

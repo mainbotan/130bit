@@ -1,0 +1,198 @@
+.Draft__Album{
+    min-height: 100vw;
+    display: block;
+    text-align: left;
+    line-height: 1.2;
+    position: relative;
+    background-size: cover;
+    padding: 0px;
+}
+.Draft__Album .Head{
+    display: block;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%);
+    transition: all 0.2s ease; 
+}
+.Draft__Album .Header{
+    display: block;
+    padding: 0px;
+    padding-top: 30px;
+}
+.Draft__Album .Header *{
+    /* outline: 1px dashed red; */
+}
+.Draft__Album .Header .Label{
+    display: block;
+    text-align: center;
+}
+.Draft__Album .Header .Label .Ico{
+    display: inline-flex;
+    position: relative;
+    width: 70vw;
+    height: 70vw;
+    border-radius: 4px;
+    background-size: cover;
+    box-shadow: 0 0 15px #000000;
+    transition: all 0.2s ease; 
+}
+.Draft__Album .Header .Label .Ico:hover{
+    transform: scale(1.04);
+}
+.Draft__Album .Header .InfoWrap{
+    display: block;
+    width: 100vw;
+    max-width: 100vw;
+}
+.Draft__Album .Header .InfoWrap .Wrap{
+    padding: 20px 30px 10px 30px;
+}
+.Draft__Album .Header .InfoWrap .Wrap .Title{
+    line-height: 1.2;
+    color: white;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    padding-bottom: 6px;
+    overflow: hidden;
+    white-space: wrap;
+}
+.Draft__Album .Header .InfoWrap .Wrap .Title.Max{
+    font-size: 8vh;
+}
+.Draft__Album .Header .InfoWrap .Wrap .Title.Middle{
+    font-size: 6vh;
+}
+.Draft__Album .Header .InfoWrap .Wrap .Title.Mini{
+    font-size: 4vh;
+}
+.Draft__Album .Header .InfoWrap .Wrap .Title.UltraMini{
+    font-size: 3vh;
+}
+.Draft__Album .Header .InfoWrap .Wrap .AdInfo{
+    padding: 10px 4px;
+    font-size: 17px;
+    color: #eee;
+}
+.Draft__Album .Header .InfoWrap .Wrap .AdInfo .HighLight{
+    color: #eee;
+}
+.Draft__Album .Header .InfoWrap .Wrap .Description{
+    padding: 10px 4px;
+    color: grey;
+    font-size: 15px;
+    color: grey;
+}
+
+/*Actions*/
+.Draft__Album .Head .Actions{
+    height: 100px;
+    padding: 0px 25px;
+    display: flex;
+    flex-flow: row nowrap; 
+    gap: 26px;
+    border-bottom: 1px solid #222222;
+}
+.Draft__Album .Head .Actions .Box{
+    display: inline-flex;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+}
+.Draft__Album .Head .Actions .Box .Like{
+    width: 70px;
+    height: 70px;
+    background: #121212;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease; 
+}
+.Draft__Album .Head .Actions .Box .Like img{
+    width: 25px;
+}
+.Draft__Album .Head .Actions .Box .Like.Default{
+    background: #121212;
+}
+.Draft__Album .Head .Actions .Box .Like.Active{
+    background: #eee;
+}
+.Draft__Album .Head .Actions .Box .Like:hover{
+    transform: scale(1.04);
+}
+.Draft__Album .Head .Actions .Box .Button{
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 16px 20px;
+    border-radius: 28px;
+    color: #eee;
+    
+    background: #121212;
+    transition: all 0.2s ease; 
+    font-size: 16px;
+    /*background: #121212;*/
+}
+.Draft__Album .Head .Actions .Box .Button.Active{
+    background: #eee;
+    color: #000000;
+}
+.Draft__Album .Head .Actions .Box .Button:hover{
+    background: #eee;
+    color: #000000;
+}
+
+.Draft__Album .Content .LabelWrap{
+    display: block;
+    padding: 15px 36px;
+    font-size: 16px;
+    color: #696969;
+    line-height: 1.2;
+}
+
+
+
+
+/*Stat*/
+.Draft__Album .StatArea{
+    padding: 50px 30px 60px 30px;
+    display: block;
+}
+.Draft__Album .StatArea .Item{
+    display: block;
+    line-height: 1.2;
+    font-size: 17px;
+    color: grey;
+    margin-bottom: 20px;
+}
+.Draft__Album .StatArea .Item .Number{
+    font-size: 34px;
+    color: #eee;
+}
+.Draft__Album .StatArea .Description{
+    font-size: 14px;
+    color: grey;
+    padding-top: 15px;
+    border-top: 1px solid #222222;
+}
+
+/*Tags*/
+.Draft__Album .Tags{
+    padding: 50px 25px 30px 25px;
+    display: none;
+    gap: 10px 10px;
+    flex-flow: row wrap;
+}
+.Draft__Album .Tags.Active{
+    display: flex;
+}
+.Draft__Album .Tags .Tag{
+    display: inline-flex;
+    font-size: 16px;
+    color: #eee;
+    background: #222222;
+    height: 46px;
+    border-radius: 22px;
+    padding: 0px 16px;
+    align-items: center;
+    justify-content: center;
+}   

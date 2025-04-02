@@ -1,0 +1,53 @@
+{% import '_macros.twig' as macros %}
+{% if user != false %}
+<!--Subscriptions-->
+
+<!--META-->
+<div id='__MetaTitle' class='display--none'>Друзья</div>
+
+<div class='__pageState PageState'>
+    <div class='Box'>
+        <div onclick='NavigationModel.returnBack()' class='__returnButton Button'><img src='web/ico/eee/back.png'></div>
+    </div>
+    <div class='Bar'>
+        <div class='Text'>
+            <div class='Capture Cut'>
+                <div class='Swift __captureText Cut'>Друзья  <div class='display--block text-color--grey'>{{ user.friends.users|length }}</div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--MY PROFILE-->
+<div class='Draft__Profile Draft' style='min-height: 100vh'>
+    <div class='Content'>
+        <div class='inter--20'></div>
+        <div id='__ACTIVE-CONTENT-AREA__' class='no-scroll Element__HalfGrid' style='padding: 0px 0px;'>
+            {% for user in all_friends %}
+                <div x='user' param='id={{ user.id }}' class='Navigation_UpdateWin Element__HalfCard Middle Artist Item ToolTipeWrap'>
+                    <div class='ToolTipe'>{{ user.name }}</div>
+                    <div class='Ico' style='background-image: url({{ macros.getUserPicture(user.picture) }}); border-radius: 50%;'>
+                        <div class='Ad'></div>
+                    </div>
+                    <div class='Info'>
+                        <div class='Cut Title ShowTitle'>{{ user.name }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div id='__TRIGGER__'></div>
+        <div class='inter--100' style='height: 20vh;'></div>
+    </div>
+    
+    <script>
+        var LAZY_ACTION = 'myFriends';
+        var CONTENT_OFFSET = Number({{ start_offset }}); 
+    </script>
+    <script src="web/js/LazyLoadingService.js?v=55"></script>
+</div>
+
+{% else %}
+    <!--PROFILE PLUG-->
+    {% embed 'chunks/profile_plug.twig' %}
+    {% endembed %}
+{% endif %}

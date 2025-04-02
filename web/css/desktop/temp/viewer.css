@@ -1,0 +1,247 @@
+.Draft__Viewer{
+    padding-bottom: 15vh;
+}
+.Draft__Viewer .QuickButtons{
+    display: flex;
+    flex-flow: row wrap;
+    gap: 15px 15px;
+    padding: 0px 20px;
+}
+.Draft__Viewer .QuickButtons .Button{
+    display: inline-flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+    width: 360px;
+    background: #000000;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.2s ease; 
+}
+.Draft__Viewer .QuickButtons .Button:hover{
+    transform: scale(1.02);
+    box-shadow: 2px 2px 7px #9146FF;
+}
+.Draft__Viewer .QuickButtons .Button .Ico{
+    width: 62px;
+    min-width: 62px;
+    max-width: 62px;
+    height: 62px;
+    border-radius: 7px;
+    background-size: cover;
+}
+.Draft__Viewer .QuickButtons .Button .Info{
+    display: flex;
+    flex-basis: 100%;
+    height: 62px;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 15px;
+    color: #eee;
+}
+.Draft__Viewer .QuickButtons .Button .Info .Txt{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 18px;
+}
+
+/*____Promo Albums____*/
+.PromoBlocks {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 15px 15px;
+    padding: 0px 20px;
+}
+.PromoBlock {
+    display: inline-flex;
+    width: 580px;
+    height: 270px;
+    background: #222222;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.PromoBlock:hover {
+    transform: scale(1.02);
+}
+.PromoBlock .IcoWrap {
+    display: inline-flex;
+    width: 270px;
+    min-width: 270px;
+    align-items: center;
+    justify-content: center;
+}
+.PromoBlock .IcoWrap .Ico {
+    display: inline-flex;
+    width: 240px;
+    min-width: 240px;
+    height: 240px;
+    border-radius: 12px;
+    background-size: cover;
+}
+.PromoBlock .InfoWrap {
+    display: flex;
+    flex-basis: 100%;
+    align-items: center;
+    justify-content: start;
+    overflow: hidden;
+    padding: 0px 15px;
+    padding-right: 25px;
+}
+.PromoBlock .InfoWrap .Wrap {
+    display: block;
+    width: 100%;
+    line-height: 1.2;
+}
+.PromoBlock .InfoWrap .Wrap .Title,
+.PromoBlock .InfoWrap .Wrap .Ad {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    width: 100%;
+}
+.PromoBlock .InfoWrap .Wrap .Title {
+    font-size: 34px;
+    color: #eee;
+}
+.PromoBlock .InfoWrap .Wrap .Ad {
+    font-size: 16px;
+    color: #eee;
+}
+.PromoBlock .InfoWrap .Wrap .Tags {
+    padding: 10px 0px 0px 0px;
+    display: inline-flex;
+    flex-flow: row wrap;
+    gap: 10px 10px;
+}
+.PromoBlock .InfoWrap .Wrap .Tags .Tag {
+    display: inline-flex;
+    font-size: 16px;
+    color: #eee;
+}
+
+
+/*Artists*/
+.PromoArtist{
+    display: inline-block;
+    width: 300px;
+    cursor: pointer;
+    transition: all 0.2s ease; 
+}
+.PromoArtist:hover{
+    transform: scale(1.03);
+}   
+/* .PromoArtist *{
+    outline: 1px dashed violet;
+} */
+.PromoArtist .AvatarWrap{
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    width: 300px;
+    height: 270px;
+}
+.PromoArtist .AvatarWrap .Avatar{
+    display: inline-block;
+    border-radius: 50%;
+    width: 280px;
+    height: 280px;
+    background-size: cover;
+}
+.PromoArtist .InfoWrap{
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 0px;
+}
+.PromoArtist .InfoWrap .IcoArea{
+    display: inline-flex;
+    width: 70px;
+    height: 70px;
+    min-width: 70px;
+    align-items: center;
+    justify-content: center;
+}
+.PromoArtist .InfoWrap .Ico{
+    display: inline-flex;
+    width: 50px;
+    height: 50px;
+    border-radius: 6px;
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+}
+.PromoArtist .InfoArea{
+    display: block;
+    width: 100%;
+    text-align: left;
+    overflow: hidden;
+    padding: 15px;
+    line-height: 1.2;
+}
+.PromoArtist .InfoArea .Title{
+    color: #eee;
+    font-size: 20px;
+}
+.PromoArtist .InfoArea .Ad{
+    color: grey;
+    font-size: 15px;
+}
+
+
+
+/*Releases Wall*/
+.Draft__Viewer .ReleasesWall {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center; /* Центрируем блоки по горизонтали */
+    gap: 2vw; /* Отступы между блоками */
+    padding: 0px 0vw;
+    box-sizing: border-box; /* Учитываем padding в общей ширине */
+}
+.Draft__Viewer .ReleasesWall .Release {
+    display: inline-flex;
+    position: relative;
+    height: 30vw;
+    width: 28vw;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #000000;
+    flex-shrink: 0; /* Запрещаем сжатие блоков */
+    margin: 0vw; /* Добавляем отступы для красоты */
+    cursor: pointer;
+    transition: all 0.2s ease; 
+    background-size: cover;
+}
+.Draft__Viewer .ReleasesWall .Release:hover{
+    transform: scale(1.03);
+}
+.Draft__Viewer .ReleasesWall .Release .Canvas{
+    position: absolute;
+    z-index: 10;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,0.24246173078606448) 0%, rgba(0,0,0,1) 100%);
+    line-height: 1.2;
+    display: flex;
+    align-items: end;
+    justify-content: start;
+}
+.Draft__Viewer .ReleasesWall .Release .Canvas .Info{
+    display: block;
+    width: 100%;
+    padding: 2vw 2vw;
+}
+.Draft__Viewer .ReleasesWall .Release .Canvas .Title{
+    font-size: 2vw;
+    color: #eee;
+    line-height: 1.1;
+}

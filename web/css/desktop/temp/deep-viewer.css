@@ -1,0 +1,9 @@
+
+.Draft__DeepViewer{
+    background: #000000;
+    min-height: 100vh;
+}
+.Draft__DeepViewer .Top{
+    display: flex;
+    flex-flow: row nowrap;
+}

@@ -1,0 +1,93 @@
+{% import '_macros.twig' as macros %}
+{% if user != false %}
+<!--Profile-->
+<div class='Draft__Profile'>
+    <div class='Focus'>
+        <div class='Header'>
+            <div class='Title ShowTitle'>Управление аккаунтом</div>
+        </div>
+        <div class='Content'>
+            <div class='inter--30'></div>
+            <div class='Settings'>
+                <div class='text-size--32px text-color--eee'>Приватность</div>
+                <div class='inter--6'></div>
+                <div class='Regular text-face--regular text-color--grey'>
+                    Настройки доступа к Вашим коллекция. Откройте доступ, если хотите, чтобы пользователи могли их видеть.
+                </div>
+                <div class='inter--20'></div>
+                <div class='Item ToolTipeWrap'>
+                    <div class='Title'>
+                        <div class='Wrap Cut'>Подписки</div>
+                    </div>
+                    <div class='Action'>
+                        <div class='ToolTipe'>
+                            Скрыть/открыть
+                        </div>
+                        {% if subscriptions.access == 'public' %}
+                            <div data-setting-name='subscriptions' onclick='profileActionsModel.resetSetting(this)' class='Element__CheckBox Active'><div class='Circle'></div></div>
+                        {% else %}
+                            <div data-setting-name='subscriptions' onclick='profileActionsModel.resetSetting(this)' class='Element__CheckBox'><div class='Circle'></div></div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class='Item'>
+                    <div class='Title'>
+                        <div class='Wrap Cut'>Коллекция альбомов</div>
+                    </div>
+                    <div class='Action'>
+                        {% if collection.access == 'public' %}
+                            <div data-setting-name='collection' onclick='profileActionsModel.resetSetting(this)' class='Element__CheckBox Active'><div class='Circle'></div></div>
+                        {% else %}
+                            <div data-setting-name='collection' onclick='profileActionsModel.resetSetting(this)' class='Element__CheckBox'><div class='Circle'></div></div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class='Item'>
+                    <div class='Title'>
+                        <div class='Wrap Cut'>Избранные треки</div>
+                    </div>
+                    <div class='Action'>
+                        {% if favourites.access == 'public' %}
+                            <div data-setting-name='favourites' onclick='profileActionsModel.resetSetting(this)' class='Element__CheckBox Active'><div class='Circle'></div></div>
+                        {% else %}
+                            <div data-setting-name='favourites' onclick='profileActionsModel.resetSetting(this)' class='Element__CheckBox'><div class='Circle'></div></div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class='inter--30'></div>
+            <div class='OtherActions'>
+                <div class='Item' onclick='profileActionsModel.totalLogOut()'>
+                    <div class='Title'>
+                        <div class='Wrap Cut text-color--red'>Выйти из аккаунта</div>
+                    </div>
+                    <div class='Action'>
+                    </div>
+                </div>
+                <div class='Item' onclick='profileActionsModel.totalLogOut()'>
+                    <div class='Title'>
+                        <div class='Wrap Cut text-color--red'>Завершить все сессии</div>
+                    </div>
+                    <div class='Action'>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div style='height: 20vh;'></div>
+{% else %}
+    <div class='ProfilePlug'>
+        <div class='ProfilePlugActive'>
+            <img class='ProfilePlugIco' src='https://130bit.com/web/ico/default/default_user_avatar.jpg'>
+            <div class='ProfilePlugTitle'>Войдите в аккаунт</div>
+            <div class='ProfilePlugAd Regular text-face--regular'>
+                Войдите в аккаунт для управления коллекцией альбомов, добавления треков в избранное, комментирования релизов и ёбаной кучи других плюшек...
+            </div>
+            <div class='ProfilePlugActions'>
+                <div class='Button' onclick='window.location.href = `https://my.130bit.com`;'>Войти</div>
+                <div class='Button Main' onclick='window.location.href = `https://my.130bit.com/create`;'>Создать аккаунт</div>
+            </div>
+        </div>
+    </div>
+{% endif %}

@@ -1,0 +1,47 @@
+{% import '_macros.twig' as macros %}
+{% if user != false %}
+<!--Friends-->
+
+<!--META-->
+<div id='__MetaTitle' class='display--none'>Друзья</div>
+
+<!--MY PROFILE-->
+<div class='Draft' style='min-height: 100vh; padding: 0px 10px;'>
+    <div class='Content'>
+        <div class='inter--20'></div>
+        <div class='Element__Title'>
+            <div class='Bar'>
+                <div class='Block text-size--29px ShowTitle'>Друзья</div>
+            </div>
+            <div class='Bar'>
+                <div class='Block align--right'>
+                    <div class='Button'>{{ macros.pluralize(user.friends.users|length, 'друг', 'друга', 'друзей') }}</div>
+                </div>
+            </div>
+        </div>
+        <div class='inter--10'></div>
+        <div id='__ACTIVE-CONTENT-AREA__' class='no-scroll' style='padding: 0px 10px;'>
+            {% for user in all_friends %}
+                <div x='user' param='id={{ user.id }}' class='Navigation_UpdateWin Element__Artist Middle Item ToolTipeWrap'>
+                    <div class='ToolTipe'>{{ user.name }}</div>
+                    <div class='Ico' style='background-image: url({{ macros.getUserPicture(user.picture) }});'>
+                        <div class='Ad'></div>
+                    </div>
+                    <div class='Info'>
+                        <div class='Cut Title ShowTitle'>{{ user.name }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div id='__TRIGGER__'></div>
+        <div class='inter--100' style='height: 20vh;'></div>
+    </div>
+    
+    <script>
+        var LAZY_ACTION = 'myFriends';
+        var CONTENT_OFFSET = Number({{ start_offset }}); 
+    </script>
+    <script src="web/js/LazyLoadingService.js?v=55"></script>
+</div>
+
+{% endif %}

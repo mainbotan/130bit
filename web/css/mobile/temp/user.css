@@ -1,0 +1,196 @@
+.Draft__User{
+    min-height: 100vw;
+    display: block;
+    text-align: left;
+    line-height: 1.2;
+    position: relative;
+    background-size: cover;
+    padding: 0px;
+}
+.Draft__User .Head{
+    display: block;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%);
+    transition: all 0.2s ease; 
+}
+.Draft__User .Header{
+    display: block;
+    padding: 0px;
+    background: #000000;
+}
+
+.Draft__User .Header .Avatar{
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 0px;
+}
+.Draft__User .Header .Avatar .Ico{
+    display: inline-flex;
+    width: 100vw;
+    height: 100vw;
+    border-radius: 0px;
+    background-size: cover;
+    box-shadow: 0 0 10px #000000;
+    position: relative;
+    overflow: hidden;
+}
+.Draft__User .Header .Avatar .Ico .Canvas{
+    position: absolute;
+    width: 100vw;
+    height: 101vw;
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+    display: flex;
+    align-items: end;
+}
+.Draft__User .Header .Info{
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    margin-bottom: 5vw;
+    text-align: left;
+}
+.Draft__User .Header .Info .Wrap{
+    padding: 0px 20px;
+}
+.Draft__User .Header .Info .Wrap .Title{
+    line-height: 1;
+    color: white;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    padding-bottom: 6px;
+    overflow: hidden;
+    white-space: wrap;
+    animation: ShowUserTitle 0.4s forwards;
+    opacity: 0;
+}
+@keyframes ShowUserTitle{
+    0%{
+        opacity: 0;
+        margin-left: -40px;
+    }
+    100%{
+        opacity: 1;
+        margin-left: 0px;
+    }
+}
+.Draft__User .Header .Info .Wrap .Title.Max{
+    font-size: 9vh;
+}
+.Draft__User .Header .Info .Wrap .Title.Middle{
+    font-size: 6vh;
+}
+.Draft__User .Header .Info .Wrap .Title.Mini{
+    font-size: 5vh;
+}
+.Draft__User .Header .Info .Wrap .Title.UltraMini{
+    font-size: 3vh;
+}
+.Draft__User .Header .Info .Wrap .Followers{
+    display: block;
+    min-width: 50vw;
+    padding: 0px 5px;
+    border-radius: 10px;
+    line-height: 1.1;
+}
+.Draft__User .Header .Info .Wrap .Followers .Count{
+    display: block;
+    color: #1ED760;
+    font-size: 7vw;
+}
+.Draft__User .Header .Info .Wrap .Followers .Ad{
+    display: block;
+    color: #eee;
+    font-size: 17px;
+}
+
+/*Actions*/
+.Draft__User .Head .Actions{
+    height: 100px;
+    padding: 0px 20px;
+    display: flex;
+    flex-flow: row nowrap; 
+    gap: 26px;
+    border-bottom: 1px solid #222222;
+    margin-top: -10px;
+    background: #000000;
+}
+.Draft__User .Head .Actions .Box{
+    display: inline-flex;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+}
+.Draft__User .Head .Actions .Box .Like{
+    width: 70px;
+    height: 70px;
+    background: #121212;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease; 
+}
+.Draft__User .Head .Actions .Box .Like img{
+    width: 25px;
+}
+.Draft__User .Head .Actions .Box .Like.Default{
+    background: #121212;
+}
+.Draft__User .Head .Actions .Box .Like.Active{
+    background: #eee;
+}
+.Draft__User .Head .Actions .Box .Like:hover{
+    transform: scale(1.04);
+}
+.Draft__User .Head .Actions .Box .Button{
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 16px 20px;
+    border-radius: 28px;
+    color: #eee;
+    background: #121212;
+    transition: all 0.2s ease; 
+    font-size: 16px;
+    /*background: #121212;*/
+}
+.Draft__User .Head .Actions .Box .Button.Active{
+    background: #eee;
+    color: #000000;
+}
+.Draft__User .Head .Actions .Box .Button:hover{
+    background: #eee;
+    color: #000000;
+}
+
+
+.Draft__User .DefaultPlug{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    border-radius: 16px;
+    outline: 1px solid #222222;
+    margin: 0px 25px;
+}
+.Draft__User .DefaultPlug .Focus{
+    display: block;
+    width: 80%;
+    line-height: 1.2;
+    font-size: 17px;
+    color: grey;
+    text-align: center;
+}
+.Draft__User .DefaultPlug .Focus .Ico{
+    width: 100px;
+}
+.Draft__User .DefaultPlug .Focus .Title{
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #eee;
+}

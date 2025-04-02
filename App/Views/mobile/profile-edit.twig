@@ -1,0 +1,39 @@
+{% import '_macros.twig' as macros %}
+
+{% if user != false %}
+
+<div id='__MetaTitle' class='display--none'>Редактирование профиля</div>
+
+<!--PAGE STATE-->
+<div class='__pageState PageState'>
+    <div class='Box'>
+        <div onclick='NavigationModel.returnBack()' class='__returnButton Button'><img src='web/ico/eee/back.png'></div>
+    </div>
+    <div class='Bar'>
+        <div class='Text'>
+            <div class='Capture Cut'>
+                <div class='__captureText Swift Cut'>Edit</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Profile-->
+<div class='Draft__Edit'>    
+    <div class='Content'>
+        <div class='InputWrap'>
+            <input id='__newName' class='Regular text-face--regular' type='text' placeholder='Новое имя' value='{{ user.name }}'>
+        </div>
+        <div class='Submit'>
+            <div onclick='profileActionsModel.updateName()' class='Button Cut'>Обновить</div>
+        </div>
+    </div>
+    <script>
+        colorService.animatePage(`Edit`, `{{ macros.getUserPicture(user.picture) }}`);
+    </script>
+</div>
+{% else %}
+    <!--PROFILE PLUG-->
+    {% embed 'chunks/profile_plug.twig' %}
+    {% endembed %}
+{% endif %}

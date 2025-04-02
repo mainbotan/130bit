@@ -1,0 +1,79 @@
+{% import '_macros.twig' as macros %}
+
+<div class='Draft__Tag'>
+    <div class='Head'>
+        {# <div class='text-size--28px text-color--spotify' style='padding-left: 10px;'>тэг</div> #}
+        <div class='Line'></div>
+        <div class='inter--0'></div>
+        <div class='Title'>#{{  info.name }}</div>
+        <div class='inter--30'></div>
+        <div class='StatArea'>
+            <div class='Stat'>
+                <div class='Block'>
+                    <div class='Count Cut'>{{ info.reach }}</div>
+                    <div class='Ad Cut'>reach</div>
+                </div>
+            </div>
+            <div class='Stat'>
+                <div class='Block'>
+                    <div class='Count Cut'>{{ info.total }}</div>
+                    <div class='Ad Cut'>total</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='Content'>
+        {% if top_albums != null %}
+        <div class='inter--8'></div>
+        <!--New Releases-->
+        <div class='Element__Title'>
+            <div class='Bar'>
+                <div class='Block text-size--24px ShowTitle'>Лучшие альбомы</div>
+            </div>
+        </div>
+        <div class='inter--18'></div>
+        <div class='no-scroll Element__HalfGrid'>
+            {% for release in top_albums %}
+            <div x='album' param='name={{ release.name }}&artist={{ release.artist.name }}' class='Navigation_UpdateWin Element__HalfCard Item ToolTipeWrap'>
+                <div class='ToolTipe'>{{ release.name }}</div>
+                <div class='Ico' style='background-image: url({{ release.image[3]['#text'] }});'>
+                    <div class='Play'><img src='web/ico/black/play.png'></div>
+                    <div class='Ad'></div>
+                </div>
+                <div class='Info'>
+                    <div class='Cut Title ShowTitle'>{{ release.name }}</div>
+                    <div class='Cut Ad'>
+                        <div x='artist' param='name={{ release.artist.name }}' class='Navigation_UpdateWin display--block Element__HoverWhite'>{{ release.artist.name }}</div>
+                    </div>
+                    <div class='inter--2'></div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <div style='height: 30px;'></div>
+        {% if top_artists != null %}
+        <div class='inter--18'></div>
+        <!--New Releases-->
+        <div class='Element__Title'>
+            <div class='Bar'>
+                <div class='Block text-size--24px ShowTitle'>Лучшие артисты</div>
+            </div>
+        </div>
+        <div class='no-scroll Element__HorizScroll no-scroll'>
+            {% for artist in top_artists %}
+                <div x='artist' param='name={{ artist.name }}' class='Navigation_UpdateWin Element__Artist Middle Item ToolTipeWrap'>
+                    <div class='ToolTipe'>{{ artist.name }}</div>
+                    <div class='Ico' style='background-image: url(https://i.scdn.co/image/ab6761610000e5eb8683dd0698fb59ad7039a46f);'>
+                        <div class='Ad'></div>
+                    </div>
+                    <div class='Info'>
+                        <div class='Cut Title ShowTitle'>{{ artist.name }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <div style='height: 30vh;'></div>
+    </div>
+</div>

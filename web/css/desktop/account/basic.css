@@ -1,0 +1,23 @@
+/*____ACCOUNT Elements_____*/
+.Account__MiniAvatar{
+    display: inline-flex;
+    position: relative;
+    width: 54px;
+    height: 54px;
+    outline: 2px solid black;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+/*____Draft Profile_____*/
+.Draft__Profile{
+    position: relative;
+}
+
+.Draft__Profile .Content{
+    min-height: 100vh;
+    padding-top: 15px;
+}
+.Draft__Profile .Content .FavouritesWrap{
+    padding: 0px 15px;
+}

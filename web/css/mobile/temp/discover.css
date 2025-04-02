@@ -1,0 +1,45 @@
+/*____Discover____*/
+.Draft__Discover {
+    min-height: 100vh;
+    background: #000000;
+}
+.Draft__Discover .Content{
+    padding-top: 14px;
+}
+.Draft__Discover .Head {
+    padding: 20px;
+    transition: all 0.2s ease; 
+    position: sticky;
+    z-index: 50;
+    left: 0px;
+    top: 0px;
+    width: calc(100% - 40px);
+    background: #000000;
+    display: block;
+    border-bottom: 1px solid #222222;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    box-shadow: 0 0 5px #000000;
+}
+.Draft__Discover .Head .Search {
+    display: block;
+    padding: 0px 0px;
+}
+.Draft__Discover .Head .Search input {
+    width: calc(100% - 40px);
+    height: 56px;
+    font-size: 17px;
+    color: #eee;
+    font-weight: 600;
+    box-shadow: rgb(0, 0, 0) 0px 0px 10px;
+    transition: 0.2s;
+    border-radius: 6px;
+    background: #222222;
+    outline: none;
+    border-width: initial;
+    border-style: none;
+    border-image: initial;
+    padding: 0px 20px;
+    box-shadow:0 0 10px #000000;
+}
+

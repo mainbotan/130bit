@@ -1,0 +1,13 @@
+{% import '_macros.twig' as macros %}
+{% for artist in artists %}
+    <div x='artist' param='id={{ artist.id }}' class='Navigation_UpdateWin Element__Artist Middle Item ToolTipeWrap'>
+        <div class='ToolTipe'>{{ artist.name }}</div>
+        <div class='Ico' style='background-image: url({{ artist.picture_small }});'>
+            <div class='Ad'></div>
+        </div>
+        <div class='Info'>
+            <div class='Cut Title ShowTitle'>{{ artist.name }}</div>
+            <div class='Cut Ad'>{{ macros.format_number(artist.followers) }} слушают</div>
+        </div>
+    </div>
+{% endfor %}

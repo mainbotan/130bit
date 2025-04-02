@@ -1,0 +1,139 @@
+    {% import '_macros.twig' as macros %}
+
+    <!--META-->
+    <div id='__MetaTrack-Title' class='display--none'>{{ track.name }}</div>
+    <div id='__MetaTrack-Artist' class='display--none'>{{ track.artists.0.name }}</div>
+    <div id='__MetaTrack-Image' class='display--none'>{{ track.cover }}</div>
+
+    <!--PAGE STATE-->
+    {% embed 'chunks/classic_pageState.twig' %}
+    {% endembed %}
+
+    <!--TRACK-->
+    <div class='Draft__Track Draft'>
+        <div class='__animatedPageHead Head'>
+            <div class='Header'>
+                <div class='Label ToolTipeWrap'>
+                    <div class='ToolTipe'>Увеличить изображение</div>
+                    <div data-picture-url='{{ track.cover }}' class='EnvirHandler_displayPicture Ico' style='background-image: url({{ track.cover }});'></div></div>
+                <div class='InfoWrap'>
+                    <div class='Wrap Block'>
+                        <div class='Title {{ track.name_size }}'>{{ track.name }}</div>
+                        <div class='AdInfo'>
+                        {% for key, artist in track.artists%}
+                            {{ macros.artistDiv(artist) }}
+                            {% if key < track.artists|length -1%}
+                                &
+                            {% endif %}
+                        {% endfor %}
+                        • {{ macros.format_year(track.release_date) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='Actions'>
+                {% if user != false %}
+                    {% if track.id in user.favourites.tracks %}
+                        {% set ico = 'web/ico/1ED760/heart.png' %}
+                    {% else %}
+                        {% set ico = 'web/ico/1ED760/heart_empty.png' %}
+                    {% endif %}
+                    <div class='Track Track-{{ track.id }} Box' data-uri='{{ track.uri }}'>
+                        <div data-spotify-id='{{ track.id }}' class='QuickAction_LikeTrack Like'><img class='__Like' src='{{ ico }}'></div>
+                    </div>
+                {% endif %}
+                <div class='Box'>
+                    <div x='album' param='id={{ track.album_id }}' class='Navigation_UpdateWin Button ToolTipeWrap'>
+                        <div class='ToolTipe'>{{ track.album_name }}</div>
+                        К альбому
+                    </div>
+                </div>
+                <div class='Bar'></div>
+            </div>
+        </div>
+        <div class='Content'>
+            <div class='inter--20'></div>
+            <!--Album Tracks-->
+            <div class='Element__Title'>
+                <div class='Bar'>
+                    <div class='Block text-size--25px ShowTitle'>Трек</div>
+                </div>
+            </div>
+            <div class='__TracksStack Element__TracksWrap'>
+                {% if user != false %}
+                    {% if track.id in user.favourites.tracks %}
+                        {% set ico = 'web/ico/1ED760/heart.png' %}
+                    {% else %}
+                        {% set ico = 'web/ico/1ED760/heart_empty.png' %}
+                    {% endif %}
+                {% endif %}
+                <div data-spotify-uri='{{ track.uri }}' data-spotify-id='{{  track.id }}' class='Player_Track Element__Track_Small Track Track-{{ track.id }}'>
+                    <div class='__TrackTitle display--none'>{{ track.name }}</div>
+                    <div class='__TrackIco display--none'>{{ track.cover }}</div>
+                    <div class='Ico' style='border: none; outline: none;'>1</div>
+                    <div class='Info TrackI'>
+                        <div class='Block'>
+                            <div class='Cut Title Regular text-face--regular'>{{ track.name }}</div>
+                        </div>
+                    </div>
+                    <div class='Info AlbumI'>
+                        <div class='Block'>
+                            <div class='__TrackArtists Cut AlbumTitle Regular text-face--regular'>
+                                {% for key, artist in track.artists%}
+                                    {{ macros.artistDiv(artist) }}
+                                    {% if key < track.artists|length -1%}
+                                        &
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div data-spotify-id='{{ track.id }}' class='QuickAction_LikeTrack Box'><img class='__Like Like' src='{{ ico }}'></div>
+                </div> 
+            </div>
+            <div class='LabelWrap Regular text-face--regular'></div>
+
+            {% if track.genius != null %}
+                <div class='AdditionWrap'>
+                    <div class='Addition'>
+                        <div class='Stage1'>
+                            <div class='Title'>{{ track.genius.full_title }}</div>
+                            <div class='Regular text-face--regular'>{{ track.genius.release_date_for_display }}</div>
+                            <div class='inter--20'></div>
+                            <div class='Description Regular text-face--regular'>{{ track.genius.description|raw }}</div>
+                        </div>
+                        <div class='Stage2'>
+                        {% for performance in track.genius.custom_performances %}
+                            <div class='Item'>
+                                <div class='Title'>{{ performance.label }}</div>
+                                <div class='inter--6'></div>
+                                {% for artist in performance.artists %}
+                                    <div class='Ad Regular text-face--regular'>{{ artist.name }}</div>
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                        </div>
+                        <div class='Stage3 ToolTipeWrap'>
+                            <div class='ToolTipe'>Читать лирику</div>
+                            {{ track.genius.lyrics|raw }}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        <div style='height: 30vh;'></div>
+
+        <script>
+            colorService.animatePage('{{ track.name }}', '{{ track.cover }}');
+        </script>
+    </div>
+
+    <div class='inter--50' style='height: 20vh;'></div>
+
+
+
+
+
+
+

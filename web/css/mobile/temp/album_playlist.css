@@ -1,0 +1,88 @@
+.Draft__Album .Header{
+    min-height: 69vh;
+    padding: 0px;
+    display: block;
+    text-align: center;
+    line-height: 1.2;
+    position: relative;
+    background-size: cover;
+}
+.Draft__Album .Header .Canvas{
+    position: absolute;
+    z-index: 10;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 69vh;
+    display: block;
+    text-align: center;
+    line-height: 1.2;
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(34,34,34,0) 100%);
+    backdrop-filter: blur(7px);
+    overflow: hidden;
+}
+.Draft__Album .Header .Canvas .Base{
+    padding: 5vh 5vw;
+}
+.Draft__Album .Header .Label{
+    display: inline-block;
+    background-size: cover;
+    width: 76vw;
+    height: 76vw;
+    border-radius: 10px;
+    position: relative;
+    outline: 1px solid #222222;
+    box-shadow: 0 0 6px #222222;
+    z-index: 10;
+}
+.Draft__Album .Header .Label .UnderLabel{
+    z-index: 10;
+    width: 76vw;
+    height: 76vw;
+    border-radius: 10px;
+    background: #222222;
+    top: -10px;
+    right: -10px;
+}
+.Draft__Album .Header .Title{
+    font-size: 30px;
+    color: white;
+}
+.Draft__Album .Header .Ad{
+    font-size: 20px;
+    color: lightwhite;
+}
+.Draft__Album .Section{
+    padding: 10px 0px;
+    border-top: 1px solid #222222;
+}
+
+.Draft__Album .ActionsWrap{
+    padding: 15px;
+    overflow-x: scroll;
+    white-space: nowrap;
+    padding-right: 40px;
+}
+.Draft__Album .ActionsWrap .Action img{
+    width: 20px;
+    height: 20px;
+}
+.Draft__Album .ActionsWrap .Action{
+    vertical-align: top;
+    margin-right: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    border-radius: 22px;
+    font-size: 16px;
+    color: lightwhite;
+    /*With Regular Font*/
+    outline: 2px solid white;
+    cursor: pointer;
+}
+.Draft__Album .ActionsWrap .Action.Active{
+    background: white;
+    color: black;
+}
